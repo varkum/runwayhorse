@@ -21,16 +21,14 @@ class TripsController < ApplicationController
 
   # POST /trips or /trips.json
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Current.user.trips.new(trip_params)
 
-    respond_to do |format|
-      if @trip.save
-        format.html { redirect_to trip_url(@trip), notice: "Trip was successfully created." }
-        format.json { render :show, status: :created, location: @trip }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    if @trip.valid?
+      @trip.create_and_setup_days
+      redirect_to trip_url(@trip), notice: "Trip was successfully created." 
+    else
+      render :new, status: :unprocessable_entity 
+      
     end
   end
 
@@ -65,6 +63,6 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:name, :start, :end)
+      params.require(:trip).permit(:name, :start_date, :end_date)
     end
 end

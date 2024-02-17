@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to trips_path
     else
-      redirect_to new_session_path, alert: "That email or password is incorrect. Please try again"
+      redirect_to new_sessions_path, alert: "That email or password is incorrect. Please try again"
     end
   end
   
