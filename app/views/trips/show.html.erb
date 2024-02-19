@@ -7,7 +7,7 @@
 		<p><%= human_date(@trip.start_date) %> to <%= human_date(@trip.end_date) %></p>
   </div>
 	
-	<div id="trip-actions" class="flex grow items-center justify-center gap-8">
+	<div id="trip-actions" class="flex grow items-center justify-center gap-x-8">
 		<%= button_to edit_trip_path, class: "bg-white p-16 font-bold rounded" do %>
 			<%= image_tag "boat.svg", class: "h-12 w-auto mx-auto" %>
 			<p>Transportation</p>

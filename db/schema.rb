@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_17_193123) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_19_160632) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "mode", ["draft", "published", "archived", "trashed"]
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "days", force: :cascade do |t|
     t.string "homebase"
@@ -23,6 +34,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_17_193123) do
     t.datetime "updated_at", null: false
     t.date "date"
     t.index ["trip_id"], name: "index_days_on_trip_id"
+  end
+
+  create_table "happenings", force: :cascade do |t|
+    t.bigint "day_id", null: false
+    t.datetime "time"
+    t.text "notes"
+    t.boolean "booked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_happenings_on_day_id"
+  end
+
+  create_table "transportations", force: :cascade do |t|
+    t.enum "mode", null: false, enum_type: "mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "trips", force: :cascade do |t|
@@ -43,5 +70,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_17_193123) do
   end
 
   add_foreign_key "days", "trips"
+  add_foreign_key "happenings", "days"
   add_foreign_key "trips", "users"
 end
