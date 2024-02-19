@@ -1,15 +1,21 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @trip %>
-
-    <%= link_to "Edit this trip", edit_trip_path(@trip), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this trip", trip_path(@trip), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to "Back to trips", trips_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<div class="w-2/3 mx-auto flex flex-col flex-grow items-center justify-center h-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+	<div id="trip-header" class="w-full text-center">
+		<h3 class="font-bold text-2xl"><%= @trip.name %></h3>
+		<p><%= human_date(@trip.start_date) %> to <%= human_date(@trip.end_date) %></p>
   </div>
+	
+	<div id="trip-actions" class="flex grow items-center justify-center gap-8">
+		<%= button_to edit_trip_path, class: "bg-white p-16 font-bold rounded" do %>
+			<%= image_tag "boat.svg", class: "h-12 w-auto mx-auto" %>
+			<p>Transportation</p>
+		<% end %>
+		<%= button_to edit_trip_path, class: "bg-white p-16 font-bold rounded" do %>
+			<%= image_tag "calendar.svg", class: "h-12 w-auto mx-auto" %>
+			<p>Day by Day</p>
+		<% end %>
+  </div>
+	<%= render "summary" %>
 </div>

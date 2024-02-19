@@ -28,7 +28,6 @@ class TripsController < ApplicationController
       redirect_to trip_url(@trip), notice: "Trip was successfully created." 
     else
       render :new, status: :unprocessable_entity 
-      
     end
   end
 
