@@ -2,6 +2,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   
   has_many :days, dependent: :destroy
+  has_many :happenings
   
   def length
     (end_date - start_date).to_i
