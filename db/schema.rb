@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_19_160632) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_20_223611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_19_160632) do
     t.boolean "booked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "happeningable_type", null: false
+    t.bigint "happeningable_id", null: false
     t.index ["day_id"], name: "index_happenings_on_day_id"
+    t.index ["happeningable_type", "happeningable_id"], name: "index_happenings_on_happeningable"
   end
 
   create_table "transportations", force: :cascade do |t|
