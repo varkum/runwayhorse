@@ -2,10 +2,10 @@ class Happening < ApplicationRecord
   belongs_to :day
   belongs_to :trip
   
-  delegated_type :happeningable, types: %w[ transportation activity ]
+  delegated_type :happeningable, types: %w[ Transportation Activity ]
   
   def date
-    day ? day.date : nil
+    day&.date
   end
   
   def self.create_transportation(trip:, date:, time:, transport_mode:, notes:)

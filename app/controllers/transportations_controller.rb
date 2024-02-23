@@ -3,7 +3,7 @@ class TransportationsController < ApplicationController
   before_action :set_trip
   
   def index
-    @happening = @trip.transportations
+    @happenings = @trip.transportations
   end
   
   def new
@@ -29,6 +29,6 @@ class TransportationsController < ApplicationController
   end
   
   def transportation_params
-    params.require(:transportation).permit(:date, :mode, :notes, :time)
+    params.require(:happening).permit(:date, :mode, :notes, :time)
   end
 end
