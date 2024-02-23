@@ -8,11 +8,11 @@
   </div>
 	
 	<div id="trip-actions" class="flex grow items-center justify-center gap-x-8">
-		<%= button_to edit_trip_path, class: "bg-white p-16 font-bold rounded" do %>
+		<%= link_to new_trip_transportation_path(Trip.find(params[:id])), class: "bg-white p-16 font-bold rounded" do %>
 			<%= image_tag "boat.svg", class: "h-12 w-auto mx-auto" %>
 			<p>Transportation</p>
 		<% end %>
-		<%= button_to edit_trip_path, class: "bg-white p-16 font-bold rounded" do %>
+		<%= link_to edit_trip_path, class: "bg-white p-16 font-bold rounded" do %>
 			<%= image_tag "calendar.svg", class: "h-12 w-auto mx-auto" %>
 			<p>Day by Day</p>
 		<% end %>
