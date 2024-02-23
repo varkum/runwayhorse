@@ -10,13 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_02_20_223611) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_23_025711) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  # Custom types defined in this database.
-  # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "mode", ["draft", "published", "archived", "trashed"]
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -45,14 +41,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_02_20_223611) do
     t.datetime "updated_at", null: false
     t.string "happeningable_type", null: false
     t.bigint "happeningable_id", null: false
+    t.bigint "trip_id"
     t.index ["day_id"], name: "index_happenings_on_day_id"
     t.index ["happeningable_type", "happeningable_id"], name: "index_happenings_on_happeningable"
+    t.index ["trip_id"], name: "index_happenings_on_trip_id"
   end
 
   create_table "transportations", force: :cascade do |t|
-    t.enum "mode", null: false, enum_type: "mode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mode"
   end
 
   create_table "trips", force: :cascade do |t|
