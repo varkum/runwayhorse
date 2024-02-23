@@ -1,16 +1,17 @@
 class TransportationsController < ApplicationController
+  before_action :set_render_to_happenings
   before_action :set_trip
   
   def index
-    @transportations = @trip.transportations
+    @happening = @trip.transportations
   end
   
   def new
-    @transportation = Transportation.new
+    @happening = Happening.new happeningable: Transportation.new
   end
   
   def create
-    Happening.create_transportation trip: @trip, date: transportation_params[:date], 
+    @happening = Happening.create_transportation trip: @trip, date: transportation_params[:date], 
       time: transportation_params[:time], 
       transport_mode: transportation_params[:mode], 
       notes: transportation_params[:notes]
@@ -18,6 +19,10 @@ class TransportationsController < ApplicationController
   end
   
   private
+  
+  def set_render_to_happenings
+    lookup_context.prefixes.prepend 'happenings'
+  end
   
   def set_trip
     @trip = Trip.find(params[:trip_id])

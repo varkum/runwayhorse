@@ -1,0 +1,43 @@
+<%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym]) do |form| %>
+
+	<% if happening.happeningable_name == "Transportation" %>
+	  <div class="my-5">
+	    <%= form.label "How are you travelling?" %>
+	    <%= form.select :mode, ["plane", "train", "car", "boat"], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+	  </div>
+	<% else %>
+		<div class="my-5">
+			<%= form.label "What do you want to call the activity?"%>
+			<%= form.text_field :name %>
+		<div>
+		
+		<div class="my-5">
+			<%= form.label :location %>
+			<%= form.text_field :location %>
+		</div>
+		
+		<div class="my-5">
+			<%= form.label "Is there a reservation for it?" %>
+			<%= form.check_box :booked %>
+		</div>
+	<% end %>
+
+  <div class="my-5">
+    <%= form.label :date %>
+    <%= form.select :date, trip.days.pluck(:date), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :time %>
+    <%= form.time_field :time, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+	
+  <div class="my-5">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

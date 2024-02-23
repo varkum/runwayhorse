@@ -5,7 +5,7 @@ class Happening < ApplicationRecord
   delegated_type :happeningable, types: %w[ transportation activity ]
   
   def date
-    day.date
+    day ? day.date : nil
   end
   
   def self.create_transportation(trip:, date:, time:, transport_mode:, notes:)
