@@ -11,10 +11,15 @@ class TransportationsController < ApplicationController
   end
   
   def create
-    @happening = Happening.create_transportation trip: @trip, date: transportation_params[:date], 
-      time: transportation_params[:time], 
-      transport_mode: transportation_params[:mode], 
-      notes: transportation_params[:notes]
+    @happening = Happening.record!(Transportation.new(origin: transportation_params[:from], destination: transportation_params[:to],
+      mode: transportation_params[:mode]),
+      trip: @trip,
+      date: transportation_params[:date],
+      time: transportation_params[:time],
+      notes: transportation_params[:notes],
+      booked: true
+      )
+    
     redirect_to trip_transportations_path
   end
   
@@ -29,6 +34,6 @@ class TransportationsController < ApplicationController
   end
   
   def transportation_params
-    params.require(:happening).permit(:date, :mode, :notes, :time)
+    params.require(:happening).permit(:origin, :destination, :date, :mode, :notes, :time)
   end
 end

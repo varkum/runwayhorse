@@ -1,10 +1,21 @@
 <%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym]) do |form| %>
 
-	<% if happening.happeningable_name == "Transportation" %>
+	<% if happening.happeningable_name == "transportation" %>
+	  <div class="my-5">
+	    <%= form.label "From" %>
+	    <%= form.text_field :origin %>
+	  </div>
+		
+	  <div class="my-5">
+	    <%= form.label "To" %>
+	    <%= form.text_field :destination %>
+	  </div>
+		
 	  <div class="my-5">
 	    <%= form.label "How are you travelling?" %>
 	    <%= form.select :mode, ["plane", "train", "car", "boat"], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
 	  </div>
+		
 	<% else %>
 		<div class="my-5">
 			<%= form.label "What do you want to call the activity?"%>

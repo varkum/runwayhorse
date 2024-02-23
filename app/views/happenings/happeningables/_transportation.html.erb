@@ -1,23 +1,32 @@
-<div id="<%= dom_id happening %>">
-	
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Mode:</strong>
-    <%= happening.transportation.mode %>
-  </p>
+<div class="w-72 h-content border-2 border-gray-200" id="<%= dom_id happening %>">
+	<div class="flex">
+		<%= icon_for(happening.transportation.mode) %>
+		<span class="font-sembibold"><%= happening.transportation.origin%></span>
+		to 
+		<span class="font-semibold"><%= happening.transportation.destination%></span>
+	</div>
+  <div class="my-5">
+    <strong class="block font-medium mb-1">Mode</strong>
+    <><%= happening.transportation.mode %>
+	</div>
+  <div class="my-5">
+    <strong class="block font-medium mb-1">Mode</strong>
+    <><%= happening.transportation.mode %>
+	</div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
+  <div class="my-5">
+    <strong class="block font-medium mb-1">Date</strong>
     <%= happening.date %>
-  </p>
+	</div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Time:</strong>
+  <div class="my-5">
+    <strong class="block font-medium mb-1">Time</strong>
     <%= happening.time %>
-  </p>
+	</div>
 	
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Notes:</strong>
+  <div class="my-5 grow">
+    <strong class="block font-medium mb-1">Notes</strong>
     <%= happening.notes %>
-  </p>
+	</div>
 	
 </div>

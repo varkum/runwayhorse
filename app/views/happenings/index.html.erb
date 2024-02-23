@@ -3,12 +3,17 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl"><%= @happenings.first.happeningable_name %></h1>
-    
-  </div>
+<% if @happenings.present? %>
+	<div class="mb-12 text-center">
+		<h1 class="font-bold text-4xl"><%= @happenings.first.happeningable_name.humanize %></h1>
+	</div>
+	
+	<div class="flex">
+  	<%= render @happenings %>
+	</div>
 
-  <div class="min-w-full">
-    <%= render @happenings %>
-  </div>
+<% else %>
+	<p> You don't have any transportation yet. Start by putting in flights to and from home. Then move on to trains, car rides, or boat trips during your vaction. </p>
+	<%= link_to "Add transportation", new_trip_transportation_path %>
+<% end %>
 </div>

@@ -18,7 +18,7 @@
     <%= content_for :head %>
   </head>
 
-  <body class="h-full bg-amber-50">
+  <body class="h-full bg-amber-50 text-slate-800">
 		<nav class="fixed top-0">
 			<%= button_to "Sign out", sessions_path, method: :delete %>
 		</nav>
@@ -31,7 +31,7 @@
 				<p class="text-blue-500"><%= flash[:notice] %></p>
 			<% end %>
 		</div>
-    <main class="container mx-auto h-full py-4">
+    <main class="container mx-auto h-full py-4 bg-white rounded shadow-lg">
       <%= yield %>
     </main>
   </body>
