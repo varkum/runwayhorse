@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
   has_many :days, dependent: :destroy
   has_many :happenings, dependent: :destroy
   
-  delegate :transportations, to: :happenings
+  delegate :transportations, :activities, to: :happenings
   
   def length
     (end_date - start_date).to_i
