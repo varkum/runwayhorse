@@ -11,7 +11,7 @@ class TransportationsController < ApplicationController
   end
   
   def create
-    @happening = Happening.record!(Transportation.new(origin: transportation_params[:from], destination: transportation_params[:to],
+    @happening = Happening.record!(Transportation.new(origin: transportation_params[:origin], destination: transportation_params[:destination],
       mode: transportation_params[:mode]),
       trip: @trip,
       date: transportation_params[:date],

@@ -8,10 +8,11 @@
 		<h1 class="font-bold text-4xl"><%= @happenings.first.happeningable_name.humanize %></h1>
 	</div>
 	
-	<div class="flex">
+	<div class="px-20">
   	<%= render @happenings %>
 	</div>
 
+	<%= link_to "Add new", polymorphic_path([:new, :trip, @happenings.first.happeningable_name.to_sym])%>
 <% else %>
 	<p> You don't have any transportation yet. Start by putting in flights to and from home. Then move on to trains, car rides, or boat trips during your vaction. </p>
 	<%= link_to "Add transportation", new_trip_transportation_path %>
