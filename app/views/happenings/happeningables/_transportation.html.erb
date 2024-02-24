@@ -1,32 +1,23 @@
-<div class="flex outline rounded" id="<%= dom_id happening %>">
-	<div class="flex">
-		<%= icon_for(happening.transportation.mode) %>
-		<span class="font-sembibold"><%= happening.transportation.origin%></span>
-		to 
-		<span class="font-semibold"><%= happening.transportation.destination%></span>
+<div class="outline outline-1 rounded px-4 mt-4" id="<%= dom_id happening %>">
+	<div class="inline-flex items-center align-middle">
+		<%= icon_for(happening.transportation.mode, size: "12") %>
+		<p class="ml-3 text-xl font-bold align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
 	</div>
-  <div class="my-5">
-    <strong class="block font-medium mb-1">Mode</strong>
-    <><%= happening.transportation.mode %>
-	</div>
-  <div class="my-5">
-    <strong class="block font-medium mb-1">Mode</strong>
-    <><%= happening.transportation.mode %>
-	</div>
+ 
+ 	<div class="flex flex-col">
+	  <div class="my-2">
+	    <%= happening.time.strftime("%H:%M") %>
+		</div>
 
-  <div class="my-5">
-    <strong class="block font-medium mb-1">Date</strong>
-    <%= happening.date %>
-	</div>
+	  <div class="my-2">
+	    <%= happening.date %>
+		</div>
 
-  <div class="my-5">
-    <strong class="block font-medium mb-1">Time</strong>
-    <%= happening.time %>
-	</div>
+  
 	
-  <div class="my-5 grow">
-    <strong class="block font-medium mb-1">Notes</strong>
-    <%= happening.notes %>
+	  <div class="my-2">
+	    <p class="italic text-sm">Notes</p>
+	    <%= happening.notes %>
+		</div>
 	</div>
-	
 </div>
