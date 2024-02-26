@@ -7,8 +7,8 @@
 	<div class="relative mb-12">
 		<h1 class="font-bold text-4xl text-center"><%= @happenings.first.happeningable_name.humanize %></h1>
 		<%= link_to polymorphic_path([:new, :trip, @happenings.first.happeningable_name.to_sym]), class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-4 py-2 rounded" do %>
-			<%= image_tag "plus.svg", class: "h-4 w-auto mr-1" %>
-			<p class="font-light">New</p>
+			<%= image_tag "plus.svg", class: "h-5 w-auto mr-1" %>
+			<p class="font-light text-sm">New</p>
 		<% end %>
 	</div>
 	
