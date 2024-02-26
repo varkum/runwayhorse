@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     resources :days
     resources :transportations
     resources :activities
+    
+    resources :summaries, module: 'trips', only: [:index]
+    
   end
+  
+  
   
   # Defines the root path route ("/")
   root "trips#index"
