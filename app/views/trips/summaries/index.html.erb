@@ -1,20 +1,22 @@
-<div class="flex flex-col mx-auto items-center">
-	<h3 class="font-semibold text-2xl text-center">Trip Summary</h3>
-	<div name="summary-box" class="flex flex-wrap justify-center gap-6 py-8 w-2/3 mx-auto bg-white shadow-lg my-auto">
-		<div class="font-semibold text-center inline-block p-4 min-w-40">
-			<p class="mb-1 border-2 border-dashed border-indigo-500 rounded text-xl p-4"><%= @transport_happenings.first.transportation.origin %></p>
-		</div>
-		
-		
-		<% @transport_happenings.each do |happening| %>
-			<div class="text-center place-self-center">
-				<%= icon_for happening.transportation.mode %>
-				<span class="text-sm text-gray-500"><%= human_date(happening.date, no_year: true)%></span>
-			</div>
+<%= turbo_frame_tag "summary" do %>
+	<div class="flex flex-col mx-auto items-center">
+		<h3 class="font-semibold text-2xl text-center">Trip Summary</h3>
+		<div name="summary-box" class="flex flex-wrap justify-center gap-6 py-8 w-2/3 mx-auto bg-white shadow-lg my-auto">
 			<div class="font-semibold text-center inline-block p-4 min-w-40">
-				<p class="mb-1 border-2 border-dashed border-indigo-500 rounded text-xl p-4"><%= happening.transportation.destination %></p>
+				<p class="mb-1 border-2 border-dashed border-indigo-500 rounded text-xl p-4"><%= @transport_happenings.first.transportation.origin %></p>
 			</div>
+		
+		
+			<% @transport_happenings.each do |happening| %>
+				<div class="text-center place-self-center">
+					<%= icon_for happening.transportation.mode %>
+					<span class="text-sm text-gray-500"><%= human_date(happening.date, no_year: true)%></span>
+				</div>
+				<div class="font-semibold text-center inline-block p-4 min-w-40">
+					<p class="mb-1 border-2 border-dashed border-indigo-500 rounded text-xl p-4"><%= happening.transportation.destination %></p>
+				</div>
 			
-		<% end %>
+			<% end %>
+		</div>
 	</div>
-</div>
+<% end %>

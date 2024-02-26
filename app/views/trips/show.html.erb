@@ -17,5 +17,7 @@
 			<p>Day by Day</p>
 		<% end %>
   </div>
-	<%= render "summary" %>
+	<%= turbo_frame_tag "summary", src: trip_summaries_path(@trip) %>
+
+
 </div>
