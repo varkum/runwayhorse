@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def human_date(date)
-    date.strftime("%B %e, %Y")
+  def human_date(date, no_year: false)
+    no_year ? date.strftime("%B %e") : date.strftime("%B %e, %Y")
   end
   
   def human_time(time)
