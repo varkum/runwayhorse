@@ -6,7 +6,6 @@
 				<p class="mb-1 border-2 border-dashed border-indigo-500 rounded text-xl p-4"><%= @transport_happenings.first.transportation.origin %></p>
 			</div>
 		
-		
 			<% @transport_happenings.each do |happening| %>
 				<div class="text-center place-self-center">
 					<%= icon_for happening.transportation.mode %>
