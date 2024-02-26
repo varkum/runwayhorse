@@ -4,17 +4,19 @@
   <% end %>
 
 <% if @happenings.present? %>
-	<div class="mb-12 text-center">
-		<h1 class="font-bold text-4xl"><%= @happenings.first.happeningable_name.humanize %></h1>
+	<div class="mb-12">
+		<h1 class="font-bold text-4xl text-center"><%= @happenings.first.happeningable_name.humanize %></h1>
+		<%= link_to "+", polymorphic_path([:new, :trip, @happenings.first.happeningable_name.to_sym]), class: "mr-4 bg-cyan-700 text-white px-4 rounded font-bold text-2xl" %>
+			
 	</div>
 	
 	<div class="px-40">
   	<%= render @happenings %>
 	</div>
 
-	<%= link_to "Add new", polymorphic_path([:new, :trip, @happenings.first.happeningable_name.to_sym])%>
+	
 <% else %>
 	<p> You don't have any transportation yet. Start by putting in flights to and from home. Then move on to trains, car rides, or boat trips during your vaction. </p>
-	<%= link_to "Add transportation", new_trip_transportation_path %>
+	<%= link_to "+", new_trip_transportation_path, class: "font-bold text-4xl" %>
 <% end %>
 </div>
