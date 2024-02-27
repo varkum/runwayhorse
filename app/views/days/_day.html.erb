@@ -1,17 +1,17 @@
-<div class="relative h-full" id="<%= dom_id day %>">
-	<div id="header" class="flex w-full space-between">
-		<p>d
-			<%= image_tag "home.svg", class: "h-6 w-auto" %>
-			<span><%= day.homebase %></span>
-		</p>
-		<p>
-			<%= image_tag "map_pin.svg", class: "h-6 w-auto" %>
-			<span><%= day.location %></span>
-		</p>
+<div class="w-full flex justify-center" id="<%= dom_id day %>">
+	<div id="day-header">
+		<h3 class="font-medium text-xl"><%= human_date(day.date, no_year: true)%></h3>
+		<div class="flex justify-between mt-2">
+			<%= show_button_or_value(value: day.homebase, display_name: "homebase", icon: "home") %>
+			<p>
+				<%= image_tag "map_pin.svg", class: "h-6 w-auto" %>
+				<span><%= day.location %></span>
+			</p>
+		</div>
 	</div>
   
 
-	<div class="absolute bottom-5">
+	<div class="absolute bottom-0 border-t-2 border-dashed border-indigo-600 w-full">
     <strong class="block font-medium mb-1">Notes:</strong>
     <%= day.notes %>
 	</div>
