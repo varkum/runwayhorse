@@ -1,12 +1,9 @@
 <div class="w-full flex justify-center" id="<%= dom_id day %>">
 	<div id="day-header">
-		<h3 class="font-medium text-xl"><%= human_date(day.date, no_year: true)%></h3>
-		<div class="flex justify-between mt-2">
+		<h3 class="font-medium text-xl text-center"><%= human_date(day.date, no_year: true)%></h3>
+		<div class="flex justify-between mt-2 gap-x-4">
 			<%= show_button_or_value(value: day.homebase, display_name: "homebase", icon: "home") %>
-			<p>
-				<%= image_tag "map_pin.svg", class: "h-6 w-auto" %>
-				<span><%= day.location %></span>
-			</p>
+			<%= show_button_or_value(value: day.location, display_name: "location", icon: "map_pin") %>
 		</div>
 	</div>
   
