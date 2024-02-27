@@ -1,4 +1,4 @@
-<div class="w-2/3 mx-auto flex flex-col flex-grow items-center justify-center h-full">
+<div class="w-2/3 h-full mx-auto flex flex-col flex-grow items-center justify-center">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
@@ -17,7 +17,6 @@
 			<p>Day by Day</p>
 		<% end %>
   </div>
+	
 	<%= turbo_frame_tag "summary", src: trip_summaries_path(@trip) %>
-
-
 </div>
