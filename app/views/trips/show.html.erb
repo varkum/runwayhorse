@@ -12,7 +12,7 @@
 			<%= image_tag "boat.svg", class: "h-12 w-auto mx-auto" %>
 			<p>Transportation</p>
 		<% end %>
-		<%= link_to new_trip_activity_path(@trip), class: "bg-white p-16 font-bold rounded" do %>
+		<%= link_to day_path(@trip.days.first), class: "bg-white p-16 font-bold rounded-lg border-2 border-slate-500" do %>
 			<%= image_tag "calendar.svg", class: "h-12 w-auto mx-auto" %>
 			<p>Day by Day</p>
 		<% end %>
