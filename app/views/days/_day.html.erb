@@ -10,9 +10,11 @@
 	<% if day.happenings.empty? %>
 		NOTHING
 	<% else %>
-		<% day.happenings.each do |happening| %>
-			<%= render happening %>
-		<% end %>
+		<div class="divide-y mt-5">
+			<% day.happenings.each do |happening| %>
+				<%= render happening, day_by_day: true %>
+			<% end %>
+		</div>
 	<% end %>
 
 	<div class="absolute bottom-0 border-t-2 border-dashed border-indigo-600 w-full">
