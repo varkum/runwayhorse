@@ -1,8 +1,18 @@
+<div id="add-buttons" class="flex w-full justify-end text-sm flex gap-x-4">
+	<%= link_to new_trip_transportation_path(@day.trip), class: "rounded p-2 bg-indigo-600 text-white flex" do %>
+		<%= image_tag "truck.svg", class: "mr-1 h-6 w-auto" %>
+		<p>Add transportation</p>
+	<% end %>
+	<%= link_to new_trip_activity_path(@day.trip), class: "rounded p-2 bg-emerald-500 text-white flex" do %>
+		<%= image_tag "sparkles.svg", class: "mr-1 h-6 w-auto" %>
+		<p>Add activity</p>
+	<% end %>
+</div>
+
 <div class="relative mx-auto md:w-2/3 w-full h-full flex">
-  
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
+	
   <%= render @day %>
 </div>
