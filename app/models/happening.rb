@@ -7,7 +7,8 @@ class Happening < ApplicationRecord
   default_scope { order(time: :asc) }
   
   def time
-    Time.new(read_attribute(:time))
+    time = read_attribute(:time)
+    time ? Time.new(time) : nil
   end
   
   def date
