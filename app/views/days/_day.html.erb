@@ -19,8 +19,17 @@
 		</div>
 	<% end %>
 
-	<div class="absolute bottom-10 border-t-2 border-dashed border-indigo-600 w-full">
-    <strong class="block font-medium mb-1">Notes:</strong>
-    <%= day.notes %>
-	</div>
+
+	<%= link_to edit_day_path, class: "absolute bottom-10 border-t-2 border-dashed border-indigo-600 w-full text-sm", data: { turbo_frame: "notes" } do %>
+    <strong class="block font-medium">Notes</strong>
+		<p class="text-gray-500 text-sm mb-1">
+			Add reminders for the day, things to remember, comments about the weather, or anything else.
+		</p>
+		
+		<%= turbo_frame_tag "notes" do %>
+    	<%= day.notes %>
+		<% end%>
+	<% end %>
+
 </div>
+	

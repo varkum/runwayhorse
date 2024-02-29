@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "homebase" do %>
-	<%= form_with(model: @day, class: "contents", data: { controller: "edit-day", action: "focusout->edit-day#submit", turbo_frame: "day-header" }) do |form| %>
+	<%= form_with(model: @day, class: "contents", data: { controller: "edit-day", action: "focusout->edit-day#submit", turbo_frame: "_blank" }) do |form| %>
 		<%= form.text_field :homebase, class: "rounded-md border border-gray-200 outline-none text-sm", autofocus: true %>
 	<% end %>
 <% end %>
@@ -7,5 +7,11 @@
 <%= turbo_frame_tag "location" do %>
 	<%= form_with(model: @day, class: "contents", data: { controller: "edit-day", action: "focusout->edit-day#submit" }) do |form| %>
 		<%= form.text_field :location, class: "rounded-md border border-gray-200 outline-none text-sm" %>
+	<% end %>
+<% end %>
+
+<%= turbo_frame_tag "notes" do %>
+	<%= form_with(model: @day, class: "contents", data: { controller: "edit-day", action: "focusout->edit-day#submit" }) do |form| %>
+		<%= form.text_area :notes, rows: 5, class: "w-full rounded-md border border-gray-200 outline-none text-sm", autofocus: true %>
 	<% end %>
 <% end %>
