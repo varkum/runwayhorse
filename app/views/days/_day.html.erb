@@ -2,10 +2,8 @@
 	<div id="day-header">
 		<h3 class="font-medium text-xl text-center border-solid border-b-2 border-gray-300"><%= human_date(day.date, no_year: true)%></h3>
 		<div class="flex justify-evenly mt-3 gap-x-4">
-			<%= turbo_frame_tag "day-header", class: "contents" do %>
-				<%= render "day_header", value: day.homebase, display_name: "homebase", icon: "home" %>
-				<%= render "day_header", value: day.location, display_name: "location", icon: "map_pin" %>
-			<% end %>
+			<%= render "day_header", value: day.homebase, display_name: "homebase", icon: "home" %>
+			<%= render "day_header", value: day.location, display_name: "location", icon: "map_pin" %>
 		</div>
 	</div>
   
@@ -19,17 +17,20 @@
 		</div>
 	<% end %>
 
-
-	<%= link_to edit_day_path, class: "absolute bottom-10 border-t-2 border-dashed border-indigo-600 w-full text-sm", data: { turbo_frame: "notes" } do %>
-    <strong class="block font-medium">Notes</strong>
+	<div class="absolute bottom-10 border-t-2 border-dashed border-indigo-600 w-full text-sm">
+	  <strong class="block font-medium">Notes</strong>
 		<p class="text-gray-500 text-sm mb-1">
-			Add reminders for the day, things to remember, comments about the weather, or anything else.
+			Add reminders for the day, things to bring, comments about the weather, or anything else.
 		</p>
-		
-		<%= turbo_frame_tag "notes" do %>
+	
+	<%= turbo_frame_tag "notes", class: "contents" do %>
+		<%= link_to edit_day_path, class: "block rounded min-w-full hover:bg-slate-100" do %>
     	<%= day.notes %>
-		<% end%>
+			<br><br/> 
+		<% end %>
 	<% end %>
+	</div>
+	
 
 </div>
 	
