@@ -6,7 +6,7 @@ module DaysHelper
 				concat(content_tag(:span, value, class: "ml-1"))
       end
     else
-			link_to edit_day_path, class: "flex items-center justify-center rounded-3xl px-4 py-2 text-white bg-blue-700" do
+			link_to edit_day_path, class: "flex items-center justify-center px-4 py-2 text-gray-500" do
 				concat(image_tag("#{icon}.svg", class: "h-6 w-auto mr-1"))
         concat(content_tag(:span, "Add #{display_name}", class: "text-sm font-light"))
 			end

@@ -2,7 +2,9 @@
 	<div id="day-header">
 		<h3 class="font-medium text-xl text-center border-solid border-b-2 border-gray-300"><%= human_date(day.date, no_year: true)%></h3>
 		<div class="flex justify-evenly mt-3 gap-x-4">
-			<%= show_button_or_value(value: day.homebase, display_name: "homebase", icon: "home") %>
+			<%= turbo_frame_tag dom_id(day) + "homebase" do %>
+				<%= show_button_or_value(value: day.homebase, display_name: "homebase", icon: "home") %>
+			<% end %>
 			<%= show_button_or_value(value: day.location, display_name: "location", icon: "map_pin") %>
 		</div>
 	</div>
