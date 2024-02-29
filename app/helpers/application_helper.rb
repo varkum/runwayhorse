@@ -4,7 +4,7 @@ module ApplicationHelper
   end
   
   def human_time(time)
-    Time.new(time).strftime("%l:%M %p")
+    time.strftime("%l:%M %p")
   end
   
   def icon_for(transport_mode, size: '8')

@@ -35,7 +35,7 @@
 
   <div class="my-5">
     <%= form.label :date %>
-    <%= form.select :date, trip.days.pluck(:date), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.select :date, options_for_select(trip.days.pluck(:date), day&.date), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">

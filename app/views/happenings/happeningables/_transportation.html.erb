@@ -1,26 +1,45 @@
-<div class="flex outline outline-1 rounded px-4 mt-4" id="<%= dom_id happening %>">
-	<div class="mr-8">
-		<div class="inline-flex items-center align-middle">
-			<%= icon_for(happening.transportation.mode, size: "12") %>
-			<p class="ml-3 text-xl font-bold align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+<% if day_by_day %>
+	<div class="flex py-1" id="<%= dom_id happening %>">
+		<p class="text-sm italic w-1/6"><%= human_time(happening.time) %></p>
+		<div class='w-full'>
+			<div class="inline-flex items-center align-middle">
+				<%= icon_for(happening.transportation.mode, size: "8") %>
+				<p class="ml-3 text-lg font-medium align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+			</div>
+			<div class="mt-4 text-sm">
+		    <%= 
+				auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+					truncate(text, length: 35, omission: '...')
+				end 
+				%>
+			</div>
 		</div>
- 
-	  <div class="my-2 font-medium">
-			<%= image_tag "time.svg", class: "h-4 w-auto inline"%>
-	    <%= human_time(happening.time) %>
-		</div>
-
-	  <div class="my-2 font-medium">
-			<%= image_tag "date.svg", class: "h-4 w-auto inline"%>
-	    <%= human_date(happening.date, no_year: true) %>
-		</div>
-  </div>
-	
-  <div class="mt-4 text-sm">
-    <%= 
-		auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
-			truncate(text, length: 35, omission: '...')
-		end 
-		%>
 	</div>
-</div>
+<% else %>
+	<div class="flex outline outline-1 rounded px-4 mt-4" id="<%= dom_id happening %>">
+		<div class="mr-8">
+			<div class="inline-flex items-center align-middle">
+				<%= icon_for(happening.transportation.mode, size: "12") %>
+				<p class="ml-3 text-xl font-bold align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+			</div>
+ 
+		  <div class="my-2 font-medium">
+				<%= image_tag "time.svg", class: "h-4 w-auto inline"%>
+		    <%= human_time(happening.time) %>
+			</div>
+
+		  <div class="my-2 font-medium">
+				<%= image_tag "date.svg", class: "h-4 w-auto inline"%>
+		    <%= human_date(happening.date, no_year: true) %>
+			</div>
+	  </div>
+	
+	  <div class="mt-4 text-sm">
+	    <%= 
+			auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+				truncate(text, length: 35, omission: '...')
+			end 
+			%>
+		</div>
+	</div>
+<% end %>

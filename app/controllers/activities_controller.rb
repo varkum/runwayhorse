@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_render_to_happenings
   before_action :set_trip
+  before_action :set_day, only: [ :new, :create ]
   
   def index
     @happenings = @trip.activities
@@ -11,14 +12,15 @@ class ActivitiesController < ApplicationController
   end
   
   def create
-    @happening = Happening.create_activity trip: @trip, 
-      name: activity_params[:name],
-      location: activity_params[:location],
-      date: activity_params[:date], 
-      time: activity_params[:time], 
+    @happening = Happening.record!(Activity.new(name: activity_params[:name], location: activity_params[:location]),
+      trip: @trip,
+      date: activity_params[:date],
+      time: activity_params[:time],
       notes: activity_params[:notes],
       booked: activity_params[:booked]
-    redirect_to trip_activities_path
+      )
+      
+    redirect_to day_path(@day)
   end
   
   private
@@ -29,6 +31,10 @@ class ActivitiesController < ApplicationController
   
   def set_trip
     @trip = Trip.find(params[:trip_id])
+  end
+  
+  def set_day
+    @day = Day.find(params[:day])
   end
   
   def activity_params
