@@ -4,7 +4,7 @@ class Happening < ApplicationRecord
   
   delegated_type :happeningable, types: %w[ Transportation Activity ]
   
-  default_scope { order(time: :desc) }
+  default_scope { order(time: :asc) }
   
   def date
     day&.date
