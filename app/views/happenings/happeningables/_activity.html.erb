@@ -1,33 +1,15 @@
-<div id="<%= dom_id happening %>">
-	
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= happening.activity.name %>
-  </p>
-	
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Location:</strong>
-    <%= happening.activity.location %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
-    <%= happening.date %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Time:</strong>
-    <%= happening.time %>
-  </p>
-	
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Notes:</strong>
-    <%= happening.notes %>
-  </p>
-	
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Booked?</strong>
-    <%= happening.booked %>
-  </p>
-	
+<div class="flex py-1" id="<%= dom_id happening %>">
+	<p class="text-sm italic w-1/6"><%= human_time(happening.time) %></p>
+	<div>
+		<p class="font-medium"><%= happening.activity.name %></p>
+		<p class="italic mt-2"><%= happening.activity.location %></p>
+		<div class="mt-4 text-sm">
+	    <%= 
+			auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+				truncate(text, length: 35, omission: '...')
+			end 
+			%>
+		</div>
+		<p><%= happening.booked %></p>
+	</div>
 </div>

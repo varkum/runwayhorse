@@ -11,8 +11,8 @@ class Happening < ApplicationRecord
   end
   
   def time
-    datetime = "#{date.to_s} #{read_attribute(:time)}:00"
-    datetime.present? ? Time.new(datetime) : nil
+    datetime = "#{date.to_s} #{read_attribute(:time)}"
+    datetime.present? ? Time.new(datetime << ":00") : nil
   end
   
   def self.record!(happeningable, trip:, date:, time:, notes:, booked:)
