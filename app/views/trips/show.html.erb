@@ -18,5 +18,7 @@
 		<% end %>
   </div>
 	
-	<%= turbo_frame_tag "summary", src: trip_summaries_path(@trip) %>
+	<% if @trip.transportations.any? %>
+		<%= turbo_frame_tag "summary", src: trip_summaries_path(@trip) %>
+	<% end %>
 </div>

@@ -17,17 +17,8 @@
 		</div>
 	<% end %>
 
-	<div class="absolute bottom-0 border-t-2 border-dashed border-indigo-600 w-full">
+	<div class="absolute bottom-10 border-t-2 border-dashed border-indigo-600 w-full">
     <strong class="block font-medium mb-1">Notes:</strong>
     <%= day.notes %>
 	</div>
-
-
- 
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this day", day, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this day", edit_day_path(day), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>

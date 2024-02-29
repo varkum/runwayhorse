@@ -4,15 +4,15 @@ class Happening < ApplicationRecord
   
   delegated_type :happeningable, types: %w[ Transportation Activity ]
   
-  default_scope { order(time: :asc) }
-  
-  def time
-    time = read_attribute(:time)
-    time ? Time.new(time) : nil
-  end
+  default_scope { order(time: :desc) }
   
   def date
     day&.date
+  end
+  
+  def time
+    datetime = "#{date.to_s} #{read_attribute(:time)}:00"
+    datetime.present? ? Time.new(datetime) : nil
   end
   
   def self.record!(happeningable, trip:, date:, time:, notes:, booked:)

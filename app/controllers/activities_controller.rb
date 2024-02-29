@@ -11,13 +11,14 @@ class ActivitiesController < ApplicationController
   end
   
   def create
-    @happening = Happening.create_activity trip: @trip, 
-      name: activity_params[:name],
-      location: activity_params[:location],
-      date: activity_params[:date], 
-      time: activity_params[:time], 
+    @happening = Happening.record!(Activity.new(name: activity_params[:name], location: activity_params[:location]),
+      trip: @trip,
+      date: activity_params[:date],
+      time: activity_params[:time],
       notes: activity_params[:notes],
       booked: activity_params[:booked]
+      )
+      
     redirect_to trip_activities_path
   end
   
