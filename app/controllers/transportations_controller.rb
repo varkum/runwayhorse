@@ -1,6 +1,7 @@
 class TransportationsController < ApplicationController
   before_action :set_render_to_happenings
   before_action :set_trip
+  before_action :set_day, only: [ :new, :create ]
   
   def index
     @happenings = @trip.transportations
@@ -8,7 +9,6 @@ class TransportationsController < ApplicationController
   
   def new
     @happening = Happening.new happeningable: Transportation.new
-    @day = Day.find(params[:day])
   end
   
   def create
@@ -21,7 +21,11 @@ class TransportationsController < ApplicationController
       booked: true
       )
     
-    redirect_to trip_transportations_path
+    if @day
+      redirect_to day_path(@day)
+    else
+      redirect_to trip_transportations_path
+    end
   end
   
   private
@@ -32,6 +36,10 @@ class TransportationsController < ApplicationController
   
   def set_trip
     @trip = Trip.find(params[:trip_id])
+  end
+  
+  def set_day
+    @day = Day.find_by(id: params[:day])
   end
   
   def transportation_params
