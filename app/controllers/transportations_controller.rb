@@ -8,6 +8,7 @@ class TransportationsController < ApplicationController
   
   def new
     @happening = Happening.new happeningable: Transportation.new
+    @day = Day.find(params[:day])
   end
   
   def create

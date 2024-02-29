@@ -1,17 +1,18 @@
 <div class="flex py-1" id="<%= dom_id happening %>">
 	<p class="text-sm italic w-1/6"><%= human_time(happening.time) %></p>
+	
 	<div class="w-full">
 		<p class="font-medium text-lg"><%= happening.activity.name %></p>
+		
 		<p class="italic text-sm mt-1"><%= happening.activity.location %></p>
-		<div class="flex w-full">
-			<div class="mt-4 text-sm grow">
-		    <%= 
-				auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
-					truncate(text, length: 35, omission: '...')
-				end 
-				%>
-			</div>
-			<%= content_tag(:p, "!", class: "font-extrabold text-red-500 text-3xl", title: "There's a booking for this") unless happening.booked? %>
+		
+		<div class="mt-4 text-sm">
+	    <%= 
+			auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+				truncate(text, length: 35, omission: '...')
+			end 
+			%>
 		</div>
 	</div>
+	<%= content_tag(:p, "!", class: "mr-2 font-extrabold text-red-500 text-3xl", title: "There's a booking for this") unless happening.booked? %>
 </div>

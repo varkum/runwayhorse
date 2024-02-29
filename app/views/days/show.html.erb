@@ -1,9 +1,9 @@
-<div id="add-buttons" class="flex w-full justify-end text-sm flex gap-x-4">
-	<%= link_to new_trip_transportation_path(@day.trip), class: "rounded p-2 bg-indigo-600 text-white flex" do %>
+<div id="add-buttons" class="flex w-full justify-end text-sm flex gap-x-4 pr-2">
+	<%= link_to new_trip_transportation_path(@day.trip, day: @day), class: "rounded p-2 bg-indigo-600 text-white flex" do %>
 		<%= image_tag "truck.svg", class: "mr-1 h-6 w-auto" %>
 		<p>Add transportation</p>
 	<% end %>
-	<%= link_to new_trip_activity_path(@day.trip), class: "rounded p-2 bg-emerald-500 text-white flex" do %>
+	<%= link_to new_trip_activity_path(@day.trip, day: @day), class: "rounded p-2 bg-emerald-500 text-white flex" do %>
 		<%= image_tag "sparkles.svg", class: "mr-1 h-6 w-auto" %>
 		<p>Add activity</p>
 	<% end %>

@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_render_to_happenings
   before_action :set_trip
+  before_action :set_day, only: [ :new, :create ]
   
   def index
     @happenings = @trip.activities
@@ -19,7 +20,7 @@ class ActivitiesController < ApplicationController
       booked: activity_params[:booked]
       )
       
-    redirect_to trip_activities_path
+    redirect_to day_path(@day)
   end
   
   private
@@ -30,6 +31,10 @@ class ActivitiesController < ApplicationController
   
   def set_trip
     @trip = Trip.find(params[:trip_id])
+  end
+  
+  def set_day
+    @day = Day.find(params[:day])
   end
   
   def activity_params
