@@ -1,6 +1,11 @@
-<%= form_with(model: @day, class: "contents") do |form| %>
-	<%= turbo_frame_tag "homebase" do %>
-		<%= form.text_field :homebase, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+<%= turbo_frame_tag "homebase" do %>
+	<%= form_with(model: @day, class: "contents", data: { controller: "edit-day", action: "focusout->edit-day#submit", turbo_frame: "day-header" }) do |form| %>
+		<%= form.text_field :homebase, class: "rounded-md border border-gray-200 outline-none text-sm", autofocus: true %>
 	<% end %>
-
+<% end %>
+	
+<%= turbo_frame_tag "location" do %>
+	<%= form_with(model: @day, class: "contents", data: { controller: "edit-day", action: "focusout->edit-day#submit" }) do |form| %>
+		<%= form.text_field :location, class: "rounded-md border border-gray-200 outline-none text-sm" %>
+	<% end %>
 <% end %>

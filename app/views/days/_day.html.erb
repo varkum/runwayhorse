@@ -2,8 +2,10 @@
 	<div id="day-header">
 		<h3 class="font-medium text-xl text-center border-solid border-b-2 border-gray-300"><%= human_date(day.date, no_year: true)%></h3>
 		<div class="flex justify-evenly mt-3 gap-x-4">
-			<%= render "day_header", value: day.homebase, display_name: "homebase", icon: "home" %>
-			<%= render "day_header", value: day.location, display_name: "location", icon: "map_pin" %>
+			<%= turbo_frame_tag "day-header", class: "contents" do %>
+				<%= render "day_header", value: day.homebase, display_name: "homebase", icon: "home" %>
+				<%= render "day_header", value: day.location, display_name: "location", icon: "map_pin" %>
+			<% end %>
 		</div>
 	</div>
   
