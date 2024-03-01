@@ -5,6 +5,7 @@ class Happening < ApplicationRecord
   delegated_type :happeningable, types: %w[ Transportation Activity ]
   
   default_scope { order(time: :asc) }
+  scope :sometime, -> { where(time: nil) }
   
   def date
     day&.date
@@ -12,7 +13,7 @@ class Happening < ApplicationRecord
   
   def time
     datetime = "#{date.to_s} #{read_attribute(:time)}"
-    datetime.present? ? Time.new(datetime << ":00") : nil
+    datetime.match?(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/) ? Time.new(datetime << ":00") : nil
   end
   
   def self.record!(happeningable, trip:, date:, time:, notes:, booked:)
