@@ -5,7 +5,8 @@ class Happening < ApplicationRecord
   delegated_type :happeningable, types: %w[ Transportation Activity ]
   
   default_scope { order(time: :asc) }
-  scope :sometime, -> { where(time: nil) }
+  scope :timed, -> { where.not(time: "") }
+  scope :sometime, -> { where(time: "") }
   
   def date
     day&.date

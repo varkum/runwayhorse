@@ -6,7 +6,7 @@
 	
 <%= turbo_frame_tag "location" do %>
 	<%= form_with(model: @day, class: "contents", data: { controller: "edit-day", action: "focusout->edit-day#submit" }) do |form| %>
-		<%= form.text_field :location, class: "rounded-md border border-gray-200 outline-none text-sm" %>
+		<%= form.text_field :location, class: "rounded-md border border-gray-200 outline-none text-sm", autofocus: true %>
 	<% end %>
 <% end %>
 

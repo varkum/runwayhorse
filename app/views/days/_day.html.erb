@@ -1,5 +1,5 @@
 <div class="w-full justify-center" id="<%= dom_id day %>">
-	<div id="day-header">
+	<div id="day-header" class="mb-5">
 		<h3 class="font-medium text-xl text-center border-solid border-b-2 border-gray-300"><%= human_date(day.date, no_year: true)%></h3>
 		<div class="flex justify-evenly mt-3 gap-x-4">
 			<%= render "day_header", value: day.homebase, display_name: "homebase", icon: "home" %>
@@ -10,11 +10,14 @@
 	<% if day.happenings.empty? %>
 		NOTHING
 	<% else %>
-		<div class="divide-y mt-5">
-			<% day.happenings.each do |happening| %>
-				<%= render happening, day_by_day: true %>
-			<% end %>
-		</div>
+		<% sometime_happenings = day.happenings.sometime %>
+		
+		<%= render "happening_group", happenings: day.happenings.timed %>
+		
+		<% if sometime_happenings.any? %>
+			<p class="font-medium text-lg underline decoration-wavy decoration-teal-700 mt-5 mb-3">Sometime Today</p>
+			<%= render "happening_group", happenings: day.happenings.sometime %>
+		<% end %>
 	<% end %>
 
 	<div class="absolute bottom-10 border-t-2 border-dashed border-indigo-600 w-full text-sm">
