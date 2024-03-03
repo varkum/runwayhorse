@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_render_to_happenings
-  before_action :set_trip
-  before_action :set_day, only: [ :new, :create ]
+  before_action :set_trip, only: %i[ index new create ]
+  before_action :set_day, only: %i[ new create ]
   
   def index
     @happenings = @trip.activities
@@ -21,6 +21,13 @@ class ActivitiesController < ApplicationController
       )
       
     redirect_to day_path(@day)
+  end
+  
+  def edit
+    @happening = Happening.find(params[:id])
+  end
+  
+  def update
   end
   
   private

@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "edit_happening" do %>
+	<div class="flex py-1">
+		<%= form_with model: @happening, url: edit_activity_path, class: "contents" do |form| %>
+			<%= form.time_field :time, value: human_time(@happening.time), placeholder: "time" %>
+	
+			<div class="w-full">
+				<%= form.text_field :name, value: @happening.activity.name, placeholder: "name" %>
+				<%= form.text_field :location, value: @happening.activity.location, placeholder: "location" %>
+				<%= form.check_box :booked %>
+				<div class="mt-4 text-sm">
+					<%= form.text_area :notes, placeholder: "Notes..." %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+<% end %>
