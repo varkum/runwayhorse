@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :set_render_to_happenings
   before_action :set_trip, only: %i[ index new create ]
   before_action :set_day, only: %i[ new create ]
+  before_action :set_happening, only: %i[ edit update ]
   
   def index
     @happenings = @trip.activities
@@ -24,10 +25,14 @@ class ActivitiesController < ApplicationController
   end
   
   def edit
-    @happening = Happening.find(params[:id])
   end
   
   def update
+    if @happening.update!(activity_params.slice(:date, :notes, :time, :booked)) && @happening.activity.update!(activity_params.slice(:name, :location))
+      redirect_to day_path(@happening.day)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
   
   private
@@ -42,6 +47,10 @@ class ActivitiesController < ApplicationController
   
   def set_day
     @day = Day.find(params[:day])
+  end
+  
+  def set_happening
+    @happening = Happening.find(params[:id])
   end
   
   def activity_params

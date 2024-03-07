@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "edit_#{dom_id @happening}", class: "contents" do %>
-	<div class="flex absolute w-full z-50 py-1 shadow-xl rounded-lg bg-slate-300">
-		<%= form_with model: @happening, url: edit_activity_path, class: "contents" do |form| %>
+	<div class="flex absolute w-full z-50 py-1 shadow-xl rounded-lg bg-blue-400 px-1">
+		<%= form_with model: @happening, url: activity_path, class: "contents" do |form| %>
 			<div class="w-1/6">
 				<%= form.time_field :time, placeholder: "time", class: "border-none rounded text-sm italic" %>
 			</div>
@@ -16,7 +16,11 @@
 				<div class="mt-4 w-full">
 					<%= form.text_area :notes, placeholder: "Notes...", class: "border-none rounded w-full text-sm" %>
 				</div>
+				
+				<%= form.submit "Done", class: "rounded-lg p-2 font-semibold bg-green-400 float-right" %>
 			</div>
+			
+			
 		<% end %>
 	</div>
 <% end %>
