@@ -1,7 +1,8 @@
 class TransportationsController < ApplicationController
   before_action :set_render_to_happenings
-  before_action :set_trip
+  before_action :set_trip, only: %i[ index new create ]
   before_action :set_day, only: [ :new, :create ]
+  before_action :set_happening, only: %i[ edit update ]
   
   def index
     @happenings = @trip.transportations
@@ -28,6 +29,17 @@ class TransportationsController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @happening.update!(transportation_params.slice(:date, :notes, :time, :booked)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
+      redirect_to day_path(@happening.day)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  
   private
   
   def set_render_to_happenings
@@ -40,6 +52,10 @@ class TransportationsController < ApplicationController
   
   def set_day
     @day = Day.find_by(id: params[:day])
+  end
+  
+  def set_happening
+    @happening = Happening.find(params[:id])
   end
   
   def transportation_params

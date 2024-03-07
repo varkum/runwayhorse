@@ -1,20 +1,25 @@
 <% if day_by_day %>
-	<div class="flex py-1" id="<%= dom_id happening %>">
-		<p class="text-sm italic w-1/6"><%= human_time(happening.time) %></p>
-		<div class='w-full'>
-			<div class="inline-flex items-center align-middle">
-				<%= icon_for(happening.transportation.mode, size: "8") %>
-				<p class="ml-3 text-lg font-medium align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+	<%= turbo_frame_tag "edit_#{dom_id happening}", class: "block" do %>
+		<div class="flex py-1" id="<%= dom_id happening %>">
+			<p class="text-sm italic w-1/6"><%= human_time(happening.time) %></p>
+			<div class='w-full'>
+				<div class="inline-flex items-center align-middle">
+					<%= icon_for(happening.transportation.mode, size: "8") %>
+					<p class="ml-3 text-lg font-medium align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+				</div>
+				<div class="mt-4 text-sm">
+			    <%= 
+					auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+						truncate(text, length: 35, omission: '...')
+					end 
+					%>
+				</div>
 			</div>
-			<div class="mt-4 text-sm">
-		    <%= 
-				auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
-					truncate(text, length: 35, omission: '...')
-				end 
-				%>
-			</div>
+			<p class="mr-2 font-extrabold text-red-500 text-3xl" title="There's a booking for this">!</p>
+	
+			<%= link_to "Edit", edit_transportation_path(happening) %>
 		</div>
-	</div>
+	<% end %>
 <% else %>
 	<div class="flex outline outline-1 rounded px-4 mt-4" id="<%= dom_id happening %>">
 		<div class="mr-8">
