@@ -3,7 +3,13 @@
 	<%= turbo_frame_tag display_name do %>
 		<%= link_to edit_day_path do %>
 			<% if value.present? %>
-				<span><%= value %></span>
+				<span>
+					<%=
+						auto_link(value, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+							truncate(text, length: 0, omission: 'link')
+						end
+					%>
+				</span>
 			<% else %>
 				<span class="text-sm font-light">Add <%= display_name %></span>
 			<% end %>
