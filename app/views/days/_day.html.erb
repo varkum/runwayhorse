@@ -1,6 +1,19 @@
 <div class="w-full justify-center overflow-scroll relative" id="<%= dom_id day %>">
 	<div id="day-header" class="mb-5">
-		<h3 class="font-medium text-xl text-center border-solid border-b-2 border-gray-300"><%= human_date(day.date, no_year: true)%></h3>
+		<div class="w-full inline-flex justify-center items-center gap-x-1 border-solid border-b-2 border-gray-300">
+			<% if day.previous %>
+				<%= link_to day_path(day.previous) do %>
+					<%= image_tag "left_arrow.svg", class: "h-5 w-auto" %>
+				<% end %>
+			<% end %>
+			
+			<h3 class="font-medium text-xl"><%= human_date(day.date, no_year: true)%></h3>
+			<% if day.next %>
+				<%= link_to day_path(day.next) do %>
+					<%= image_tag "right_arrow.svg", class: "h-5 w-auto" %>
+				<% end %>
+			<% end %>
+		</div>
 		<div class="flex justify-evenly mt-3 gap-x-4">
 			<%= render "day_header", value: day.homebase, display_name: "homebase", icon: "home" %>
 			<%= render "day_header", value: day.location, display_name: "location", icon: "map_pin" %>
