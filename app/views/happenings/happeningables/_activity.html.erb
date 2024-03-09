@@ -17,6 +17,6 @@
 		</div>
 		<%= content_tag(:p, "!", class: "mr-2 font-extrabold text-red-500 text-3xl", title: "There's a booking for this") if happening.booked? %>
 		
-		<%= link_to "Edit", edit_activity_path(happening) %>
+		<%= link_to "Edit", edit_activity_path(happening), "data-admin": "true" %>
 	</div>
 <% end %>
