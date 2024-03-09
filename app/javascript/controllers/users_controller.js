@@ -8,6 +8,13 @@ export default class extends Controller {
 			adminElements.forEach(element => {
 				element.classList.add("hidden")
 			})
+			
+			const adminLinks = document.querySelectorAll('[admin-link]')
+			adminLinks.forEach(element => {
+				element.onclick = (event) => {
+					event.preventDefault()
+				}
+			})
 		}
 	}
 }

@@ -40,7 +40,7 @@
 		</p>
 	
 	<%= turbo_frame_tag "notes", class: "contents" do %>
-		<%= link_to edit_day_path, class: "block rounded min-w-full hover:bg-slate-100" do %>
+		<%= link_to edit_day_path, class: "block rounded min-w-full hover:bg-slate-100", "admin-link": "true" do %>
     	<%= day.notes %>
 			<br><br/> 
 		<% end %>
