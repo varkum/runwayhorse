@@ -18,7 +18,7 @@
     <%= content_for :head %>
   </head>
 
-  <body class="h-full bg-amber-50 text-slate-800">
+  <body class="h-full text-sm sm:text-regular bg-amber-50 text-slate-800">
 		<nav>
 			<% if Current.user.present? %>
 				<%= button_to "Sign out", sessions_path, method: :delete %>
