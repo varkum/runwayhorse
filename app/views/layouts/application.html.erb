@@ -33,7 +33,7 @@
 				<p class="text-blue-500"><%= flash[:notice] %></p>
 			<% end %>
 		</div>
-    <main class="container mx-auto h-[95vh] py-4 bg-white rounded shadow-lg" data-controller="users" data-is-signed-in="<%= Current.user.present? %>">
+    <main class="container mx-auto h-[95vh] py-4 bg-white rounded shadow-lg overflow-scroll" data-controller="users" data-is-signed-in="<%= Current.user.present? %>">
       <%= yield %>
     </main>
   </body>

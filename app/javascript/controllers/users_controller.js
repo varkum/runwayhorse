@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 	
 	connect() {
-		if (this.element.getAttribute("data-is-signed-in") === "true") {
+		if (this.element.getAttribute("data-is-signed-in") === "false") {
 			const adminElements = document.querySelectorAll('[data-admin]')
 			adminElements.forEach(element => {
 				element.classList.add("hidden")
