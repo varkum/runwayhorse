@@ -8,6 +8,6 @@ module ApplicationHelper
   end
   
   def icon_for(transport_mode, size: '8')
-    image_tag "#{transport_mode}.png", class: "h-#{size} w-auto mx-auto mb-2"
+    image_tag "#{transport_mode}.png", class: "h-6 sm:h-#{size} w-auto mx-auto sm:mb-2"
   end
 end
