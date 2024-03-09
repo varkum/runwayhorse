@@ -7,7 +7,7 @@
 				<% end %>
 			<% end %>
 			
-			<h3 class="font-medium text-xl"><%= human_date(day.date, no_year: true)%></h3>
+			<h3 class="font-medium text-lg sm:text-xl"><%= human_date(day.date, no_year: true)%></h3>
 			<% if day.next %>
 				<%= link_to day_path(day.next) do %>
 					<%= image_tag "right_arrow.svg", class: "h-5 w-auto" %>
@@ -28,7 +28,7 @@
 		<%= render "happening_group", happenings: day.happenings.timed %>
 		
 		<% if sometime_happenings.any? %>
-			<p class="font-medium text-lg underline decoration-wavy decoration-teal-700 mt-5 mb-3">Sometime Today</p>
+			<p class="font-medium sm:text-lg underline decoration-wavy decoration-teal-700 mt-5 mb-3">Sometime Today</p>
 			<%= render "happening_group", happenings: day.happenings.sometime %>
 		<% end %>
 	<% end %>

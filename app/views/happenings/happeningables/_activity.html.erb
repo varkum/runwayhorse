@@ -1,13 +1,13 @@
 <%= turbo_frame_tag "edit_#{dom_id happening}", class: "block" do %>
 	<div class="flex py-1" id="<%= dom_id happening %>">
-		<p class="text-sm italic w-1/6"><%= human_time(happening.time) %></p>
+		<p class="text-xs sm:text-sm italic w-1/4 sm:w-1/6"><%= human_time(happening.time) %></p>
 	
 		<div class="w-full">
-			<p class="font-medium text-lg"><%= happening.activity.name %></p>
+			<p class="font-medium sm:text-lg"><%= happening.activity.name %></p>
 		
-			<p class="italic text-sm"><%= happening.activity.location %></p>
+			<p class="italic text-xs sm:text-sm"><%= happening.activity.location %></p>
 		
-			<div class="mt-4 text-sm">
+			<div class="mt-4 text-xs sm:text-sm">
 		    <%= 
 				auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
 					truncate(text, length: 35, omission: '...')
@@ -15,7 +15,7 @@
 				%>
 			</div>
 		</div>
-		<%= content_tag(:p, "!", class: "mr-2 font-extrabold text-red-500 text-3xl", title: "There's a booking for this") if happening.booked? %>
+		<%= content_tag(:p, "!", class: "mr-2 font-extrabold text-red-500 text-xl sm:text-3xl", title: "There's a booking for this") if happening.booked? %>
 		
 		<%= link_to "Edit", edit_activity_path(happening), "data-admin": "true" %>
 	</div>
