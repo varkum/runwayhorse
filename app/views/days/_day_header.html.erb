@@ -1,7 +1,7 @@
 <p class="flex flex items-center justify-center px-4 py-2 text-gray-500">
 	<%= image_tag "#{icon}.svg", class: "h-6 w-auto mr-1" %>
 	<%= turbo_frame_tag display_name do %>
-		<%= link_to edit_day_path do %>
+		<%= link_to edit_day_path, "admin-link": "true" do %>
 			<% if value.present? %>
 				<span>
 					<%=

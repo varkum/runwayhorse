@@ -20,7 +20,9 @@
 
   <body class="h-full bg-amber-50 text-slate-800">
 		<nav>
-			<%= button_to "Sign out", sessions_path, method: :delete %>
+			<% if Current.user.present? %>
+				<%= button_to "Sign out", sessions_path, method: :delete %>
+			<% end %>
 		</nav>
 		<div id="flash">
 			<% if flash[:alert].present? %>
