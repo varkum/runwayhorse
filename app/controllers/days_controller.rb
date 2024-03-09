@@ -1,5 +1,4 @@
 class DaysController < ApplicationController
-  #before_action :set_trip
   before_action :set_day, only: %i[ show edit update ]
   
   def show

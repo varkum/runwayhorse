@@ -1,4 +1,4 @@
-class TransportationsController < ApplicationController
+class TransportationsController < ApplicationController  
   before_action :set_render_to_happenings
   before_action :set_trip, only: %i[ index new create ]
   before_action :set_day, only: [ :new, :create ]
