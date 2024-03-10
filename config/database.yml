@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+	host: <%= ENV["DB_HOST"] %>
   database: hop_skip_production
-  username: hop_skip
-  password: <%= ENV["HOP_SKIP_DATABASE_PASSWORD"] %>
+  username: root
+  password: <%= ENV["POSTGRESQL_ROOT_PASSWORD"] %>
