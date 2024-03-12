@@ -50,7 +50,7 @@ test:
 #
 production:
   <<: *default
-  host: <%= ENV["DB_HOST"]
-	database: hop_skip_production
-  username: hop_skip
+  host: <%= ENV["DB_HOST"] %>
+  database: hop_skip_production
+  username: root
   password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
