@@ -1,5 +1,5 @@
 # Name of your application. Used to uniquely configure containers.
-service: hop_skin
+service: hop_skip
 
 # Name of the container image.
 image: varkum19/hop_skip
@@ -23,18 +23,18 @@ registry:
 env:
   clear:
     DB_HOST: 5.161.101.243
-		secret:
-			- RAILS_MASTER_KEY
-			- POSTGRESQL_ROOT_PASSWORD
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRESQL_ROOT_PASSWORD
 
 # Use a different ssh user than root
 # ssh:
 #   user: app
 
 # Configure builder setup.
-# builder:
-#   args:
-#     RUBY_VERSION: 3.2.0
+builder:
+  args:
+    RUBY_VERSION: 3.3.0
 #   secrets:
 #     - GITHUB_TOKEN
 #   remote:
@@ -44,14 +44,14 @@ env:
 # Use accessory services (secrets come from .env).
 accessories:
   db:
-    image: postgresql:14.0
+    image: postgres:15
     host: 5.161.101.243
     port: 3306
     env:
       clear:
         POSTGRESQL_ROOT_HOST: '%'
-			secret:
-				- POSTGRESQL_ROOT_PASSWORD
+      secret:
+        - POSTGRESQL_ROOT_PASSWORD
     files:
     #  - config/mysql/production.cnf:/etc/mysql/my.cnf
       - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
