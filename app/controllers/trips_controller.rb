@@ -4,6 +4,7 @@ class TripsController < ApplicationController
   # GET /trips or /trips.json
   def index
     @trips = Trip.all
+    redirect_to trip_path(1)
   end
 
   # GET /trips/1 or /trips/1.json

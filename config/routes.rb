@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   end
   
   # Defines the root path route ("/")
-  root "trips/1"
+  root "trips#index"
 end
