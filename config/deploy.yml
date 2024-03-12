@@ -46,7 +46,7 @@ accessories:
   db:
     image: postgres:15
     host: 5.161.101.243
-    port: 3306
+    port: 5432
     env:
       clear:
         POSTGRESQL_ROOT_HOST: '%'
