@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-full">
   <head>
-    <title>HopSkip</title>
+    <title>RunwayHorse</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,11 +19,7 @@
   </head>
 
   <body class="h-full text-sm sm:text-regular bg-amber-50 text-slate-800">
-		<nav>
-			<% if Current.user.present? %>
-				<%= button_to "Sign out", sessions_path, method: :delete %>
-			<% end %>
-		</nav>
+		<%= render "shared/navbar" %>
 		<div id="flash">
 			<% if flash[:alert].present? %>
 				<p class="text-red-500"><%= flash[:alert] %></p>

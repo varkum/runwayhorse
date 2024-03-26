@@ -21,9 +21,9 @@ default: &default
   <% if ENV["DB_HOST"] %>
   host: <%= ENV["DB_HOST"] %>
   username: root
-  <% end %>
-
-
+	password:
+		
+	<% end %>
 development:
   <<: *default
   database: hop_skip_development
