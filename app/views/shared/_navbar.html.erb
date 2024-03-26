@@ -1,11 +1,21 @@
-<nav class="relative shadow p-4 bg-white">
+<nav class="relative flex items-center justify-center shadow p-4 bg-white">
 	<%= link_to root_path do %>
-		<div class="flex items-center gap-2">
-			<%= image_tag "logo.svg", class: "h-12 w-auto"%>
-			<span class="font-bold text-3xl">RunwayHorse</span>
+		<div class="flex absolute top-0 left-4 items-center gap-2">
+			<%= image_tag "logo.svg", class: "h-10 w-auto"%>
+			<span class="font-bold text-2xl">RunwayHorse</span>
 		</div>
 	<% end %>
 	<% if Current.user.present? %>
-		<%= button_to "Sign out", sessions_path, method: :delete %>
+		<div name="trip-buttons">
+			<%= link_to "Summary" %>
+			<%= link_to "Transportation" %>
+			<%= link_to "Lodging" %>
+			<%= link_to "Day by Day" %>
+		</div>
+		
+		<div name="admin-land" class= "flex absolute top-0 right-4">
+			<%= link_to "All trips", trips_path %>
+			<%= button_to "Sign out", signout_path, method: :delete %>
+		</div>
 	<% end %>
 </nav>
