@@ -1,4 +1,4 @@
-<nav class="relative flex items-center justify-center shadow p-4 bg-white">
+<nav class="relative flex items-center justify-center p-4" data-controller="navbar">
 	<%= link_to root_path do %>
 		<div class="flex absolute top-0 left-4 items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-10 w-auto"%>
@@ -6,16 +6,27 @@
 		</div>
 	<% end %>
 	<% if Current.user.present? %>
-		<div name="trip-buttons">
-			<%= link_to "Summary" %>
-			<%= link_to "Transportation" %>
+		<div name="trip-buttons" class="w-1/2 flex justify-evenly font-semibold">
+			<%= link_to trip_path(Current.user.active_trip) do %>
+				<%= image_tag "home.svg", class: "h-4 w-auto" %>
+				Home
+			<% end %>
+			<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
 			<%= link_to "Lodging" %>
-			<%= link_to "Day by Day" %>
+			<%= link_to "Day by Day", day_path(Current.user.active_trip.days.first) %>
 		</div>
 		
-		<div name="admin-land" class= "flex absolute top-0 right-4">
-			<%= link_to "All trips", trips_path %>
-			<%= button_to "Sign out", signout_path, method: :delete %>
+		<div class="absolute top-0 right-4">
+			<div name="admin-land" class= "relative">
+				<button class="flex items-center font-bold rounded-full p-2 text-gray-500">
+					<%= Current.user.initials %>
+					<%= image_tag "down_arrow.svg", class: "h-4 w-auto" %>
+				</button>
+				<div class="bg-blue-500 pb-12">
+					<%= link_to "All trips", trips_path %>
+					<%= button_to "Sign out", signout_path, method: :delete %>
+				</div>
+			</div>
 		</div>
 	<% end %>
 </nav>

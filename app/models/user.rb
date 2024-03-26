@@ -3,7 +3,11 @@ class User < ApplicationRecord
   
   has_many :trips
   
-  def current_trip
+  def initials
+    name.split(' ').map { |part| part[0].upcase }.join
+  end
+  
+  def active_trip
     trips.last
   end
 end
