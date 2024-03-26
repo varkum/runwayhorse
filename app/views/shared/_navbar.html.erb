@@ -8,7 +8,6 @@
 	<% if Current.user.present? %>
 		<div name="trip-buttons" class="w-1/2 flex justify-evenly font-semibold">
 			<%= link_to trip_path(Current.user.active_trip) do %>
-				<%= image_tag "home.svg", class: "h-4 w-auto" %>
 				Home
 			<% end %>
 			<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
@@ -17,12 +16,12 @@
 		</div>
 		
 		<div class="absolute top-0 right-4">
-			<div name="admin-land" class= "relative">
-				<button class="flex items-center font-bold rounded-full p-2 text-gray-500">
+			<div name="admin-land" class= "flex flex-col relative">
+				<button class="self-end flex items-center font-bold rounded-full p-2 text-gray-500">
 					<%= Current.user.initials %>
 					<%= image_tag "down_arrow.svg", class: "h-4 w-auto" %>
 				</button>
-				<div class="bg-blue-500 pb-12">
+				<div class="rounded-lg shadow divide-y py-2 bg-white w-24">
 					<%= link_to "All trips", trips_path %>
 					<%= button_to "Sign out", signout_path, method: :delete %>
 				</div>
