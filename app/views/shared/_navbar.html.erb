@@ -1,8 +1,10 @@
 <nav class="relative shadow p-4 bg-white">
-	<div class="flex items-center gap-2">
-		<%= image_tag "logo.svg", class: "h-12 w-auto"%>
-		<span class="font-bold text-3xl">RunwayHorse</span>
-	</div>
+	<%= link_to root_path do %>
+		<div class="flex items-center gap-2">
+			<%= image_tag "logo.svg", class: "h-12 w-auto"%>
+			<span class="font-bold text-3xl">RunwayHorse</span>
+		</div>
+	<% end %>
 	<% if Current.user.present? %>
 		<%= button_to "Sign out", sessions_path, method: :delete %>
 	<% end %>

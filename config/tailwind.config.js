@@ -8,11 +8,10 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
-    extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['system-ui', ...defaultTheme.fontFamily.sans]
       },
-    },
+    
   },
   plugins: [
     require('@tailwindcss/forms'),
