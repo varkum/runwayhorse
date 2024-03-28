@@ -1,6 +1,6 @@
-<nav class="relative flex items-center justify-center p-4" data-controller="navbar">
+<nav class="flex items-center justify-between p-4" data-controller="navbar">
 	<%= link_to root_path do %>
-		<div class="flex absolute top-0 left-4 items-center gap-2">
+		<div class="flex items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-10 w-auto"%>
 			<span class="font-bold text-2xl">RunwayHorse</span>
 		</div>
@@ -15,13 +15,13 @@
 			<%= link_to "Day by Day", day_path(Current.user.active_trip.days.first) %>
 		</div>
 		
-		<div class="absolute top-0 right-4">
-			<div name="admin-land" class= "flex flex-col relative">
-				<button class="self-end flex items-center font-bold rounded-full p-2 text-gray-500">
+		<div>
+			<div name="admin-land" class= "relative flex flex-col relative">
+				<button class="self-end flex items-center font-bold rounded-full p-2 text-gray-500" data-action="click->navbar#toggleDropdown">
 					<%= Current.user.initials %>
-					<%= image_tag "down_arrow.svg", class: "h-4 w-auto" %>
+					<%= image_tag "vertical_ellipses.svg", class: "h-5 w-auto" %>
 				</button>
-				<div class="rounded-lg shadow divide-y py-2 bg-white w-24">
+				<div class="hidden absolute top-10 right-4 rounded-lg shadow divide-y py-2 bg-white w-24 text-center px-auto text-sm text-gray-500" data-navbar-target="dropdown">
 					<%= link_to "All trips", trips_path %>
 					<%= button_to "Sign out", signout_path, method: :delete %>
 				</div>
