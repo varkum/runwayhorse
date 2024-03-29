@@ -10,7 +10,7 @@ class LodgingsController < ApplicationController
   end
   
   def create
-    @lodging = Lodging.create!(name: lodging_params[:name], address: lodging_params[:address], link: lodging_params[:link], notes: lodging_params[:notes])
+    @lodging = Lodging.create!(trip: @trip, name: lodging_params[:name], address: lodging_params[:address], link: lodging_params[:link], notes: lodging_params[:notes])
     @lodging.assign_days(from: lodging_params[:start], to: lodging_params[:end])
     redirect_to trip_lodgings_path
   end
