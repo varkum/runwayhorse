@@ -1,8 +1,8 @@
 <%= form_with model: [trip, lodging] do |form| %>
 	<div class="my-5 flex items-center">
-		<%= form.select :start, options_for_select(trip.days.map { |day| day.date.strftime("%a, %b. %d") }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
+		<%= form.select :start, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
 		<span class="mx-2">to</span>
-		<%= form.select :end, options_for_select(trip.days.map { |day| day.date.strftime("%a, %b. %d") }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
+		<%= form.select :end, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
 	</div>
 	
 	<div class="my-5">
