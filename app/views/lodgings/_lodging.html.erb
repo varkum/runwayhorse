@@ -1,0 +1,23 @@
+<div class="flex outline outline-1 rounded px-4 mt-4" id="<%= dom_id lodging %>">
+	<div class="mr-8">
+		<div class="inline-flex align-middle">
+			<p class="ml-3 text-lg sm:text-xl font-semibold sm:font-bold align-middle"><%= lodging.name %></p>
+		</div>
+
+	  <div class="my-2 font-medium italic">
+			<%= lodging.address %>
+		</div>
+
+	  <div class="my-2 font-medium">
+			<%= link_to truncate(lodging.link, length: 35, omission: '...'), lodging.link %>
+		</div>
+  </div>
+
+  <div class="mt-2 text-xs sm:text-sm">
+    <%= 
+		auto_link(lodging.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+			truncate(text, length: 35, omission: '...')
+		end 
+		%>
+	</div>
+</div>

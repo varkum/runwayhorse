@@ -1,0 +1,31 @@
+<%= form_with model: [trip, lodging] do |form| %>
+	<div class="my-5 flex">
+		<%= form.select :start, options_for_select(trip.days.map { |day| day.date.strftime("%a, %b. %d") } ) %>
+		to
+		<%= form.select :end, options_for_select(trip.days.map { |day| day.date.strftime("%a, %b. %d") } ) %>
+	</div>
+	
+	<div class="my-5">
+		<%= form.label :name %>
+		<%= form.text_field :name %>
+	</div>
+	
+	<div class="my-5">
+		<%= form.label :address %>
+		<%= form.text_field :address %>
+	</div>
+	
+	<div class="my-5">
+		<%= form.label :link %>
+		<%= form.text_field :link %>
+	</div>
+	
+	<div class="my-5">
+		<%= form.label :notes %>
+		<%= form.text_area :notes %>
+	</div>
+	
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
