@@ -15,8 +15,8 @@
 			<% end %>
 		</div>
 		<div class="flex justify-evenly mt-3 gap-x-4">
-			<%= render "day_header", value: day.homebase, display_name: "homebase", icon: "home" %>
-			<%= render "day_header", value: day.location, display_name: "location", icon: "map_pin" %>
+			<%= render "lodging_header", lodging: day&.lodging %>
+			<%= render "location_header", value: day.location %>
 		</div>
 	</div>
   
