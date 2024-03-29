@@ -6,7 +6,7 @@
 		</div>
 	<% end %>
 	<% if Current.user.present? %>
-		<div name="trip-buttons" class="w-1/2 flex justify-evenly font-semibold">
+		<div name="trip-buttons" class="w-1/2 flex justify-evenly font-semibold text-orange-600">
 			<%= link_to trip_path(Current.user.active_trip) do %>
 				Home
 			<% end %>
