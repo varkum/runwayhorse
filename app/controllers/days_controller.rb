@@ -13,10 +13,6 @@ class DaysController < ApplicationController
   end
   
   private
-
-  def set_trip
-    @trip = Trip.find(params[:trip_id])
-  end
   
   def set_day
     @day = Day.find(params[:id])

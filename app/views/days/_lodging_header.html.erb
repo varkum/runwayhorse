@@ -1,19 +1,20 @@
 <p class="flex flex items-center justify-center px-4 py-2 text-gray-500">
 	<%= image_tag "home.svg", class: "h-6 w-auto mr-1" %>
-	<%= turbo_frame_tag "lodging" do %>
+		
+	<% if lodging.present? %>
 		<%= link_to edit_lodging_path, "admin-link": "true" do %>
-			<% if lodging.present? %>
-				<span>
-					<%= lodging.address %> 
-					(<%=
-						auto_link(lodging.link, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
-							truncate(text, length: 0, omission: 'link')
-						end
-						%>)
-				</span>
-			<% else %>
-				<span class="text-xs sm:text-sm font-light">Add lodging</span>
-			<% end %>
+			<span>
+				<%= lodging.address %> 
+				(<%=
+					auto_link(lodging.link, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+						truncate(text, length: 0, omission: 'link')
+					end
+					%>)
+			</span>
+		<% end %>
+	<% else %>
+		<%= link_to new_trip_lodging_path(day.trip), "admin-link": "true" do %>
+			<span class="font-light">Add lodging</span>
 		<% end %>
 	<% end %>
 </p>
