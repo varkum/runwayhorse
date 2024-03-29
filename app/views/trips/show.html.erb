@@ -16,6 +16,10 @@
 			<%= image_tag "calendar.svg", class: "h-12 w-auto mx-auto" %>
 			<p>Day by Day</p>
 		<% end %>
+		<%= link_to trip_lodgings_path(@trip), class: "bg-white p-8 sm:p-16 font-bold rounded-lg border-2 border-slate-500" do %>
+			<%= image_tag "calendar.svg", class: "h-12 w-auto mx-auto" %>
+			<p>Lodging</p>
+		<% end %>
   </div>
 	
 	<% if @trip.transportations.any? %>

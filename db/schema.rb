@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_03_26_203736) do
+ActiveRecord::Schema[7.2].define(version: 2024_03_29_000246) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_03_26_203736) do
     t.index ["trip_id"], name: "index_happenings_on_trip_id"
   end
 
+  create_table "lodgings", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "link"
+    t.bigint "day_id", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_lodgings_on_day_id"
+  end
+
   create_table "transportations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,5 +86,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_03_26_203736) do
 
   add_foreign_key "days", "trips"
   add_foreign_key "happenings", "days"
+  add_foreign_key "lodgings", "days"
   add_foreign_key "trips", "users"
 end

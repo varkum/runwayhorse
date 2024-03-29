@@ -23,7 +23,7 @@
 <% else %>
 	<div class="flex outline outline-1 rounded px-4 mt-4" id="<%= dom_id happening %>">
 		<div class="mr-8">
-			<div class="inline-flex items-center align-middle">
+			<div class="inline-flex align-middle">
 				<%= icon_for(happening.transportation.mode, size: "12") %>
 				<p class="ml-3 text-lg sm:text-xl font-semibold sm:font-bold align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
 			</div>
@@ -39,7 +39,7 @@
 			</div>
 	  </div>
 	
-	  <div class="mt-4 text-xs sm:text-sm">
+	  <div class="mt-2 text-xs sm:text-sm">
 	    <%= 
 			auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
 				truncate(text, length: 35, omission: '...')

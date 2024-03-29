@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   
   has_many :days, dependent: :destroy
   has_many :happenings, dependent: :destroy
+  has_many :lodgings, through: :days
   
   delegate :transportations, :activities, to: :happenings
   
