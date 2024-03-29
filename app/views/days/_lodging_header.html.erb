@@ -4,13 +4,12 @@
 		<%= link_to edit_lodging_path, "admin-link": "true" do %>
 			<% if lodging.present? %>
 				<span>
-					<%=
-					"#{lodging.address} (#{
+					<%= lodging.address %> 
+					(<%=
 						auto_link(lodging.link, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
 							truncate(text, length: 0, omission: 'link')
 						end
-						})"
-					%>
+						%>)
 				</span>
 			<% else %>
 				<span class="text-xs sm:text-sm font-light">Add lodging</span>
