@@ -1,7 +1,4 @@
 class Lodging < ApplicationRecord
-  belongs_to :day
-  
-  def trip
-    day.trip
-  end
+  belongs_to :trip
+  has_many :days
 end
