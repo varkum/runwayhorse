@@ -32,7 +32,7 @@
 			sometimes here
 			
 		<% else %>
-			<%= new_trip_sometime_path(day.trip) %>
+			<%= link_to "+", new_trip_sometime_path(day.trip) %>
 		<% end %>
 	<% end %>
 

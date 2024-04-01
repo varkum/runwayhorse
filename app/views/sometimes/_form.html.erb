@@ -1,4 +1,4 @@
-<%= form_with(model: sometime, class: "contents") do |form| %>
+<%= form_with(model: [ trip, sometime ], class: "contents") do |form| %>
   <% if sometime.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(sometime.errors.count, "error") %> prohibited this sometime from being saved:</h2>
