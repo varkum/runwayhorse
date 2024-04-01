@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
   belongs_to :user
   
-  has_many :days, dependent: :destroy
+  has_many :days, -> { order(date: :asc) }, dependent: :destroy
   has_many :happenings, dependent: :destroy
   has_many :lodgings
   
