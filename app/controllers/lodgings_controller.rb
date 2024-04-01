@@ -1,5 +1,6 @@
 class LodgingsController < ApplicationController
-  before_action :set_trip
+  before_action :set_trip, only: %i[ index new create ]
+  before_action :set_lodging, only: %i[ edit update destroy ]
   
   def index
     @lodgings = @trip.lodgings
@@ -7,6 +8,7 @@ class LodgingsController < ApplicationController
   
   def new
     @lodging = Lodging.new
+    @form_url = trip_lodgings_path(@trip)
   end
   
   def create
@@ -16,6 +18,7 @@ class LodgingsController < ApplicationController
   end
   
   def edit
+    @form_url = lodging_path(@lodging)
   end
   
   def update
@@ -28,6 +31,10 @@ class LodgingsController < ApplicationController
   
   def set_trip
     @trip = Trip.find(params[:trip_id])
+  end
+  
+  def set_lodging
+    @lodging = Lodging.find(params[:id])
   end
   
   def lodging_params
