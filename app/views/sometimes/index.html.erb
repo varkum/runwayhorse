@@ -1,14 +1,14 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<%= turbo_frame_tag "sometimes" do %>
+	<div>
+		<div class="flex">
+			<p class="font-medium sm:text-lg underline decoration-wavy decoration-teal-700">Sometime</p>
+			<%= link_to "+", new_trip_sometime_path(@trip), data: { turbo_frame: "new_sometimes" } %>
+		</div>
+		<div>
+			<%= turbo_frame_tag "new_sometimes"  %>
+			<%= render @sometimes %>
+		</div>			
+		
+	</div>
+<% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Sometimes</h1>
-    <%= link_to "New sometime", new_sometime_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="sometimes" class="min-w-full">
-    <%= render @sometimes %>
-  </div>
-</div>

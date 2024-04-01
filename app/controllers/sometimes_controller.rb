@@ -3,7 +3,7 @@ class SometimesController < ApplicationController
   before_action :set_sometime, only: %i[ show edit update destroy ]
 
   def index
-    @sometimes = Sometime.all
+    @sometimes = @trip.sometimes.all
   end
 
   def new
@@ -14,10 +14,11 @@ class SometimesController < ApplicationController
   end
 
   def create
-    @sometime = Sometime.new(sometime_params)
-
+    @sometime = @trip.sometimes.new(sometime_params)
+    
+    
     if @sometime.save
-      redirect_to sometime_url(@sometime)
+      redirect_to trip_sometimes_path(@trip)
 
     else
       render :new, status: :unprocessable_entity 

@@ -23,17 +23,8 @@
 	<% if day.happenings.empty? %>
 		NOTHING
 	<% else %>
-		
 		<%= render "happening_group", happenings: day.happenings %>
-		
-		<p class="font-medium sm:text-lg underline decoration-wavy decoration-teal-700 mt-5 mb-3">Sometime</p>
-		<% if day.trip.sometimes.any? %>
-		
-			sometimes here
-			
-		<% else %>
-			<%= link_to "+", new_trip_sometime_path(day.trip) %>
-		<% end %>
+		<%= turbo_frame_tag "sometimes", src: trip_sometimes_path(day.trip) %>
 	<% end %>
 
 
