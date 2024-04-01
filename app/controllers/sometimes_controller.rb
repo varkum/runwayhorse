@@ -14,14 +14,10 @@ class SometimesController < ApplicationController
   end
 
   def create
-    @sometime = @trip.sometimes.new(sometime_params)
-    
-    
-    if @sometime.save
+    if sometime_params[:name].empty?
       redirect_to trip_sometimes_path(@trip)
-
     else
-      render :new, status: :unprocessable_entity 
+      @sometime = @trip.sometimes.new(sometime_params)
     end
   end
 
