@@ -12,7 +12,7 @@
 			<% end %>
 			<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
 			<%= link_to "Lodging", trip_lodgings_path(Current.user.active_trip) %>
-			<%= link_to "Day by Day", day_path(Current.user.active_trip.days.first) %>
+			<%= link_to "Day by Day", day_path(Current.user.active_trip.current_day) %>
 		</div>
 		
 		<div>

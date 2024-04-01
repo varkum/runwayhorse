@@ -11,6 +11,11 @@ class Trip < ApplicationRecord
     (end_date - start_date).to_i
   end
   
+  def current_day
+    active_day = days.find_by(date: Date.today) if (start_date..end_date).include?(Date.today)
+    active_day || days.first
+  end
+  
   def create_and_setup_days
     save
     (0..length).each do |day_number|
