@@ -1,10 +1,6 @@
-<%= form_with(model: [ trip, sometime ], class: "contents") do |form| %>
+<%= form_with(model: [ trip, sometime ], class: "contents", data: { controller: "edit-day" }) do |form| %>
 
-  <div class="my-5">
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex">
+    <%= form.text_field :name, class: "border-none focus:ring-0", autofocus: true, data: { action: "focusout->edit-day#submit"} %>
   </div>
 <% end %>
