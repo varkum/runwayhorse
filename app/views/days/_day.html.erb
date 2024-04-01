@@ -23,30 +23,20 @@
 	<% if day.happenings.empty? %>
 		NOTHING
 	<% else %>
-		<% sometime_happenings = day.happenings.sometime %>
 		
-		<%= render "happening_group", happenings: day.happenings.timed %>
+		<%= render "happening_group", happenings: day.happenings %>
 		
-		<% if sometime_happenings.any? %>
-			<p class="font-medium sm:text-lg underline decoration-wavy decoration-teal-700 mt-5 mb-3">Sometime Today</p>
-			<%= render "happening_group", happenings: day.happenings.sometime %>
+		<p class="font-medium sm:text-lg underline decoration-wavy decoration-teal-700 mt-5 mb-3">Sometime</p>
+		<% if day.trip.sometimes.any? %>
+		
+			sometimes here
+			
+		<% else %>
+			<%= new_trip_sometime_path(day.trip) %>
 		<% end %>
 	<% end %>
 
-	<div class="absolute bottom-10 mt-4 border-t-2 border-dashed border-indigo-600 w-full text-sm">
-	  <strong class="block font-medium">Notes</strong>
-		<p class="text-gray-500 text-sm mb-1">
-			Add reminders for the day, things to bring, comments about the weather, or anything else.
-		</p>
-	
-	<%= turbo_frame_tag "notes", class: "contents" do %>
-		<%= link_to edit_day_path, class: "block rounded min-w-full hover:bg-slate-100", "admin-link": "true" do %>
-    	<%= day.notes %>
-			<br><br/> 
-		<% end %>
-	<% end %>
-	</div>
-	
+
 
 </div>
 	
