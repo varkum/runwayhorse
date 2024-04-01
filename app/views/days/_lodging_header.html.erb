@@ -2,7 +2,7 @@
 	<%= image_tag "home.svg", class: "h-6 w-auto mr-1" %>
 		
 	<% if lodging.present? %>
-		<%= link_to edit_lodging_path(lodging), "admin-link": "true" do %>
+		<%= link_to edit_lodging_path(lodging, return_to: day_path(day)), "admin-link": "true" do %>
 			<span>
 				<%= lodging.address %> 
 				(<%=
@@ -13,7 +13,7 @@
 			</span>
 		<% end %>
 	<% else %>
-		<%= link_to new_trip_lodging_path(day.trip), "admin-link": "true" do %>
+		<%= link_to new_trip_lodging_path(day.trip, return_to: day_path(day)), "admin-link": "true" do %>
 			<span class="font-light">Add lodging</span>
 		<% end %>
 	<% end %>
