@@ -1,6 +1,6 @@
-<div id="<%= dom_id sometime %>">
+<div id="<%= dom_id sometime %>" class="flex gap-1">
   <%= form_with model: sometime do |form| %>
-		<%= form.check_box :completed %>
+		<%= form.check_box :completed, class: "focus:ring-0" %>
 	<% end %>
 
   <p>
