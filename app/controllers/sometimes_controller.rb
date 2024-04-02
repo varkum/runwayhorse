@@ -23,11 +23,8 @@ class SometimesController < ApplicationController
   end
 
   def update
-    if @sometime.update(sometime_params)
-      redirect_to sometime_url(@sometime), notice: "Sometime was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @sometime.update!(sometime_params)
+    redirect_to trip_sometimes_path(@sometime.trip)
   end
 
   def destroy
