@@ -1,9 +1,7 @@
-<div id="<%= dom_id sometime %>" class="flex gap-1">
-  <%= form_with model: sometime do |form| %>
-		<%= form.check_box :completed, class: "focus:ring-0" %>
+<div id="<%= dom_id sometime %>" class="flex">
+  <%= form_with model: sometime, data: { controller: "edit-day" } do |form| %>
+		<%= form.check_box :completed, class: "focus:ring-0", data: { action: "click->edit-day#submit" } %>
+		<%= form.text_field :name, class: "border-none focus:ring-0", data: { action: "blur->edit-day#submit" } %>
 	<% end %>
 
-  <p>
-    <%= sometime.name %>
-  </p>
 </div>

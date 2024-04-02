@@ -17,7 +17,8 @@ class SometimesController < ApplicationController
     if sometime_params[:name].empty?
       redirect_to trip_sometimes_path(@trip)
     else
-      @sometime = @trip.sometimes.new(sometime_params)
+      @sometime = @trip.sometimes.create!(sometime_params)
+      redirect_to trip_sometimes_path(@trip)
     end
   end
 

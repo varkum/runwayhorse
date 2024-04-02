@@ -1,6 +1,0 @@
-<%= form_with(model: [ trip, sometime ], class: "contents", data: { controller: "edit-day" }) do |form| %>
-
-  <div class="flex">
-    <%= form.text_field :name, class: "w-fit border-none focus:ring-0", autofocus: true, data: { action: "focusout->edit-day#submit"} %>
-  </div>
-<% end %>
