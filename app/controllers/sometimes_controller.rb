@@ -23,7 +23,12 @@ class SometimesController < ApplicationController
   end
 
   def update
-    @sometime.update!(sometime_params)
+    if sometime_params[:name].empty?
+      @sometime.destroy!
+    else
+      @sometime.update!(sometime_params)
+    end
+
     redirect_to trip_sometimes_path(@sometime.trip)
   end
 
