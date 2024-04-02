@@ -8,20 +8,23 @@ class LodgingsController < ApplicationController
   
   def new
     @lodging = Lodging.new
-    @form_url = trip_lodgings_path(@trip)
+    @form_url = trip_lodgings_path(@trip, return_to: params[:return_to])
   end
   
   def create
     @lodging = Lodging.create!(trip: @trip, name: lodging_params[:name], address: lodging_params[:address], link: lodging_params[:link], notes: lodging_params[:notes])
     @lodging.assign_days(from: lodging_params[:start], to: lodging_params[:end])
-    redirect_to trip_lodgings_path
+    redirect_to params[:return_to]
   end
   
   def edit
-    @form_url = lodging_path(@lodging)
+    @form_url = lodging_path(@lodging, return_to: params[:return_to])
   end
   
   def update
+    @lodging.update!(name: lodging_params[:name], address: lodging_params[:address], link: lodging_params[:link], notes: lodging_params[:notes])
+    @lodging.assign_days(from: lodging_params[:start], to: lodging_params[:end])
+    redirect_to params[:return_to]
   end
   
   def destroy

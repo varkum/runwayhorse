@@ -1,5 +1,5 @@
-<nav class="flex items-center justify-between p-4" data-controller="navbar">
-	<%= link_to root_path do %>
+<nav class="relative flex items-center justify-center p-4 bg-amber-100" data-controller="navbar">
+	<%= link_to root_path, class: "absolute left-5" do %>
 		<div class="flex items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-10 w-auto"%>
 			<span class="font-bold text-2xl">RunwayHorse</span>
@@ -11,11 +11,11 @@
 				Home
 			<% end %>
 			<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
-			<%= link_to "Lodging" %>
-			<%= link_to "Day by Day", day_path(Current.user.active_trip.days.first) %>
+			<%= link_to "Lodging", trip_lodgings_path(Current.user.active_trip) %>
+			<%= link_to "Day by Day", day_path(Current.user.active_trip.current_day) %>
 		</div>
 		
-		<div>
+		<div class="absolute right-10">
 			<div name="admin-land" class= "relative flex flex-col relative">
 				<button class="self-end flex items-center font-bold rounded-full text-gray-500" data-action="click->navbar#toggleDropdown">
 					<%= Current.user.initials %>

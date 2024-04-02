@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-calendar-picker-indicator{
+    margin-left: -20px;
+}
+
 /*
 
 @layer components {

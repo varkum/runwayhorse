@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "new_sometimes" do %>
+	<%= form_with(model: [ @trip, @sometime ], class: "flex", data: { turbo_frame: "sometimes", controller: "edit-day" }) do |form| %>
+	    <%= form.text_field :name, class: "flex-grow border-none focus:ring-0", autofocus: true, data: { action: "focusout->edit-day#submit" } %>
+	<% end %>
+<% end %>

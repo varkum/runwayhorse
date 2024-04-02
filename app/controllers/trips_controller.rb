@@ -1,29 +1,24 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy ]
 
-  # GET /trips or /trips.json
   def index
     @trips = Trip.all
   end
 
-  # GET /trips/1 or /trips/1.json
   def show
   end
 
-  # GET /trips/new
   def new
     @trip = Trip.new
   end
 
-  # GET /trips/1/edit
   def edit
   end
 
-  # POST /trips or /trips.json
   def create
     @trip = Current.user.trips.new(trip_params)
 
-    if @trip.valid?
+    if @trip.save
       @trip.create_and_setup_days
       redirect_to trip_url(@trip), notice: "Trip was successfully created." 
     else
@@ -31,20 +26,15 @@ class TripsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /trips/1 or /trips/1.json
   def update
-    respond_to do |format|
-      if @trip.update(trip_params)
-        format.html { redirect_to trip_url(@trip), notice: "Trip was successfully updated." }
-        format.json { render :show, status: :ok, location: @trip }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    if @trip.update!(trip_params)
+      redirect_to trip_url(@trip)
+    else
+      @trip.errors.add("Trip name can't be blank")
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /trips/1 or /trips/1.json
   def destroy
     @trip.destroy!
 
@@ -55,7 +45,7 @@ class TripsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_trip
       @trip = Trip.find(params[:id])
     end

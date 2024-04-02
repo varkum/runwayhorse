@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :transportations
     resources :activities
     resources :lodgings
+    resources :sometimes
     resources :summaries, module: 'trips', only: [:index]
   end
   
