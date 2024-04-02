@@ -24,10 +24,8 @@
 		NOTHING
 	<% else %>
 		<%= render "happening_group", happenings: day.happenings %>
-		<%= turbo_frame_tag "sometimes", src: trip_sometimes_path(day.trip) %>
 	<% end %>
-
-
-
+	
+	<%= turbo_frame_tag "sometimes", src: trip_sometimes_path(day.trip) %>
 </div>
 	
