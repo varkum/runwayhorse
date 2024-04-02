@@ -3,4 +3,16 @@
 		<%= form.text_field :name, autofocus: true, class: "text-center border-none focus:ring-0 font-semibold text-xl sm:text-2xl", data: { action: "focus->edit-day#setCursor focusout->edit-day#submit" } %>
 	<% end %>
 <% end %>
+
+<%= turbo_frame_tag "edit_trip_start", class: "contents" do %>
+	<%= form_with model: @trip, class: "contents", data: { controller: "edit-day" } do |form| %>
+		<%= form.date_field :start_date, autofocus: true, class: "text-teal-700 border-none focus:ring-0 focus:p-0" %>
+	<% end %>
+<% end %>
+
+<%= turbo_frame_tag "edit_trip_end", class: "contents" do %>
+	<%= form_with model: @trip, class: "contents", data: { controller: "edit-day" } do |form| %>
+		<%= form.date_field :end_date, autofocus: true, class: "text-teal-700 border-none focus:ring-0" %>
+	<% end %>
+<% end %>
 		
