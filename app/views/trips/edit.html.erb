@@ -1,8 +1,6 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing trip</h1>
-
-  <%= render "form", trip: @trip %>
-
-  <%= link_to "Show this trip", @trip, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to trips", trips_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+<%= turbo_frame_tag "edit_trip_name", class: "contents" do %>
+	<%= form_with model: @trip, class: "contents", data: { controller: "edit-day" } do |form| %>
+		<%= form.text_field :name, autofocus: true, class: "text-right border-none focus:ring-0 font-semibold text-xl sm:text-2xl", data: { action: "focus->edit-day#setCursor" } %>
+	<% end %>
+<% end %>
+		
