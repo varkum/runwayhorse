@@ -10,11 +10,11 @@
 		<div class="mt-1">
 	
 			<%= turbo_frame_tag "edit_trip_start", class: "contents" do %>
-				<%= link_to human_date(@trip.start_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg"  %>
+				<%= link_to human_date(@trip.start_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing your trip dates might delete work you've already done. Are you sure you want to continue?" }  %>
 			<% end %>
 			—
 			<%= turbo_frame_tag "edit_trip_end", class: "contents" do %>
-				<%= link_to human_date(@trip.end_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg"  %>
+				<%= link_to human_date(@trip.end_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing your trip dates might delete work you've already done. Are you sure you want to continue?" }  %>
 			<% end %>
 
 		</div>

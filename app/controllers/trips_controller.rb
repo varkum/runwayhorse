@@ -18,7 +18,7 @@ class TripsController < ApplicationController
   def create
     @trip = Current.user.trips.new(trip_params)
 
-    if @trip.valid?
+    if @trip.save
       @trip.create_and_setup_days
       redirect_to trip_url(@trip), notice: "Trip was successfully created." 
     else

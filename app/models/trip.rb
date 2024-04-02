@@ -18,7 +18,6 @@ class Trip < ApplicationRecord
   end
   
   def create_and_setup_days
-    save
     (0..length).each do |day_number|
       self.days.create(date: start_date + day_number)
     end
