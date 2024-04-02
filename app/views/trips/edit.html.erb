@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "edit_trip_name", class: "contents" do %>
 	<%= form_with model: @trip, class: "contents", data: { controller: "edit-day" } do |form| %>
-		<%= form.text_field :name, autofocus: true, class: "text-right border-none focus:ring-0 font-semibold text-xl sm:text-2xl", data: { action: "focus->edit-day#setCursor" } %>
+		<%= form.text_field :name, autofocus: true, class: "text-center border-none focus:ring-0 font-semibold text-xl sm:text-2xl", data: { action: "focus->edit-day#setCursor focusout->edit-day#submit" } %>
 	<% end %>
 <% end %>
 		
