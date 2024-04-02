@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "sometimes" do %>
 	<div>
-		<div class="flex">
+		<div class="flex gap-4">
 			<p class="font-medium sm:text-lg underline decoration-wavy decoration-teal-700">Sometime</p>
-			<%= link_to "+", new_trip_sometime_path(@trip), data: { turbo_frame: "new_sometimes" } %>
+			<%= link_to "+", new_trip_sometime_path(@trip), class: "text-gray-500 font-bold", data: { turbo_frame: "new_sometimes" } %>
 		</div>
 		<div>
 			<%= turbo_frame_tag "new_sometimes"  %>
