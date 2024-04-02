@@ -4,12 +4,20 @@
   <% end %>
 	<div id="trip-header" class="w-full text-center">
 		<%= turbo_frame_tag "edit_trip_name", class: "contents" do %>
-			<%= link_to @trip.name, edit_trip_path(@trip), class: "font-semibold text-xl sm:text-2xl hover:bg-gray-200 p-2 rounded-xl" %>
+			<%= link_to @trip.name, edit_trip_path(@trip), class: "font-semibold text-xl sm:text-2xl hover:bg-gray-200 p-2 rounded-lg" %>
 		<% end %>
+		
+		<div class="mt-1">
+	
+			<%= turbo_frame_tag "edit_trip_start", class: "contents" do %>
+				<%= link_to human_date(@trip.start_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg"  %>
+			<% end %>
+			—
+			<%= turbo_frame_tag "edit_trip_end", class: "contents" do %>
+				<%= link_to human_date(@trip.end_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg"  %>
+			<% end %>
 
-		<p class="font-regular">
-			<%= human_date(@trip.start_date) %> to <%= human_date(@trip.end_date) %>
-		</p>
+		</div>
   </div>
 	
 	<div id="trip-actions" class="flex grow items-center justify-evenly w-full gap-x-4 font-medium">
