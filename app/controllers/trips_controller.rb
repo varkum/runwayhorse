@@ -29,7 +29,7 @@ class TripsController < ApplicationController
   def update
     if @trip.update!(trip_params)
       @trip.update_days!
-      redirect_to trip_url(@trip)
+      redirect_to trip_url(@trip), turbo: false
     else
       @trip.errors.add("Trip name can't be blank")
       render :edit, status: :unprocessable_entity
