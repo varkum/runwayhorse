@@ -22,4 +22,13 @@ class Trip < ApplicationRecord
       self.days.create(date: start_date + day_number)
     end
   end
+  
+  def update_days!
+    unused_days = days.where.not(date: start_date..end_date)
+    unused_days.destroy_all
+    
+    (start_date..end_date).each do |date|
+      self.days.find_or_create_by!(date: date)
+    end
+  end
 end

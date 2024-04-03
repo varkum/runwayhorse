@@ -28,6 +28,7 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update!(trip_params)
+      @trip.update_days!
       redirect_to trip_url(@trip)
     else
       @trip.errors.add("Trip name can't be blank")

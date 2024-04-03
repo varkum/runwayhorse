@@ -2,7 +2,7 @@ class Happening < ApplicationRecord
   belongs_to :day
   belongs_to :trip
   
-  delegated_type :happeningable, types: %w[ Transportation Activity ]
+  delegated_type :happeningable, types: %w[ Transportation Activity ], dependent: :destroy
   
   default_scope { order(time: :asc) }
   scope :timed, -> { where.not(time: "") }
