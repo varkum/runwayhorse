@@ -1,23 +1,31 @@
-<div class="flex outline outline-1 rounded px-4 mt-4" id="<%= dom_id lodging %>">
+<div class="flex bg-slate-100 rounded px-4 py-1 mt-4" id="<%= dom_id lodging %>">
 	<div class="mr-8">
 		<div class="inline-flex align-middle">
-			<p class="ml-3 text-lg sm:text-xl font-semibold sm:font-bold align-middle"><%= lodging.name %></p>
+			<p class="text-lg font-medium align-middle"><%= lodging.name %></p>
 		</div>
 
-	  <div class="my-2 font-medium italic">
-			<%= lodging.days.pluck(:date) %>
+	  <div class="my-2 text-gray-500">
+			<% if lodging.days.many? %>
+				<%= lodging.days.first.date.strftime("%a, %b. %d") %>
+				—
+				<%= lodging.days.last.date.strftime("%a, %b. %d") %>
+			<% elsif lodging.days.any? %>
+				<p class="font-medium">
+					<%= lodging.days.first.date.strftime("%a, %b. %d") %>
+				</p>
+			<% end %>
 		</div>
 		
-	  <div class="my-2 font-medium italic">
+	  <div class="my-2 underline decoration-dashed">
 			<%= lodging.address %>
 		</div>
 
-	  <div class="my-2 font-medium">
+	  <div class="my-2 text-blue-500">
 			<%= link_to truncate(lodging.link, length: 35, omission: '...'), lodging.link %>
 		</div>
   </div>
 
-  <div class="mt-2 text-xs sm:text-sm">
+  <div class="mt-2 text-xs sm:text-sm grow">
     <%= 
 		auto_link(lodging.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
 			truncate(text, length: 35, omission: '...')
@@ -25,7 +33,11 @@
 		%>
 	</div>
 	
-	
+	<div class="self-end flex gap-2">
+		<%= link_to "Edit", edit_lodging_path(lodging, return_to: trip_lodgings_path(lodging.trip, lodging)), class: "font-semibold text-purple-800"%>
+		<%= button_to lodging_path(lodging), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this lodging?" } } do %>
+			<%= image_tag "trash.svg", class: "h-5 w-auto" %>
+		<% end %>
+</div>
 </div>
 
-<%= link_to "Edit", edit_lodging_path(lodging, return_to: trip_lodgings_path(lodging.trip, lodging))%>
