@@ -1,4 +1,4 @@
-<div class="px-2 sm:w-2/3 h-full mx-auto flex flex-col flex-grow items-center justify-center">
+<div class="px-2 sm:w-2/3 h-full mx-auto text-center">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
@@ -8,34 +8,34 @@
 		<% end %>
 		
 		<div class="mt-1">
-	
 			<%= turbo_frame_tag "edit_trip_start", class: "contents" do %>
-				<%= link_to human_date(@trip.start_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing your trip dates might delete work you've already done. Are you sure you want to continue?" }  %>
+				<%= link_to human_date(@trip.start_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing trip dates might delete work you've already done. Do you want to keep going?" }  %>
 			<% end %>
 			—
 			<%= turbo_frame_tag "edit_trip_end", class: "contents" do %>
-				<%= link_to human_date(@trip.end_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing your trip dates might delete work you've already done. Are you sure you want to continue?" }  %>
+				<%= link_to human_date(@trip.end_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing trip dates might delete work you've already done. Do you want to keep going?" }  %>
 			<% end %>
-
 		</div>
   </div>
 	
-	<div id="trip-actions" class="flex grow items-center justify-evenly w-full gap-x-4 font-medium">
-		<%= link_to trip_transportations_path(@trip), class: "bg-white text-center" do %>
-			<%= image_tag "truck.svg", class: "h-10 w-auto mx-auto" %>
-			<p>Transportation</p>
-		<% end %>
-		<%= link_to day_path(@trip.days.first), class: "bg-white text-center" do %>
-			<%= image_tag "calendar.svg", class: "h-10 w-auto mx-auto" %>
-			<p>Day by Day</p>
-		<% end %>
-		<%= link_to trip_lodgings_path(@trip), class: "bg-white" do %>
-			<%= image_tag "home.svg", class: "h-10 w-auto mx-auto" %>
-			<p>Lodging</p>
-		<% end %>
-  </div>
+	<div class="flex flex-col justify-around h-4/5">
+		<div id="trip-actions" class="flex items-center justify-evenly w-full gap-x-4 font-medium">
+			<%= link_to trip_transportations_path(@trip), class: "bg-white text-center" do %>
+				<%= image_tag "truck.svg", class: "h-10 w-auto mx-auto" %>
+				<p>Transportation</p>
+			<% end %>
+			<%= link_to day_path(@trip.days.first), class: "bg-white text-center" do %>
+				<%= image_tag "calendar.svg", class: "h-10 w-auto mx-auto" %>
+				<p>Day by Day</p>
+			<% end %>
+			<%= link_to trip_lodgings_path(@trip), class: "bg-white" do %>
+				<%= image_tag "home.svg", class: "h-10 w-auto mx-auto" %>
+				<p>Lodging</p>
+			<% end %>
+	  </div>
 	
-	<% if @trip.transportations.any? %>
-		<%= turbo_frame_tag "summary", src: trip_summaries_path(@trip) %>
-	<% end %>
+		<% if @trip.transportations.any? %>
+			<%= turbo_frame_tag "summary", class: "contents", src: trip_summaries_path(@trip) %>
+		<% end %>
+	</div>
 </div>
