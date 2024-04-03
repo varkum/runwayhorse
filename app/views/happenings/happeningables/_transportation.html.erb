@@ -17,15 +17,9 @@
 			</div>
 			
 			<div class="self-end w-1/12">
-				<div class="self-end flex gap-2 items-center">
-					<%= link_to "Edit", edit_transportation_path(happening), class: "font-semibold text-sm text-slate-600", data: { admin: "true" }%>
-					<%= button_to transportation_path(happening), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this lodging?", admin: "true" } } do %>
-						<%= image_tag "trash.svg", class: "h-5 w-auto" %>
-					<% end %>
-				</div>
+				<%= render "shared/actions_menu", type: :transportation, item: happening %>
 			</div>
 		</div>
-		
 	<% end %>
 <% else %>
 	<div class="flex bg-slate-100 rounded px-4 py-1 mt-4" id="<%= dom_id happening %>">
@@ -54,11 +48,6 @@
 			%>
 		</div>
 		
-		<div class="self-end flex gap-2 items-center">
-			<%= link_to "Edit", edit_transportation_path(happening), class: "font-semibold text-sm text-slate-600", data: { admin: "true" }%>
-			<%= button_to transportation_path(happening), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this lodging?", admin: "true" } } do %>
-				<%= image_tag "trash.svg", class: "h-5 w-auto" %>
-			<% end %>
-		</div>
+		<%= render "shared/actions_menu", type: :transportation, item: happening %>
 	</div>
 <% end %>

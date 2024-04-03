@@ -33,11 +33,6 @@
 		%>
 	</div>
 	
-	<div class="self-end flex gap-2 items-center">
-		<%= link_to "Edit", edit_lodging_path(lodging, return_to: trip_lodgings_path(lodging.trip, lodging)), class: "font-semibold text-sm text-slate-600"%>
-		<%= button_to lodging_path(lodging), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this lodging?" } } do %>
-			<%= image_tag "trash.svg", class: "h-5 w-auto" %>
-		<% end %>
-	</div>
+	<%= render "shared/actions_menu", type: :lodging, item: lodging %>
 </div>
 
