@@ -1,14 +1,14 @@
 <%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym], day: day) do |form| %>
 	<div class="w-5/12 mx-auto">
 		<% if happening.happeningable_name == "transportation" %>
-		  <div class="my-5 flex flex-col">
+		  <div class="my-5">
 		    <%= form.label "From", class: "font-bold text-slate-700" %>
-		    <%= form.text_field :origin, placeholder: "Enter a starting point", class: "border-none outline outline-1 outline-gray-300 rounded" %>
+		    <%= form.text_field :origin, placeholder: "Enter a starting point", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		  </div>
 		
-		  <div class="my-5 flex flex-col">
+		  <div class="my-5">
 		    <%= form.label "To", class: "font-bold text-slate-700" %>
-		    <%= form.text_field :destination, placeholder: "Enter a destination", class: "border-none outline outline-1 outline-gray-300 rounded" %>
+		    <%= form.text_field :destination, placeholder: "Enter a destination", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		  </div>
 		
 			<div class="my-5">
@@ -18,7 +18,7 @@
 		<% else %>
 			<div class="my-5">
 				<%= form.label "Activity name", class: "font-bold text-slate-700" %>
-				<%= form.text_field :name, placeholder: "eg. walking tour, tapas dinner", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+				<%= form.text_field :name, placeholder: "e.g. walking tour, tapas dinner", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 			<div>
 		
 			<div class="my-5">
@@ -39,7 +39,7 @@
 	
 	  <div class="my-5">
 	    <%= form.label :notes, class: "font-bold text-slate-700" %>
-	    <%= form.text_area :notes, rows: 5, placeholder: "eg. reservation details, things to bring, weather notes", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+	    <%= form.text_area :notes, rows: 5, placeholder: "e.g. reservation details, things to bring, how early to leave", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 	  </div>
 
 	  <div class="text-center">

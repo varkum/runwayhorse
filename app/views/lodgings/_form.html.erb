@@ -1,31 +1,33 @@
 <%= form_with model: [ trip, lodging ], url: url do |form| %>
-	<div class="my-5 flex items-center">
-		<%= form.select :start, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
-		<span class="mx-2">to</span>
-		<%= form.select :end, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
-	</div>
+	<div class="w-5/12 mx-auto">
+		<div class="my-6 flex items-center justify-center">
+			<%= form.select :start, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
+			<span class="mx-2">—</span>
+			<%= form.select :end, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
+		</div>
 	
-	<div class="my-5">
-		<%= form.label :name %>
-		<%= form.text_field :name %>
-	</div>
+		<div class="my-5">
+			<%= form.label :name, class: "font-bold text-slate-700" %>
+			<%= form.text_field :name, placeholder: "e.g. Oslo Airbnb, Delhi hotel", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+		</div>
 	
-	<div class="my-5">
-		<%= form.label :address %>
-		<%= form.text_field :address %>
-	</div>
+		<div class="my-5">
+			<%= form.label :address, class: "font-bold text-slate-700" %>
+			<%= form.text_field :address, placeholder: "Enter an address", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+		</div>
 	
-	<div class="my-5">
-		<%= form.label :link %>
-		<%= form.text_field :link %>
-	</div>
+		<div class="my-5">
+			<%= form.label "Link (optional)", class: "font-bold text-slate-700" %>
+			<%= form.text_field :link, placeholder: "e.g. to airbnb, expedia, or hotel website", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+		</div>
 	
-	<div class="my-5">
-		<%= form.label :notes %>
-		<%= form.text_area :notes %>
-	</div>
+		<div class="my-5">
+			<%= form.label :notes, class: "font-bold text-slate-700" %>
+			<%= form.text_area :notes, rows: 5, placeholder: "e.g. check-in instructions, breakfast details, pool or not", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+		</div>
 	
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+	  <div class="text-center">
+	    <%= form.submit class: "rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
+	  </div>
+	</div>
 <% end %>
