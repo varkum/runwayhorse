@@ -1,8 +1,8 @@
 class TransportationsController < ApplicationController  
   before_action :set_render_to_happenings
   before_action :set_trip, only: %i[ index new create ]
-  before_action :set_day, only: [ :new, :create ]
-  before_action :set_happening, only: %i[ edit update ]
+  before_action :set_day, except: :index
+  before_action :set_happening, only: %i[ edit update destroy ]
   
   def index
     @happenings = @trip.transportations.reorder(day_id: :asc)
@@ -30,10 +30,16 @@ class TransportationsController < ApplicationController
   
   def update
     if @happening.update!(transportation_params.slice(:date, :notes, :time, :booked)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
-      redirect_to day_path(@happening.day)
+      redirect_to_origin
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+  
+  def destroy
+    @happening.destroy!
+    
+    redirect_to_origin
   end
   
   private

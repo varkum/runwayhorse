@@ -17,7 +17,7 @@
 			</div>
 			
 			<div class="self-end w-1/12">
-				<%= render "shared/actions_menu", type: :transportation, item: happening, from: happening.day.id %>
+				<%= render "shared/actions_menu", type: :transportation, item: happening, day: happening.day %>
 			</div>
 		</div>
 	<% end %>
@@ -48,6 +48,6 @@
 			%>
 		</div>
 		
-		<%= render "shared/actions_menu", type: :transportation, item: happening, from: "transportations" %>
+		<%= render "shared/actions_menu", type: :transportation, item: happening %>
 	</div>
 <% end %>
