@@ -1,21 +1,28 @@
-<%= form_with model: @happening, url: transportation_path(day: @day), class: "contents" do |form| %>
-	<div class="w-1/6">
-		<%= form.time_field :time, placeholder: "time", class: "border-none rounded text-sm italic" %>
-	</div>
+<%= form_with model: happening, url: transportation_path(day: day), data: { controller: "edit-day", turbo: "false" }, class: "contents" do |form| %>
+	<div class="flex py-1">
+		<p class="text-xs sm:text-sm italic w-1/4 sm:w-1/6">
+			<%= form.time_field :time, value: happening.read_attribute(:time), class: "w-28 border-none rounded text-sm" %>
+		</p>
 
-	<div class="w-full">
-		<%= form.select :mode, options_for_select(Transportation.modes.keys, @happening.transportation.mode), class: "block border-none rounded font-medium text-lg p-1" %>
+		<div class="w-full">
+			<%= form.select :mode, options_for_select(Transportation.modes.keys, happening.transportation.mode), {}, class: "border-none focus:ring-0 outline outline-1 outline-gray-300 rounded" %>
 	
-		<div class="inline-flex">
-			<%= form.text_field :origin, value: @happening.transportation.origin, placeholder: "location", class: "inline-block border-none rounded italic text-sm mt-1 p-1" %>
-			to
-			<%= form.text_field :destination, value: @happening.transportation.destination, placeholder: "location", class: "inline-block border-none rounded italic text-sm mt-1 p-1" %>
+			<div class="inline-flex items-center align-middle">
+				<p class="ml-3 sm:text-lg font-medium align-middle">
+					<%= form.text_field :origin, value: happening.transportation.origin, placeholder: "location", autofocus: true, data: { action: "focus->edit-day#setCursor" }, class: "w-20 border-none focus:ring-0 p-0" %>
+					to
+					<%= form.text_field :destination, value: happening.transportation.destination, placeholder: "location", class: "ml-16 border-none focus:ring-0 p-0" %>
+				</p>
+			</div>
+	
+			<div class="mt-4 text-xs sm:text-sm">
+				<%= form.text_area :notes, placeholder: "Notes...", class: "w-4/5 border-0 focus:ring-0 outline outline-1 outline-gray-300 rounded text-xs sm:text-sm" %>
+			</div>
+	
+			<%= form.submit "Save changes", class: "p-2 text-white text-sm bg-green-600 rounded-full float-right" %>
 		</div>
-	
-		<div class="mt-4 w-full">
-			<%= form.text_area :notes, placeholder: "Notes...", class: "border-none rounded w-full text-sm" %>
-		</div>
-	
-		<%= form.submit "Done", class: "rounded-lg p-2 font-semibold bg-green-400 float-right" %>
 	</div>
 <% end %>
+
+
+	
