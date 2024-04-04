@@ -1,50 +1,49 @@
 <%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym], day: day) do |form| %>
-
+<div class="w-1/3 mx-auto">
 	<% if happening.happeningable_name == "transportation" %>
-	  <div class="my-5">
-	    <%= form.label "From" %>
-	    <%= form.text_field :origin %>
+	  <div class="my-5 flex flex-col">
+	    <%= form.label "From", class: "font-bold text-slate-700" %>
+	    <%= form.text_field :origin, class: "border-none outline outline-1 outline-gray-300 rounded" %>
 	  </div>
 		
-	  <div class="my-5">
-	    <%= form.label "To" %>
-	    <%= form.text_field :destination %>
+	  <div class="my-5 flex flex-col">
+	    <%= form.label "To", class: "font-bold text-slate-700" %>
+	    <%= form.text_field :destination, class: "border-none outline outline-1 outline-gray-300 rounded" %>
 	  </div>
 		
-	  <div class="my-5">
-	    <%= form.label "How are you travelling?" %>
-	    <%= form.select :mode, ["plane", "train", "car", "boat"], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-	  </div>
-		
+		<div class="my-5">
+	    <%= form.label "Travel mode", class: "font-bold text-slate-700" %>
+	    <%= form.select :mode, ["plane", "train", "car", "boat"], {}, class: "block rounded outline outline-1 outline-gray-300 border-none" %>
+		</div>
 	<% else %>
 		<div class="my-5">
-			<%= form.label "What do you want to call the activity?"%>
+			<%= form.label "Name the activity", class: "font-bold text-slate-700" %>
 			<%= form.text_field :name %>
 		<div>
 		
 		<div class="my-5">
-			<%= form.label :location %>
+			<%= form.label :location, class: "font-bold text-slate-700" %>
 			<%= form.text_field :location %>
 		</div>
 	<% end %>
 
   <div class="my-5">
-    <%= form.label :date %>
-    <%= form.select :date, options_for_select(trip.days.pluck(:date), day&.date), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :date, class: "font-bold text-slate-700" %>
+    <%= form.select :date, options_for_select(trip.days.pluck(:date), day&.date), {}, class: "block rounded border-none outline outline-1 outline-gray-300" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :time %>
-		<p class="text-sm text-gray-500">If you want to do this sometime in the day and don't know when, no need to add a time</p>
-    <%= form.time_field :time, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "Time (optional)", class: "font-bold text-slate-700" %>
+    <%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36" %>
   </div>
 	
   <div class="my-5">
-    <%= form.label :notes %>
-    <%= form.text_area :notes, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :notes, class: "font-bold text-slate-700" %>
+    <%= form.text_area :notes, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  
+    <%= form.submit "Save this #{happening.happeningable_name}", class: "mx-auto rounded-xl py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
+  
+	<div>
 <% end %>

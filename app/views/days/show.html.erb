@@ -1,14 +1,9 @@
-<%= link_to trip_path(@day.trip), class: "font-light" do %>
-	<%= image_tag "left_arrow.svg", class: "w-4 h-auto inline" %>
-	Back to trip
-<% end %>
-
 <div id="add-buttons" class="flex w-full justify-end text-xs sm:text-sm flex gap-x-4 pr-2" data-admin>
-	<%= link_to new_trip_transportation_path(@day.trip, day: @day), class: "rounded p-2 bg-indigo-600 text-white flex" do %>
+	<%= link_to new_trip_transportation_path(@day.trip, day: @day), class: "rounded p-2 bg-indigo-500 text-white flex items-center" do %>
 		<%= image_tag "truck.svg", class: "mr-1 h-4 sm:h-6 w-auto" %>
 		<p>Add transportation</p>
 	<% end %>
-	<%= link_to new_trip_activity_path(@day.trip, day: @day), class: "rounded p-2 bg-emerald-500 text-white flex" do %>
+	<%= link_to new_trip_activity_path(@day.trip, day: @day), class: "rounded p-2 bg-emerald-500 text-white flex items-center" do %>
 		<%= image_tag "sparkles.svg", class: "mr-1 h-4 sm:h-6 w-auto" %>
 		<p>Add activity</p>
 	<% end %>

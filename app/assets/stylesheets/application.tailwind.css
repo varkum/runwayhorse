@@ -9,9 +9,17 @@
 /*
 
 @layer components {
+	.form-width {
+		@apply w-fit px-3;
+	}
   .btn-primary {
     @apply py-2 px-4 bg-blue-200;
   }
+	
+	.form-label {
+		@apply text-slate-600 
+	}
 }
+
 
 */
