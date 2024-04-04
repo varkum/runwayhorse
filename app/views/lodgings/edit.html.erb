@@ -1,6 +1,6 @@
 Edit lodging
 
-<%= render "form", trip: @lodging.trip, lodging: @lodging, url: lodging_path(@lodging) %>
+<%= render "form", trip: @lodging.trip, lodging: @lodging, day: @day, url: lodging_path(@lodging, day: @day) %>
 
 <%= button_to lodging_path(@lodging, from: "lodgings"), method: :delete do %>
 	<%= image_tag "trash.svg", class: "h-6 w-auto" %>

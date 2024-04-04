@@ -1,6 +1,6 @@
 class LodgingsController < ApplicationController
   before_action :set_trip, only: %i[ index new create ]
-  before_action :set_day, only: [ :new, :create ]
+  before_action :set_day, only: [ :new, :create, :edit, :update ]
   before_action :set_lodging, only: %i[ edit update destroy ]
   
   def index
