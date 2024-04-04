@@ -1,3 +1,4 @@
+
 <% if day_by_day %>
 	<%= turbo_frame_tag "edit_#{dom_id happening}", class: "block" do %>
 		<div class="flex py-1 border-b-2 border-dashed" id="<%= dom_id happening %>">
@@ -15,39 +16,41 @@
 					%>
 				</div>
 			</div>
-			
+	
 			<div class="self-end w-1/12">
 				<%= render "shared/actions_menu", type: :transportation, item: happening, day: happening.day %>
 			</div>
 		</div>
 	<% end %>
 <% else %>
-	<div class="flex bg-slate-100 rounded px-4 py-1 mt-4" id="<%= dom_id happening %>">
-		<div class="mr-8">
-			<div class="inline-flex align-middle">
-				<%= icon_for(happening.transportation.mode, size: "12") %>
-				<p class="ml-3 text-lg font-medium align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
-			</div>
- 
-		  <div class="flex items-center gap-2 my-2">
-				<%= image_tag "time.svg", class: "h-4 w-auto inline"%>
-		    <%= human_time(happening.time) %>
-			</div>
+	<%= turbo_frame_tag "edit_#{dom_id happening}", class: "block" do %>
+		<div class="flex bg-slate-100 rounded px-4 py-1 mt-4" id="<%= dom_id happening %>">
+			<div class="mr-8">
+				<div class="inline-flex align-middle">
+					<%= icon_for(happening.transportation.mode, size: "12") %>
+					<p class="ml-3 text-lg font-medium align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+				</div>
 
-		  <div class="flex items-center gap-2 my-2">
-				<%= image_tag "date.svg", class: "h-4 w-auto inline"%>
-		    <%= human_date(happening.date, no_year: true) %>
+			  <div class="flex items-center gap-2 my-2">
+					<%= image_tag "time.svg", class: "h-4 w-auto inline"%>
+			    <%= human_time(happening.time) %>
+				</div>
+
+			  <div class="flex items-center gap-2 my-2">
+					<%= image_tag "date.svg", class: "h-4 w-auto inline"%>
+			    <%= human_date(happening.date, no_year: true) %>
+				</div>
+		  </div>
+
+		  <div class="mt-2 text-xs sm:text-sm grow">
+		    <%= 
+				auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+					truncate(text, length: 35, omission: '...')
+				end 
+				%>
 			</div>
-	  </div>
 	
-	  <div class="mt-2 text-xs sm:text-sm grow">
-	    <%= 
-			auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
-				truncate(text, length: 35, omission: '...')
-			end 
-			%>
+			<%= render "shared/actions_menu", type: :transportation, item: happening %>
 		</div>
-		
-		<%= render "shared/actions_menu", type: :transportation, item: happening %>
-	</div>
+	<% end %>
 <% end %>

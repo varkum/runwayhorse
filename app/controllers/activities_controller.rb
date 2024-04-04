@@ -1,8 +1,8 @@
 class ActivitiesController < ApplicationController
   before_action :set_render_to_happenings
   before_action :set_trip, only: %i[ index new create ]
-  before_action :set_day, only: %i[ new create ]
-  before_action :set_happening, only: %i[ edit update ]
+  before_action :set_day, except: :index
+  before_action :set_happening, only: %i[ edit update destroy ]
   
   def index
     @happenings = @trip.activities
@@ -29,10 +29,16 @@ class ActivitiesController < ApplicationController
   
   def update
     if @happening.update!(activity_params.slice(:date, :notes, :time, :booked)) && @happening.activity.update!(activity_params.slice(:name, :location))
-      redirect_to day_path(@happening.day)
+      redirect_to day_path(@day)
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+  
+  def destroy
+    @happening.destroy!
+    
+    redirect_to day_path(@day)
   end
   
   private

@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "edit_#{dom_id @happening}", class: "contents" do %>
 	<div class="flex absolute w-full z-50 py-1 shadow-xl rounded-lg bg-blue-400 px-1">
 		<% if @happening.activity? %>
-			<%= form_with model: @happening, url: activity_path, class: "contents" do |form| %>
+			<%= form_with model: @happening, url: activity_path(day: @day), class: "contents" do |form| %>
 				<div class="w-1/6">
 					<%= form.time_field :time, placeholder: "time", class: "border-none rounded text-sm italic" %>
 				</div>
@@ -10,10 +10,7 @@
 					<%= form.text_field :name, value: @happening.activity.name, placeholder: "name", class: "block border-none rounded font-medium text-lg p-1" %>
 				
 					<%= form.text_field :location, value: @happening.activity.location, placeholder: "location", class: "block border-none rounded italic text-sm mt-1 p-1" %>
-				
-					<%= form.label "Is there a reservation?" %>
-					<%= form.check_box :booked %>
-				
+					
 					<div class="mt-4 w-full">
 						<%= form.text_area :notes, placeholder: "Notes...", class: "border-none rounded w-full text-sm" %>
 					</div>
@@ -22,7 +19,7 @@
 				</div>
 			<% end %>
 		<% else %>
-			<%= form_with model: @happening, url: transportation_path, class: "contents" do |form| %>
+			<%= form_with model: @happening, url: transportation_path(day: @day), class: "contents" do |form| %>
 				<div class="w-1/6">
 					<%= form.time_field :time, placeholder: "time", class: "border-none rounded text-sm italic" %>
 				</div>
