@@ -1,5 +1,6 @@
 class LodgingsController < ApplicationController
   before_action :set_trip, only: %i[ index new create ]
+  before_action :set_day, only: [ :new, :create ]
   before_action :set_lodging, only: %i[ edit update destroy ]
   
   def index
@@ -8,7 +9,6 @@ class LodgingsController < ApplicationController
   
   def new
     @lodging = Lodging.new
-    @form_url = trip_lodgings_path(@trip, from: params[:from])
   end
   
   def create
@@ -19,7 +19,6 @@ class LodgingsController < ApplicationController
   end
   
   def edit
-    @form_url = lodging_path(@lodging, from: params[:from])
   end
   
   def update
@@ -45,15 +44,19 @@ class LodgingsController < ApplicationController
     @lodging = Lodging.find(params[:id])
   end
   
+  def set_day
+    @day = Day.find_by(id: params[:day])
+  end
+  
   def lodging_params
     params.require(:lodging).permit(:start, :end, :name, :address, :link, :notes)
   end
   
   def redirect_to_origin
-    if params[:from] == "lodgings"
-      redirect_to trip_lodgings_path(@trip || @lodging.trip)
+    if @day
+      redirect_to day_path(@day)
     else
-      redirect_to day_path(params[:from])
+      redirect_to trip_lodgings_path(@trip || @lodging.trip)
     end
   end
 end

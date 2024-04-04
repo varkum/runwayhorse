@@ -22,11 +22,7 @@ class TransportationsController < ApplicationController
       booked: true
       )
     
-    if @day
-      redirect_to day_path(@day)
-    else
-      redirect_to trip_transportations_path
-    end
+    redirect_to_origin
   end
   
   def edit
@@ -60,5 +56,13 @@ class TransportationsController < ApplicationController
   
   def transportation_params
     params.require(:happening).permit(:origin, :destination, :date, :mode, :notes, :time)
+  end
+  
+  def redirect_to_origin
+    if @day
+      redirect_to day_path(@day)
+    else
+      redirect_to trip_transportations_path(@trip || @happening.trip)
+    end
   end
 end

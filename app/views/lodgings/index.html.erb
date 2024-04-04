@@ -11,7 +11,7 @@
 	<% if @lodgings.present? %>
 		<div class="relative mb-12">
 			<h1 class="font-bold text-2xl sm:text-4xl text-center">Lodging</h1>
-			<%= link_to new_trip_lodging_path(@trip, from: "lodgings"), class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-4 py-2 rounded", "data-admin": "true" do %>
+			<%= link_to new_trip_lodging_path(@trip), class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-4 py-2 rounded", "data-admin": "true" do %>
 				<%= image_tag "plus.svg", class: "h-5 w-auto mr-1" %>
 				<p class="font-light text-sm">New</p>
 			<% end %>
@@ -23,6 +23,6 @@
 
 	<% else %>
 		<p> You don't have any lodging yet. You can put tentative hotels that you still need to book, or start by booking things. </p>
-		<%= link_to "+", new_trip_lodging_path(@trip, from: "lodgings"), class: "font-bold text-4xl" %>
+		<%= link_to "+", new_trip_lodging_path(@trip), class: "font-bold text-4xl" %>
 	<% end %>
 </div>

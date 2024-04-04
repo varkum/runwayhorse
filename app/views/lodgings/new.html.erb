@@ -1,5 +1,5 @@
 <div class="mx-auto md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">New lodging</h1>
 
-  <%= render "form", lodging: @lodging, trip: @trip, form_url: @form_url %>
+  <%= render "form", lodging: @lodging, trip: @trip, day: @day, url: trip_lodgings_path(@trip, day: @day) %>
 </div>
