@@ -1,9 +1,5 @@
 <div class="mx-auto md:w-2/3 w-full mt-4">
   <h1 class="font-semibold text-3xl text-center">Update trip lodging</h1>
-
-  <%= render "form", trip: @lodging.trip, lodging: @lodging, day: @day, url: lodging_path(@lodging, day: @day) %>
 	
-	<%= button_to lodging_path(@lodging, day: @day), method: :delete do %>
-		<%= image_tag "trash.svg", class: "h-6 w-auto" %>
-	<% end %>
+  <%= render "form", trip: @lodging.trip, lodging: @lodging, day: @day, url: lodging_path(@lodging, day: @day) %>
 </div>

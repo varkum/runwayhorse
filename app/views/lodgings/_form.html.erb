@@ -26,8 +26,13 @@
 			<%= form.text_area :notes, rows: 5, placeholder: "e.g. check-in instructions, breakfast details, pool or not", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		</div>
 	
-	  <div class="text-center">
-	    <%= form.submit class: "rounded-lg py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
+	  <div class="relative text-center">
+	    <%= form.submit class: "rounded-lg py-3 px-5 bg-green-600 text-white font-medium cursor-pointer" %>
+			<% if action_name == "edit" %>
+				<%= button_to lodging_path(lodging, day: day), method: :delete, class: "absolute float-right bottom-2 right-0" do %>
+					<%= image_tag "trash.svg", class: "h-6 w-auto" %>
+				<% end %>
+			<% end %>
 	  </div>
 	</div>
 <% end %>
