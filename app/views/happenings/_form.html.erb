@@ -1,49 +1,49 @@
 <%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym], day: day) do |form| %>
-<div class="w-1/3 mx-auto">
-	<% if happening.happeningable_name == "transportation" %>
-	  <div class="my-5 flex flex-col">
-	    <%= form.label "From", class: "font-bold text-slate-700" %>
-	    <%= form.text_field :origin, class: "border-none outline outline-1 outline-gray-300 rounded" %>
-	  </div>
+	<div class="w-5/12 mx-auto">
+		<% if happening.happeningable_name == "transportation" %>
+		  <div class="my-5 flex flex-col">
+		    <%= form.label "From", class: "font-bold text-slate-700" %>
+		    <%= form.text_field :origin, placeholder: "Enter a starting point", class: "border-none outline outline-1 outline-gray-300 rounded" %>
+		  </div>
 		
-	  <div class="my-5 flex flex-col">
-	    <%= form.label "To", class: "font-bold text-slate-700" %>
-	    <%= form.text_field :destination, class: "border-none outline outline-1 outline-gray-300 rounded" %>
-	  </div>
+		  <div class="my-5 flex flex-col">
+		    <%= form.label "To", class: "font-bold text-slate-700" %>
+		    <%= form.text_field :destination, placeholder: "Enter a destination", class: "border-none outline outline-1 outline-gray-300 rounded" %>
+		  </div>
 		
-		<div class="my-5">
-	    <%= form.label "Travel mode", class: "font-bold text-slate-700" %>
-	    <%= form.select :mode, ["plane", "train", "car", "boat"], {}, class: "block rounded outline outline-1 outline-gray-300 border-none" %>
-		</div>
-	<% else %>
-		<div class="my-5">
-			<%= form.label "Name the activity", class: "font-bold text-slate-700" %>
-			<%= form.text_field :name %>
-		<div>
+			<div class="my-5">
+		    <%= form.label "Travel mode", class: "font-bold text-slate-700" %>
+		    <%= form.select :mode, ["plane", "train", "car", "boat"], {}, class: "w-36 block rounded outline outline-1 outline-gray-300 border-none" %>
+			</div>
+		<% else %>
+			<div class="my-5">
+				<%= form.label "Activity name", class: "font-bold text-slate-700" %>
+				<%= form.text_field :name, placeholder: "eg. walking tour, tapas dinner", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+			<div>
 		
-		<div class="my-5">
-			<%= form.label :location, class: "font-bold text-slate-700" %>
-			<%= form.text_field :location %>
-		</div>
-	<% end %>
+			<div class="my-5">
+				<%= form.label :location, class: "font-bold text-slate-700" %>
+				<%= form.text_field :location, placeholder: "Enter a location", class: "w-full block border-none outline outline-1 outline-gray-300 rounded" %>
+			</div>
+		<% end %>
 
-  <div class="my-5">
-    <%= form.label :date, class: "font-bold text-slate-700" %>
-    <%= form.select :date, options_for_select(trip.days.pluck(:date), day&.date), {}, class: "block rounded border-none outline outline-1 outline-gray-300" %>
-  </div>
+	  <div class="my-5">
+	    <%= form.label :date, class: "font-bold text-slate-700" %>
+	    <%= form.select :date, options_for_select(trip.days.pluck(:date), day&.date), {}, class: "block rounded border-none outline outline-1 outline-gray-300" %>
+	  </div>
 
-  <div class="my-5">
-    <%= form.label "Time (optional)", class: "font-bold text-slate-700" %>
-    <%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36" %>
-  </div>
+	  <div class="my-5">
+	    <%= form.label "Time (optional)", class: "font-bold text-slate-700" %>
+	    <%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36" %>
+	  </div>
 	
-  <div class="my-5">
-    <%= form.label :notes, class: "font-bold text-slate-700" %>
-    <%= form.text_area :notes, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
-  </div>
+	  <div class="my-5">
+	    <%= form.label :notes, class: "font-bold text-slate-700" %>
+	    <%= form.text_area :notes, rows: 5, placeholder: "eg. reservation details, things to bring, weather notes", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+	  </div>
 
-  
-    <%= form.submit "Save this #{happening.happeningable_name}", class: "mx-auto rounded-xl py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
-  
+	  <div class="text-center">
+	  	<%= form.submit "Save this #{happening.happeningable_name}", class: "text-center rounded-xl py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
+		</div>
 	<div>
 <% end %>
