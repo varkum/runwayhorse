@@ -1,4 +1,4 @@
-<div class="px-2 sm:max-w-screen-lg h-full mx-auto text-center">
+<div class="px-2 sm:max-w-screen-lg h-full mx-auto text-center overflow">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
@@ -9,11 +9,11 @@
 		
 		<div class="mt-1">
 			<%= turbo_frame_tag "edit_trip_start", class: "contents" do %>
-				<%= link_to human_date(@trip.start_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing trip dates might delete work you've already done. Do you want to continue?" }  %>
+				<%= link_to human_date(@trip.start_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "You might lose work if you shorten trip dates. Do you want to continue?" }  %>
 			<% end %>
 			—
 			<%= turbo_frame_tag "edit_trip_end", class: "contents" do %>
-				<%= link_to human_date(@trip.end_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "Changing trip dates might delete work you've already done. Do you want to continue?" }  %>
+				<%= link_to human_date(@trip.end_date), edit_trip_path(@trip), class: "text-teal-700 hover:bg-gray-200 p-1 rounded-lg", data: { turbo_method: :get, turbo_confirm: "You might lose work if you shorten trip dates. Do you want to continue?" }  %>
 			<% end %>
 		</div>
   </div>

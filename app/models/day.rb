@@ -1,7 +1,7 @@
 class Day < ApplicationRecord
   belongs_to :trip
   belongs_to :lodging, optional: true
-  has_many :happenings, dependent: :destroy
+  has_many :happenings, -> { order(time: :asc) }, dependent: :destroy
   
   def previous
     trip.days.find_by(date: date - 1)

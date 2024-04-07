@@ -5,7 +5,7 @@ class TransportationsController < ApplicationController
   before_action :set_happening, only: %i[ edit update destroy ]
   
   def index
-    @happenings = @trip.transportations.reorder(day_id: :asc)
+    @happenings = @trip.transportations
   end
   
   def new
