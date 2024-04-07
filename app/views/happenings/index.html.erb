@@ -1,23 +1,19 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-<% if @happenings.present? %>
 	<div class="relative mb-12">
-		<h1 class="font-bold text-2xl sm:text-4xl text-center"><%= @happenings.first.happeningable_name.humanize %></h1>
-		<%= link_to polymorphic_path([:new, :trip, @happenings.first.happeningable_name.to_sym]), class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-4 py-2 rounded", "data-admin": "true" do %>
+		<h1 class="font-bold text-2xl sm:text-4xl text-center">Transportation</h1>
+		<%= link_to new_trip_transportation_path, class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-4 py-2 rounded", "data-admin": "true" do %>
 			<%= image_tag "plus.svg", class: "h-5 w-auto mr-1" %>
 			<p class="font-light text-sm">New</p>
 		<% end %>
 	</div>
 	
-	<div class="px-4 sm:px-40">
-  	<%= render @happenings, day_by_day: false %>
-	</div>
-
-<% else %>
-	<p> You don't have any transportation yet. Start by putting in flights to and from home. Then move on to trains, car rides, or boat trips during your vaction. </p>
-	<%= link_to "+", new_trip_transportation_path, class: "font-bold text-4xl" %>
-<% end %>
+	<% if @happenings.any? %>
+		<div class="px-4 sm:px-40">
+	  	<%= render @happenings, day_by_day: false %>
+		</div>
+	<% else %>
+		<p class="mx-auto max-w-sm px-4 font-medium text-gray-500">
+			Nothing to show yet. Start by adding flights to and from home!
+		</p>
+	<% end %>
 </div>

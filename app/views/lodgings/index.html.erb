@@ -1,23 +1,19 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+	<div class="relative mb-12">
+		<h1 class="font-bold text-2xl sm:text-4xl text-center">Lodging</h1>
+		<%= link_to new_trip_lodging_path(@trip), class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-4 py-2 rounded", "data-admin": "true" do %>
+			<%= image_tag "plus.svg", class: "h-5 w-auto mr-1" %>
+			<p class="font-light text-sm">New</p>
+		<% end %>
+	</div>
 
-	<% if @lodgings.present? %>
-		<div class="relative mb-12">
-			<h1 class="font-bold text-2xl sm:text-4xl text-center">Lodging</h1>
-			<%= link_to new_trip_lodging_path(@trip), class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-4 py-2 rounded", "data-admin": "true" do %>
-				<%= image_tag "plus.svg", class: "h-5 w-auto mr-1" %>
-				<p class="font-light text-sm">New</p>
-			<% end %>
-		</div>
-	
+	<% if @lodgings.any? %>
 		<div class="px-4 sm:px-40">
 	  	<%= render @lodgings %>
 		</div>
-
 	<% else %>
-		<p> You don't have any lodging yet. You can put tentative hotels that you still need to book, or start by booking things. </p>
-		<%= link_to "+", new_trip_lodging_path(@trip), class: "font-bold text-4xl" %>
+		<p class="mx-auto max-w-sm px-4 font-medium text-gray-500">
+			Nothing to show yet. Add your Airbnb or hotel bookings here as you do them. Or, add your rough plans and fill in the details later.
+		</p>
 	<% end %>
 </div>
