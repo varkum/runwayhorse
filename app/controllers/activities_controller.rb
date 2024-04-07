@@ -17,8 +17,7 @@ class ActivitiesController < ApplicationController
       trip: @trip,
       date: activity_params[:date],
       time: activity_params[:time],
-      notes: activity_params[:notes],
-      booked: activity_params[:booked]
+      notes: activity_params[:notes]
       )
       
     redirect_to day_path(@day)
@@ -28,7 +27,7 @@ class ActivitiesController < ApplicationController
   end
   
   def update
-    if @happening.update!(activity_params.slice(:date, :notes, :time, :booked)) && @happening.activity.update!(activity_params.slice(:name, :location))
+    if @happening.update_meta_attributes!(activity_params.slice(:date, :time, :notes)) && @happening.activity.update!(activity_params.slice(:name, :location))
       redirect_to day_path(@day)
     else
       render :edit, status: :unprocessable_entity
@@ -60,6 +59,6 @@ class ActivitiesController < ApplicationController
   end
   
   def activity_params
-    params.require(:happening).permit(:name, :location, :date, :notes, :time, :booked)
+    params.require(:happening).permit(:name, :location, :date, :notes, :time)
   end
 end
