@@ -1,5 +1,5 @@
 <%= form_with model: [ trip, lodging ], url: url do |form| %>
-	<div class="w-5/12 mx-auto">
+	<div class="max-w-sm mx-auto">
 		<div class="my-6 flex items-center justify-center">
 			<%= form.select :start, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "block shadow rounded-md border border-gray-200 outline-none" %>
 			<span class="mx-2">—</span>
