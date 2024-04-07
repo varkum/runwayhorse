@@ -20,12 +20,20 @@
 		</div>
 	</div>
   
-	<% if day.happenings.empty? %>
-		NOTHING
+	<% if day.happenings.any? %>
+		<div class="divide-y">
+			<% day.happenings.each do |happening| %>
+				<%= render happening, day_by_day: true %>
+			<% end %>
+		</div>
 	<% else %>
-		<%= render "happening_group", happenings: day.happenings %>
+		<p class="text-center text-sm text-gray-500 italic">
+			Nothing planned for today
+		</p>
 	<% end %>
 	
-	<%= turbo_frame_tag "sometimes", src: trip_sometimes_path(day.trip) %>
+	<%= turbo_frame_tag "sometimes", src: trip_sometimes_path(day.trip) do %>
+		<%= image_tag "spinner.gif", class: "h-6 w-auto mx-auto mt-8" %>
+	<% end %>
 </div>
 	

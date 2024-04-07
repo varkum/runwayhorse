@@ -1,5 +1,5 @@
-<%= turbo_frame_tag "sometimes" do %>
-	<div>
+<%= turbo_frame_tag "sometimes", class: "contents" do %>
+	<div class="mt-8">
 		<div class="flex gap-4">
 			<p class="font-medium sm:text-lg underline decoration-wavy decoration-teal-700">Sometime</p>
 			<%= link_to "+", new_trip_sometime_path(@trip), class: "text-gray-500 font-bold", data: { turbo_frame: "new_sometimes" } %>
@@ -7,7 +7,13 @@
 		<div>
 			<%= turbo_frame_tag "new_sometimes"  %>
 			<div id="sometimes_list">
-				<%= render @sometimes %>
+				<% if @sometimes.any? %>
+					<%= render @sometimes %>
+				<% else %>
+					<p class="font-light text-gray-500 mt-4">
+						Your trip todos and notes go here. Add things you want to do sometime, items to remember, food to try, etc.
+					</p>
+				<% end %>
 			</div>
 		</div>			
 		
