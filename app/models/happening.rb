@@ -9,8 +9,8 @@ class Happening < ApplicationRecord
   end
   
   def time
-    datetime = Time.new("#{date.to_s} #{read_attribute(:time) << ":00"}")
-    #datetime.match?(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/) ? Time.new(datetime << ":00") : nil
+    datetime = "#{date.to_s} #{read_attribute(:time)}"
+    datetime.match?(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/) ? Time.new(datetime << ":00") : nil
   end
   
   def self.record!(happeningable, trip:, date:, time:, notes:, booked:)
