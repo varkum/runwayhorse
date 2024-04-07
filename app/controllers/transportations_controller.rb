@@ -18,8 +18,7 @@ class TransportationsController < ApplicationController
       trip: @trip,
       date: transportation_params[:date],
       time: transportation_params[:time],
-      notes: transportation_params[:notes],
-      booked: true
+      notes: transportation_params[:notes]
       )
     
     redirect_to_origin
@@ -29,7 +28,7 @@ class TransportationsController < ApplicationController
   end
   
   def update
-    if @happening.update!(transportation_params.slice(:date, :notes, :time, :booked)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
+    if @happening.update_meta_attributes!(transportation_params.slice(:date, :time, :notes)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
       redirect_to_origin
     else
       render :edit, status: :unprocessable_entity
