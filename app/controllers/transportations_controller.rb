@@ -21,7 +21,7 @@ class TransportationsController < ApplicationController
       notes: transportation_params[:notes]
       )
     
-    redirect_to_origin
+    redirect_to_origin notice: "Transportation added successfully"
   end
   
   def edit
@@ -29,7 +29,7 @@ class TransportationsController < ApplicationController
   
   def update
     if @happening.update_meta_attributes!(transportation_params.slice(:date, :time, :notes)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
-      redirect_to_origin
+      redirect_to_origin notice: "Your changes were saved"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class TransportationsController < ApplicationController
   def destroy
     @happening.destroy!
     
-    redirect_to_origin
+    redirect_to_origin notice: "Transported deleted successfully"
   end
   
   private
@@ -63,11 +63,11 @@ class TransportationsController < ApplicationController
     params.require(:happening).permit(:origin, :destination, :date, :mode, :notes, :time)
   end
   
-  def redirect_to_origin
+  def redirect_to_origin(notice: nil)
     if @day
-      redirect_to day_path(@day)
+      redirect_to day_path(@day), notice: notice
     else
-      redirect_to trip_transportations_path(@trip || @happening.trip)
+      redirect_to trip_transportations_path(@trip || @happening.trip), notice: notice
     end
   end
 end

@@ -15,7 +15,7 @@ class LodgingsController < ApplicationController
     @lodging = Lodging.create!(trip: @trip, name: lodging_params[:name], address: lodging_params[:address], link: lodging_params[:link], notes: lodging_params[:notes])
     @lodging.assign_days(from: lodging_params[:start], to: lodging_params[:end])
     
-    redirect_to_origin
+    redirect_to_origin notice: "Lodging added successfully"
   end
   
   def edit
@@ -25,13 +25,13 @@ class LodgingsController < ApplicationController
     @lodging.update!(name: lodging_params[:name], address: lodging_params[:address], link: lodging_params[:link], notes: lodging_params[:notes])
     @lodging.assign_days(from: lodging_params[:start], to: lodging_params[:end])
     
-    redirect_to_origin
+    redirect_to_origin notice: "Your changes were saved"
   end
   
   def destroy
     @lodging.destroy!
     
-    redirect_to_origin
+    redirect_to_origin notice: "Lodging deleted successfully"
   end
   
   private 
@@ -52,11 +52,11 @@ class LodgingsController < ApplicationController
     params.require(:lodging).permit(:start, :end, :name, :address, :link, :notes)
   end
   
-  def redirect_to_origin
+  def redirect_to_origin(notice: nil)
     if @day
-      redirect_to day_path(@day)
+      redirect_to day_path(@day), notice: notice
     else
-      redirect_to trip_lodgings_path(@trip || @lodging.trip)
+      redirect_to trip_lodgings_path(@trip || @lodging.trip), notice: notice
     end
   end
 end

@@ -4,7 +4,7 @@ export default class extends Controller {
 	connect() {
 		setTimeout(() => {
 			this.element.classList.add("hidden")
-		}, 4000)
+		}, 2500)
 		
 	}
 }
