@@ -8,16 +8,16 @@
 	
 		<div class="my-5">
 			<%= form.label :name, class: "font-bold text-slate-700" %>
-			<%= form.text_field :name, placeholder: "e.g. Oslo Airbnb, Delhi hotel", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+			<%= form.text_field :name, placeholder: "e.g. Oslo Airbnb, Delhi hotel", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		</div>
 	
 		<div class="my-5">
 			<%= form.label :address, class: "font-bold text-slate-700" %>
-			<%= form.text_field :address, placeholder: "Enter an address", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+			<%= form.text_field :address, placeholder: "Enter an address", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		</div>
 	
 		<div class="my-5">
-			<%= form.label "Link (optional)", class: "font-bold text-slate-700" %>
+			<%= form.label "Link", class: "font-bold text-slate-700" %>
 			<%= form.text_field :link, placeholder: "e.g. to airbnb, expedia, or hotel website", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		</div>
 	
