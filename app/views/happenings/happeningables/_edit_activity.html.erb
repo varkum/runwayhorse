@@ -8,7 +8,7 @@
 		</div>
 		<div class="w-full">
 			<p class="font-medium sm:text-lg">
-				<%= form.text_field :name, value: happening.activity.name, autofocus: true, data: { action: "focus->edit-day#setCursor" }, placeholder: "name", class: "border-none focus:ring-0 m-0 p-0" %>
+				<%= form.text_field :name, value: happening.activity.name, autofocus: true, required: true, data: { action: "focus->edit-day#setCursor" }, placeholder: "name", class: "border-none focus:ring-0 m-0 p-0" %>
 			</p>
 			
 			<p class="italic text-xs sm:text-sm">

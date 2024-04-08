@@ -14,9 +14,9 @@
 	
 			<div class="inline-flex items-center align-middle">
 				<p class="ml-3 sm:text-lg font-medium align-middle">
-					<%= form.text_field :origin, value: happening.transportation.origin, placeholder: "location", autofocus: true, data: { action: "focus->edit-day#setCursor" }, class: "w-20 border-none focus:ring-0 p-0" %>
+					<%= form.text_field :origin, value: happening.transportation.origin, placeholder: "location", autofocus: true, required: true, data: { action: "focus->edit-day#setCursor" }, class: "w-20 border-none focus:ring-0 p-0" %>
 					to
-					<%= form.text_field :destination, value: happening.transportation.destination, placeholder: "location", class: "ml-16 border-none focus:ring-0 p-0" %>
+					<%= form.text_field :destination, value: happening.transportation.destination, placeholder: "location", required: true, class: "ml-16 border-none focus:ring-0 p-0" %>
 				</p>
 			</div>
 	
