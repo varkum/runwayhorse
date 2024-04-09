@@ -1,21 +1,34 @@
 <nav class="relative flex items-center justify-center p-4 bg-amber-100" data-controller="navbar">
 	<%= link_to root_path, class: "absolute left-5" do %>
 		<div class="flex items-center gap-2">
-			<%= image_tag "logo.svg", class: "h-10 w-auto"%>
-			<span class="font-bold text-2xl">RunwayHorse</span>
+			<%= image_tag "logo.svg", class: "h-7 sm:h-10 w-auto"%>
+			<span class="font-bold text-2xl hidden lg:inline">RunwayHorse</span>
 		</div>
 	<% end %>
 	<% if Current.user.present? %>
-		<div name="trip-buttons" class="w-1/2 flex justify-evenly font-semibold text-orange-600">
+		<div name="mobile-trip-buttons" class="sm:hidden flex w-2/3 items-end justify-evenly font-semibold text-orange-600">
+			<%= link_to trip_path(Current.user.active_trip) do %>
+				Home
+			<% end %>
+			<%= link_to trip_transportations_path(Current.user.active_trip) do %>
+				<%= image_tag "orange_truck.svg", class: "w-6 h-auto"%>
+			<% end %>
+			<%= link_to trip_lodgings_path(Current.user.active_trip) do %>
+				<%= image_tag "orange_home.svg", class: "w-6 h-auto"%>
+			<% end %>
+			<%= link_to day_path(Current.user.active_trip.current_day) do %>
+				<%= image_tag "orange_calendar.svg", class: "w-6 h-auto"%>
+			<% end %>
+		</div>
+		<div name="trip-buttons" class="hidden sm:flex w-1/2 justify-evenly font-semibold text-orange-600">
 			<%= link_to trip_path(Current.user.active_trip) do %>
 				Home
 			<% end %>
 			<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
 			<%= link_to "Lodging", trip_lodgings_path(Current.user.active_trip) %>
-			<%= link_to "Day by Day", day_path(Current.user.active_trip.current_day) %>
+			<%= link_to "Days", day_path(Current.user.active_trip.current_day) %>
 		</div>
-		
-		<div class="absolute right-10">
+		<div class="absolute right-2 sm:right-10">
 			<div name="admin-land" class= "relative flex flex-col relative">
 				<button class="self-end flex items-center font-bold rounded-full text-gray-500" data-action="click->navbar#toggleDropdown">
 					<%= Current.user.initials %>
