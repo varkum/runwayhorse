@@ -38,7 +38,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy!
 
-    redirect_to trips_url, notice: "Trip was successfully destroyed." }
+    redirect_to trips_url, notice: "Trip was successfully destroyed."
   end
 
   private

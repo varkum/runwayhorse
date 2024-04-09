@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate
+  skip_before_action :validate_access
   
   def new
+    if Current.user.present?
+      redirect_to root_path
+    end
+    
     @user = User.new
   end
   

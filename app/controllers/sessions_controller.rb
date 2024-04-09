@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate, only: [:new, :create]
+  skip_before_action :validate_access, only: [:new, :create]
   
   def new
+    if Current.user.present?
+      redirect_to root_path
+    end
   end
   
   def create
