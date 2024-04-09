@@ -9,6 +9,8 @@ module Authentication
   def authenticate
     if authenticated_user = User.find_by(id: session[:user_id])
       Current.user = authenticated_user
+    else
+      redirect_to signin_path
     end
   end
 end
