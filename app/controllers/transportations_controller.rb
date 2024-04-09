@@ -28,11 +28,10 @@ class TransportationsController < ApplicationController
   end
   
   def update
-    if @happening.update_meta_attributes!(transportation_params.slice(:date, :time, :notes)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
-      redirect_to_origin notice: "Your changes were saved"
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @happening.update_meta_attributes!(transportation_params.slice(:date, :time, :notes)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
+    
+    redirect_to_origin notice: "Your changes were saved"
+    
   end
   
   def destroy

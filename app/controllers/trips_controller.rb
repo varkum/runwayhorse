@@ -27,22 +27,18 @@ class TripsController < ApplicationController
   end
 
   def update
-    if @trip.update!(trip_params)
+    if @trip.update(trip_params)
       @trip.update_days!
       redirect_to trip_url(@trip), turbo: false
     else
-      @trip.errors.add("Trip name can't be blank")
-      render :edit, status: :unprocessable_entity
+      redirect_to trip_url(@trip), alert: "Your changes weren't saved. Please try again"
     end
   end
 
   def destroy
     @trip.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to trips_url, notice: "Trip was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to trips_url, notice: "Trip was successfully destroyed." }
   end
 
   private

@@ -8,7 +8,8 @@ class DaysController < ApplicationController
   end
   
   def update
-    @day.update(day_params)
+    @day.update!(day_params)
+    
     redirect_to day_path(@day)
   end
   
