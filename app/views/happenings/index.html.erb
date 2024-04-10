@@ -1,14 +1,14 @@
 <div class="w-full">
-	<div class="relative mb-12">
-		<h1 class="font-bold text-4xl text-center">Transportation</h1>
-		<%= link_to new_trip_transportation_path, class: "flex items-center justify-center absolute top-0 right-0 mr-4 bg-green-600 text-white px-3 py-2 rounded", "data-admin": "true" do %>
-			<%= image_tag "plus.svg", class: "h-5 w-auto mr-1" %>
-			<p class="font-light text-sm">New</p>
+	<div class="relative mb-8 sm:mb-12">
+		<h1 class="font-bold text-2xl sm:text-4xl text-center">Transportation</h1>
+		<%= link_to new_trip_transportation_path, class: "sm:absolute flex items-center justify-center max-w-20 mx-auto mt-2 top-0 right-0 sm:mr-4 bg-green-600 text-white px-3 py-2 rounded", "data-admin": "true" do %>
+			<%= image_tag "plus.svg", class: "h-3 sm:h-5 w-auto mr-1" %>
+			<p class="font-light text-xs sm:text-sm">New</p>
 		<% end %>
 	</div>
 	
 	<% if @happenings.any? %>
-		<div class="px-4 sm:px-40">
+		<div class="px-8 lg:px-40">
 	  	<%= render @happenings, day_by_day: false %>
 		</div>
 	<% else %>
