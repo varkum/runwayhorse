@@ -19,26 +19,26 @@
   </div>
 	
 	<div class="flex flex-col justify-around mt-8 overflow-scroll">
-		<div id="trip-actions" class="flex items-center justify-evenly w-full gap-x-4 font-medium">
-			<%= link_to trip_transportations_path(@trip), class: "text-center w-52 h-48 divide-y rounded-xl bg-slate-100 py-2" do %>
+		<div id="trip-actions" class="flex flex-wrap items-center justify-evenly w-full gap-x-4 gap-y-4 font-medium">
+			<%= link_to trip_transportations_path(@trip), class: "text-center w-36 sm:w-52 h-40 sm:h-48 divide-y rounded-xl bg-slate-100 py-2" do %>
 				<p>Transportation</p>
 				<div>
-					<%= image_tag "grey_truck.svg", class: "h-12 w-auto mx-auto my-2" %>
-					<p class="text-gray-500 font-light text-sm px-2">All your flights, trains, and drives. See where you're going and how you're getting there.</p>
+					<%= image_tag "grey_truck.svg", class: "h-8 sm:h-12 w-auto mx-auto my-2" %>
+					<p class="text-gray-500 font-light text-xs sm:text-sm px-2">All your flights, trains, and drives. See where you're going and how you're getting there.</p>
 				</div>
 			<% end %>
-			<%= link_to day_path(@trip.days.first), class: "text-center w-52 h-48 divide-y rounded-xl bg-slate-100 py-2" do %>
-				<p>Day by Day</p>
-				<div>
-					<%= image_tag "calendar.svg", class: "h-12 w-auto mx-auto my-2" %>
-					<p class="text-gray-500 font-light text-sm px-2">The plan for each day. Add bookings, restaurants, trip todos, and notes.</p>
-				</div>
-			<% end %>
-			<%= link_to trip_lodgings_path(@trip), class: "text-center w-52 h-48 divide-y rounded-xl bg-slate-100 py-2" do %>
+			<%= link_to trip_lodgings_path(@trip), class: "text-center w-36 sm:w-52 h-40 sm:h-48 divide-y rounded-xl bg-slate-100 py-2" do %>
 				<p>Lodging</p>
 				<div>
-					<%= image_tag "home.svg", class: "h-12 w-auto mx-auto my-2" %>
-					<p class="text-gray-500 font-light text-sm px-2">All your hotels and Airbnbs. Add check-in info, links, and addresses.</p>
+					<%= image_tag "home.svg", class: "h-8 sm:h-12 w-auto mx-auto my-2" %>
+					<p class="text-gray-500 font-light text-xs sm:text-sm px-2">All your hotels and Airbnbs. Add check-in info, links, and addresses.</p>
+				</div>
+			<% end %>
+			<%= link_to day_path(@trip.days.first), class: "text-center w-36 sm:w-52 h-40 sm:h-48 divide-y rounded-xl bg-slate-100 py-2" do %>
+				<p>Days</p>
+				<div>
+					<%= image_tag "calendar.svg", class: "h-8 sm:h-12 w-auto mx-auto my-2" %>
+					<p class="text-gray-500 font-light text-xs sm:text-sm px-2">The plan for each day. Add bookings, restaurants, trip todos, and notes.</p>
 				</div>
 			<% end %>
 	  </div>
