@@ -7,7 +7,7 @@ module ApplicationHelper
     time&.strftime("%l:%M %p")
   end
   
-  def icon_for(transport_mode, size: '8')
-    image_tag "#{transport_mode}.svg", class: "h-6 sm:h-#{size} w-auto mx-auto sm:mb-2"
+  def icon_for(transport_mode, size: '10')
+    image_tag "#{transport_mode}.svg", class: "h-6 sm:h-#{size} w-auto mx-auto"
   end
 end
