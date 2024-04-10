@@ -30,14 +30,14 @@ class TransportationsController < ApplicationController
   def update
     @happening.update_meta_attributes!(transportation_params.slice(:date, :time, :notes)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
     
-    redirect_to_origin notice: "Your changes were saved"
+    redirect_to_origin
     
   end
   
   def destroy
     @happening.destroy!
     
-    redirect_to_origin notice: "Transported deleted successfully"
+    redirect_to_origin notice: "Transportation deleted successfully"
   end
   
   private

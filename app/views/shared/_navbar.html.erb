@@ -6,21 +6,21 @@
 		</div>
 	<% end %>
 	<% if Current.user.present? %>
-		<div name="mobile-trip-buttons" class="sm:hidden flex w-2/3 items-end justify-evenly font-semibold text-orange-600">
+		<div name="mobile-trip-buttons" class="sm:hidden flex w-2/3 items-end justify-evenly font-semibold text-slate-600">
 			<%= link_to trip_path(Current.user.active_trip) do %>
 				Home
 			<% end %>
 			<%= link_to trip_transportations_path(Current.user.active_trip) do %>
-				<%= image_tag "orange_truck.svg", class: "w-6 h-auto"%>
+				<%= image_tag "truck.svg", class: "w-6 h-auto"%>
 			<% end %>
 			<%= link_to trip_lodgings_path(Current.user.active_trip) do %>
-				<%= image_tag "orange_home.svg", class: "w-6 h-auto"%>
+				<%= image_tag "home.svg", class: "w-6 h-auto"%>
 			<% end %>
 			<%= link_to day_path(Current.user.active_trip.current_day) do %>
-				<%= image_tag "orange_calendar.svg", class: "w-6 h-auto"%>
+				<%= image_tag "calendar.svg", class: "w-6 h-auto"%>
 			<% end %>
 		</div>
-		<div name="trip-buttons" class="hidden sm:flex w-1/2 justify-evenly font-semibold text-orange-600">
+		<div name="trip-buttons" class="hidden sm:flex w-1/2 justify-evenly font-semibold text-slate-600">
 			<%= link_to trip_path(Current.user.active_trip) do %>
 				Home
 			<% end %>
