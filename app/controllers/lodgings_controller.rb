@@ -25,7 +25,7 @@ class LodgingsController < ApplicationController
     @lodging.update!(name: lodging_params[:name], address: lodging_params[:address], link: lodging_params[:link], notes: lodging_params[:notes])
     @lodging.assign_days(from: lodging_params[:start], to: lodging_params[:end])
     
-    redirect_to_origin notice: "Your changes were saved"
+    redirect_to_origin
   end
   
   def destroy
