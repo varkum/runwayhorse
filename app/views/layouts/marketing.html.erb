@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <title>RunwayHorse</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+		
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+		
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+    <%= content_for :head %>
+  </head>
+
+  <body class="h-full text-sm sm:text-base bg-amber-50 text-slate-800">
+		<%= render "marketing/navbar" %>
+		<div id="flash" class="relative">
+			<% if flash[:alert].present? %>
+				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-red-100 text-center text-red-500 font-medium rounded-full z-50" id="alert" data-controller="flash"><%= flash[:alert] %></p>
+			<% end %>
+			
+			<% if flash[:notice].present? %>
+				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-green-100 text-center text-green-500 font-medium rounded-full z-50" id="notice" data-controller="flash"><%= flash[:notice] %></p>
+			<% end %>
+		</div>
+    <main class="container mx-auto h-[90vh] py-4 bg-white rounded shadow-lg overflow-scroll" data-controller="users" data-is-signed-in="<%= Current.user.present? %>">
+      <%= yield %>
+    </main>
+  </body>
+</html>
