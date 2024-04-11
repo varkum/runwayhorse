@@ -1,7 +1,7 @@
 <div id="<%= dom_id sometime %>">
   <%= form_with model: sometime, class: "flex items-center", data: { controller: "edit-day", turbo_frame: "sometimes" } do |form| %>
 		<%= form.check_box :completed, class: "focus:ring-0", data: { action: "click->edit-day#submit" } %>
-		<%= form.text_field :name, class: "flex-grow border-none focus:ring-0", data: { action: "blur->edit-day#submit" } %>
+		<%= form.text_field :name, class: "text-sm sm:text-base flex-grow border-none focus:ring-0", data: { action: "blur->edit-day#submit" } %>
 	<% end %>
 
 </div>

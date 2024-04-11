@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
   def update
     @happening.update_meta_attributes!(activity_params.slice(:date, :time, :notes)) && @happening.activity.update!(activity_params.slice(:name, :location))
     
-    redirect_to day_path(@day), notice: "Your changes were saved"
+    redirect_to day_path(@day)
   end
   
   def destroy

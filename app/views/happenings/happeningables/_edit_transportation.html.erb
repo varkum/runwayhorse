@@ -1,7 +1,7 @@
 <%= form_with model: happening, url: transportation_path(day: day), data: { controller: "edit-day", turbo: "false" }, class: "contents" do |form| %>
 	<div class="flex flex-col sm:flex-row py-1">
 		<div class="mr-2">
-			<%= form.select :date, options_for_select(happening.trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, happening.date), {}, class: "text-sm block rounded border-none outline outline-1 outline-gray-300" %>
+			<%= form.select :date, options_for_select(happening.trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, happening.date), {}, class: "ml-1 text-sm block rounded border-none outline outline-1 outline-gray-300" %>
 			
 			<p class="text-xs sm:text-sm italic w-1/4 sm:w-1/6 mt-2 sm:mt-0">
 				<%= form.time_field :time, value: happening.read_attribute(:time), class: "w-28 border-none rounded text-sm" %>
