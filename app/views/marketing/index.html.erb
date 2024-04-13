@@ -1,7 +1,7 @@
 <div class="flex flex-col justify-center gap-32">
 	<div class="flex flex-col items-center justify-center mt-20">
 		<h1 class="font-black text-5xl bg-gradient-to-r from-amber-700 to-orange-400 text-transparent bg-clip-text h-14">Everything about your trip in one place</h1>
-		<h2 class="font-medium text-2xl text-center mt-4">Forget about the Docs, Sheets, or Notes mess for putting your trip together</h2>
+		<h2 class="font-medium text-2xl text-center mt-4">Forget about the Docs, Sheets, or Notes mess to put your trip together</h2>
 		<button class="p-4 rounded-full text-white font-bold mt-8 bg-green-600 ">Try RunwayHorse for free</button>
 	</div>
 	
@@ -10,9 +10,9 @@
 			<p>
 				No one telling you where to go, what to do, or where to stay.
 			</p>
-			<p class="bg-yellow-300 w-fit p-1 pb-0 mt-4">Plan your trip like you always do.</p>
+			<p class="bg-yellow-200 w-fit mt-4">Plan your trip like you always do.</p>
 			
-			<p class="bg-yellow-300 w-fit p-1 pt-0 font-semibold">Then watch it come to life on RunwayHorse.</p>
+			<p class="bg-yellow-200 w-fit font-semibold">Then watch it come to life on RunwayHorse.</p>
 		</section>
 		<%=image_tag "plane.svg", class: "h-64 w-auto"%>
 	</div>
@@ -32,23 +32,28 @@
 			<p>No complex things you'll never use </p>
 			<p>No sketchy "partners"</p>
 			<p>No paying when you're not traveling</p>
-			<p class="font-medium text-amber-600 mt-4">Just a home for your scattered trip plans</p>
+			<p class="bg-yellow-200 w-fit font-semibold mt-4">Just a home for your scattered trip plans</p>
 		</section>
-		<div class="p-4 shadow-lg shadow-amber-600/60 rounded-xl text-center">
-			<h4>Pay when you need it</h4>
-			<p class="font-bold text-4xl">$19 per trip</p>
-			<ul>
-				<li>Lodging</li>
-				<li>Transportation</li>
+		<div class="border-2 border-gray-200 bg-orange-50 rounded-xl text-center max-w-sm mx-auto mt-12 text-slate-600">
+			<p class="font-extrabold text-5xl text-indigo-700 bg-orange-50 my-4">$19<span class="text-sm font-normal"> per trip</span></p>
+		
+			<p class="text-left mx-20 font-medium mb-4 mt-1">Included:</p>
+			<ul class="list-disc text-left mx-24">
+				<li>Lodging planner</li>
+				<li>Transportation planner</li>
 				<li>Day-by-day</li>
 				<li>Trip todos</li>
 				<li>Trip summary</li>
-				<li class="my-3 bg-yellow-300 w-fit px-1">Use your RunwayHorse Trip as long as you want<li>
+				<li class="font-semibold">Use your RunwayHorse Trip as long as you want</li>
 			</ul>
-			<div class="flex justify-evenly items-center">
+		
+			<div class="flex justify-evenly items-center p-4">
 				<%= link_to "Learn more", pricing_path, class: "font-semibold text-slate-600"%>
-				<button class="p-4 rounded-full bg-green-600 text-white font-semibold">Try for free</button>
+				<button class="px-4 py-1 rounded-full bg-green-600 text-white font-semibold">Try for free</button>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+	
