@@ -32,5 +32,6 @@
     <main class="container mx-auto h-[90vh] py-4 bg-amber-50" data-controller="users" data-is-signed-in="<%= Current.user.present? %>">
       <%= yield %>
     </main>
+		<%= render "marketing/footer" %>
   </body>
 </html>
