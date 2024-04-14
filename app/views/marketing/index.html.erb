@@ -1,30 +1,58 @@
 <div class="flex flex-col justify-center gap-32">
-	<div class="flex flex-col items-center justify-center mt-20">
+	<div class="flex flex-col items-center justify-center h-[500px]">
 		<h1 class="font-black text-5xl bg-gradient-to-r from-amber-700 to-orange-400 text-transparent bg-clip-text h-14">Everything about your trip in one place</h1>
 		<h2 class="font-medium text-2xl text-center mt-4">Forget about the Docs, Sheets, or Notes mess to put your trip together</h2>
-		<button class="p-4 rounded-full text-white font-bold mt-8 bg-green-600 ">Try RunwayHorse for free</button>
+		<button class="p-4 text-2xl rounded-full text-white font-bold mt-12 bg-green-600 ">Try RunwayHorse for free</button>
 	</div>
 	
-	<div class="flex flex-col">
-		<section class="text-xl w-2/3 ml-20">
-			<p>
+	<div class="flex flex-col p-0 m-0">
+		<section class="w-2/3 ml-20">
+			<p class="text-3xl font-bold">
 				No one telling you where to go, what to do, or where to stay.
 			</p>
-			<p class="bg-yellow-200 w-fit mt-4">Plan your trip like you always do.</p>
-			
-			<p class="bg-yellow-200 w-fit font-semibold">Then watch it come to life on RunwayHorse.</p>
+			<p class="mt-6 font-light text-xl">
+				RunwayHorse doesn't intrude on your trip planning. <strong class="font-bold">Plan your trip like you always do</strong>. Then watch it come to life on RunwayHorse.
+			</p>
+			<p class="mt-6 font-light text-xl">
+				It's a home for the important things for your trip, things that were scattered in your inbox, in some note on your phone, or in an unreadable sheet. All without the excess of other travel apps.
+			</p>
+			<p class="mt-6 font-light text-xl">
+				The result is a <strong class="font-bold">simple and nice-looking</strong> way to plan your trip:
+			</p>
 		</section>
 		<%= image_tag "marketing/home.png", class: "shadow-xl max-w-5xl h-auto mx-auto mt-12" %>
 	</div>
 	
-	<div class="flex flex-col" data-controller="features">
-		<section class="text-xl w-2/3 ml-20">
-			<h4 class="font-medium text-xl">The trip essentials</h4>
-			<p>Transportation | Lodging | Day-by-Day</p>
+	<div class="flex flex-col">
+		<section class="w-2/3 ml-20">
+			<p class="text-4xl font-bold">
+				The Transportation
+			</p>
+			<p class="mt-6 font-light text-xl">
+				All your flights, trains, and drives. See where you're going and how you're getting there.
+			</p>
 		</section>
-		<section>
-			All your flights, trains, and car rides in one place. Add ...
+		<%= image_tag "marketing/transportation.png", class: "shadow-xl max-w-5xl h-auto mx-auto mt-12" %>
+			
+		<section class="w-2/3 ml-20 mt-20">
+			<p class="text-4xl font-bold">
+				Part 2: Lodging
+			</p>
+			<p class="mt-6 font-light text-xl">
+				All hotels and Airbnbs. Add check-in info, links, and addresses. Remember the details about where you're staying without clicking through a thousand links.
+			</p>
 		</section>
+		<%= image_tag "marketing/lodging.png", class: "shadow-xl max-w-5xl h-auto mx-auto mt-12" %>
+		
+		<section class="w-2/3 ml-20 mt-20">
+			<p class="text-4xl font-bold">
+				Part 3: The Day-by-Day
+			</p>
+			<p class="mt-6 font-light text-xl">
+				The plan for each day. Add bookings, restaurants, trip todos, and notes. See your transportation, lodging, location, and tickets for each day.
+			</p>
+		</section>
+		<%= image_tag "marketing/day_by_day.png", class: "shadow-xl max-w-5xl h-auto mx-auto mt-12" %>
 	</div>
 	
 	<div class="w-4/5 mx-auto flex items-center justify-center">
