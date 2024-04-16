@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  pay_customer default_payment_processor: :stripe
   
   has_many :trips
   has_one :active_label

@@ -71,3 +71,7 @@ gem "tailwindcss-rails", "~> 2.3"
 gem "rubocop-rails-omakase", require: false, group: [ :development ]
 
 gem "rails_autolink", "~> 1.1"
+
+gem "pay"
+
+gem "stripe", "~> 10.0"
