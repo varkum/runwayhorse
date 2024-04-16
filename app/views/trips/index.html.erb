@@ -1,8 +1,9 @@
-<div class="w-full">
-	<%= link_to "Buy a trip", new_trip_path, class: "rounded-lg py-3 px-5 bg-green-600 text-white font-medium" %>
- 
+<div class="w-full flex flex-col items-center">
    <h1 class="font-bold text-2xl sm:text-4xl text-center">Trips</h1>
-    
+	 <%= link_to "Buy new", new_trip_path, class: "rounded-full py-1 px-2 bg-green-600 text-white font-medium mt-4" %>
+   <p class="font-medium text-gray-500 text-center text-sm mt-1">
+		 Make a trip current if it's the main trip you're working on
+	 </p>
   
 
   <div id="trips" class="min-w-full flex flex-wrap gap-4 justify-center mt-8">
