@@ -1,5 +1,6 @@
-<%= link_to trip_path(trip), class: "contents" do %>
-	<div id="<%= dom_id trip %>" class="w-68 max-w-sm rounded-lg bg-orange-50 text-center py-1 px-4">
+
+<div id="<%= dom_id trip %>" class="w-68 max-w-sm rounded-lg bg-orange-50 text-center py-1 px-4">
+	<%= link_to trip_path(trip), class: "contents" do %>
 	  <p class="text-slate-600 font-semibold text-lg">
 	    <%= trip.name %>
 	  </p>
@@ -7,12 +8,15 @@
 	  <p class="text-gray-500 mt-2">
 	    <%= human_date(trip.start_date) %> — <%= human_date(trip.end_date) %>
 	  </p>
-
-		<% unless trip.active? %>
-			<p class="mt-2 float-right rounded px-2 py-1 bg-indigo-300 text-sm font-medium">
-				Active
-			</p>
-		<% else %>
+	<% end %>
+	<% if trip == Current.user.active_trip %>
+		<p class="mt-2 float-right rounded px-2 py-1 bg-indigo-300 text-sm font-medium">
+			Active
+		</p>
+	<% else %>
+		<%= button_to active_label_path(trip: trip), method: :patch, class: "float-right mt-2" do %>
+			<p class="text-gray-400 text-xs">Make active</p>
 		<% end %>
-	</div>
-<% end %>
+	<% end %>
+</div>
+
