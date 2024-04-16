@@ -1,22 +1,18 @@
-<div id="<%= dom_id trip %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= trip.name %>
-  </p>
+<%= link_to trip_path(trip), class: "contents" do %>
+	<div id="<%= dom_id trip %>" class="w-68 max-w-sm rounded-lg bg-orange-50 text-center py-1 px-4">
+	  <p class="text-slate-600 font-semibold text-lg">
+	    <%= trip.name %>
+	  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Start:</strong>
-    <%= trip.start_date %>
-  </p>
+	  <p class="text-gray-500 mt-2">
+	    <%= human_date(trip.start_date) %> — <%= human_date(trip.end_date) %>
+	  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">End:</strong>
-    <%= trip.end_date %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this trip", trip, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this trip", edit_trip_path(trip), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+		<% unless trip.active? %>
+			<p class="mt-2 float-right rounded px-2 py-1 bg-indigo-300 text-sm font-medium">
+				Active
+			</p>
+		<% else %>
+		<% end %>
+	</div>
+<% end %>
