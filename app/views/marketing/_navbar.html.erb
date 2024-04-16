@@ -2,13 +2,13 @@
 	<%= link_to root_path, class: "absolute left-5" do %>
 		<div class="flex items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-7 sm:h-12 w-auto"%>
-			<span class="font-bold text-2xl inline">RunwayHorse</span>
+			<span class="font-bold text-xl sm:text-2xl inline">RunwayHorse</span>
 		</div>
 	<% end %>
 	
 	<div class="absolute right-5">
-		<%= link_to "Pricing", pricing_path, class: "mr-4 font-medium text-indigo-600" %>
-		<%= link_to "Try for free", "", class: " bg-green-600 text-white text-sm font-semibold p-2 rounded-full"%>
+		<%= link_to "Pricing", pricing_path, class: "mr-1 sm:mr-4 font-medium text-indigo-600 text-xs sm:text-base" %>
+		<%= link_to "Try for free", "", class: "bg-green-600 text-white text-xs sm:text-sm font-semibold p-2 rounded-full"%>
 	</div>
 	
 	
