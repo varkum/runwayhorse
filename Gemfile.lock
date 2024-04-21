@@ -176,8 +176,6 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pay (7.1.1)
-      rails (>= 6.0.0)
     pg (1.5.6)
     psych (5.1.2)
       stringio
@@ -306,7 +304,6 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
-  pay
   pg (~> 1.1)
   puma (>= 5.0)
   rails!
@@ -316,7 +313,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
-  stripe (~> 10.0)
+  stripe
   tailwindcss-rails (~> 2.3)
   turbo-rails
   tzinfo-data
