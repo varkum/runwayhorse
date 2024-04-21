@@ -1,32 +1,24 @@
-<%= form_with(model: trip, class: "contents") do |form| %>
-  <% if trip.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+<%= form_with(model: trip, url: trips_path(id: trip.id), method: :post, data: { controller: "trip-validations" }) do |form| %>
+  <div class="max-w-sm px-4 mx-auto">
 
-      <ul>
-        <% trip.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+	  <div class="my-5">
+	    <%= form.label :name, class: "font-bold text-slate-700" %>
+	    <%= form.text_field :name, value: "", placeholder: "Enter a trip name", required: "true", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+	  </div>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+	  <div class="my-5">
+	    <%= form.label :start_date, class: "font-bold text-slate-700" %>
+	    <%= form.date_field :start_date, value: Date.today, min: Date.today, required: true, class: "block w-36 border-none outline outline-1 outline-gray-300 rounded", data: { trip_validations_target: "start" } %>
+	  </div>
 
-  <div class="my-5">
-    <%= form.label :start %>
-    <%= form.date_field :start_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :end %>
-    <%= form.date_field :end_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+	  <div class="my-5">
+	    <%= form.label :end_date, class: "font-bold text-slate-700" %>
+	    <%= form.date_field :end_date, value: Date.tomorrow, required: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { trip_validations_target: "end", action: "input->trip-validations#validateDates"} %>
+	  </div>
+		<p class="mt-1 text-grey-500 text-sm font-semibold">Your trip can't be longer than 3 months</p>
+		
+	  <div class="text-center">
+	    <%= form.submit "Start planning your trip", class: "rounded-lg py-3 px-5 bg-green-600 text-white font-medium cursor-pointer" %>
+	  </div>
+	</div>
 <% end %>

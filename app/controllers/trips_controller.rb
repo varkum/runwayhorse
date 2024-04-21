@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[ show edit update destroy ]
+  before_action :set_trip, only: %i[ create show edit update destroy ]
 
   def index
     @trips = Trip.all
@@ -16,11 +16,10 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Current.user.trips.new(trip_params)
 
-    if @trip.save
+    if @trip.update!(trip_params)
       @trip.create_and_setup_days
-      redirect_to trip_url(@trip), notice: "Trip was successfully created." 
+      redirect_to trip_url(@trip), notice: "Welcome to your #{trip_params[:name]} home" 
     else
       render :new, status: :unprocessable_entity 
     end
