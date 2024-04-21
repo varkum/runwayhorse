@@ -20,16 +20,8 @@
 
   <body class="min-h-screen text-sm sm:text-base bg-amber-50 text-slate-800">
 		<%= render "marketing/navbar" %>
-		<div id="flash" class="relative">
-			<% if flash[:alert].present? %>
-				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-red-100 text-center text-red-500 font-medium rounded-full z-50" id="alert" data-controller="flash"><%= flash[:alert] %></p>
-			<% end %>
-			
-			<% if flash[:notice].present? %>
-				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-green-100 text-center text-green-500 font-medium rounded-full z-50" id="notice" data-controller="flash"><%= flash[:notice] %></p>
-			<% end %>
-		</div>
-    <main class="container mx-auto px-5 sm:px-0 bg-amber-50" data-controller="users" data-is-signed-in="<%= Current.user.present? %>">
+		
+    <main class="container mx-auto px-5 sm:px-0 bg-amber-50">
       <%= yield %>
     </main>
 		<%= render "marketing/footer" %>

@@ -1,5 +1,6 @@
 module ApplicationHelper
   def human_date(date, no_year: false)
+    return "No date" if date.nil?
     no_year ? date.strftime("%B %e") : date.strftime("%B %e, %Y")
   end
   

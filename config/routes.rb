@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     get "signup", to: "users#new"
     post "signup", to: "users#create"
     
-    get "checkout", to: "payments#new"
+    get "checkout", to: "checkouts#new"
+    
+    namespace :checkouts do
+      post "webhooks", to: "webhooks#create"
+    end
     
     patch "active_label", to: "active_labels#update"
   

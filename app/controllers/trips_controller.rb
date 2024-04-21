@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[ show edit update destroy ]
+  before_action :set_trip, only: %i[ create show edit update destroy ]
 
   def index
     @trips = Trip.all
@@ -9,18 +9,18 @@ class TripsController < ApplicationController
   end
 
   def new
-    @trip = Trip.new
+    @trip = Current.user.trips.last
   end
 
   def edit
   end
 
   def create
-    @trip = Current.user.trips.new(trip_params)
 
-    if @trip.save
+    if @trip.update!(trip_params)
       @trip.create_and_setup_days
-      redirect_to trip_url(@trip), notice: "Trip was successfully created." 
+      Current.user.active_label.update! trip: @trip
+      redirect_to trip_url(@trip), notice: "Your trip was created successfully" 
     else
       render :new, status: :unprocessable_entity 
     end

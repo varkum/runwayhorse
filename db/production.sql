@@ -1,1 +1,0 @@
-CREATE DATABASE hop_skip_production;

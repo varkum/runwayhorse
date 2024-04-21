@@ -72,6 +72,4 @@ gem "rubocop-rails-omakase", require: false, group: [ :development ]
 
 gem "rails_autolink", "~> 1.1"
 
-gem "pay"
-
-gem "stripe", "~> 10.0"
+gem "stripe"
