@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     
     get "checkout", to: "checkouts#new"
     
+    namespace :checkouts do
+      post "webhooks", to "webhooks#create"
+    end
+    
     patch "active_label", to: "active_labels#update"
   
     resources :trips, shallow: true do
