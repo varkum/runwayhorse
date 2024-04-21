@@ -5,10 +5,11 @@ class Checkouts::WebhooksController < ApplicationController
     checkout_event = verify_stripe_webhook
     
     if checkout_event["type"] == 'checkout.session.completed'
-      #fulfill trip
+      
       #sendout confirmation email
+      
       session = Stripe::Checkout::Session.retrieve({
-         id: checkout_event["data"]["object"]["id"]
+         id: checkout_event["data"]["object"]["id"],
          email: checkout_event["data"]["object"]["customer_details"]["email"]
        })
        
