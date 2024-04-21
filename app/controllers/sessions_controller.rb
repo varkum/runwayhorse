@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   
   def destroy
     session.delete(:user_id)
-    redirect_to signin_path
+    redirect_to signin_path, notice: "You've been signed out"
   end
 end

@@ -1,4 +1,4 @@
-<nav class="relative flex items-center justify-center p-4 bg-amber-100" data-controller="navbar">
+<nav class="relative flex items-center justify-center p-4 bg-amber-100 min-h-14" data-controller="navbar">
 	<%= link_to root_path, class: "absolute left-5" do %>
 		<div class="flex items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-7 sm:h-10 w-auto"%>
@@ -28,15 +28,18 @@
 			<%= link_to "Lodging", trip_lodgings_path(Current.user.active_trip) %>
 			<%= link_to "Days", day_path(Current.user.active_trip.current_day) %>
 		</div>
-		<div class="absolute right-2 sm:right-10">
+		<div class="absolute right-1">
 			<div name="admin-land" class= "relative flex flex-col relative">
 				<button class="self-end flex items-center font-bold rounded-full text-gray-500" data-action="click->navbar#toggleDropdown">
 					<%= Current.user.initials %>
 					<%= image_tag "vertical_ellipses.svg", class: "h-5 w-auto" %>
 				</button>
-				<div class="hidden absolute top-10 right-4 rounded-lg shadow divide-y py-2 bg-white w-24 text-center px-auto text-sm text-gray-500" data-navbar-target="dropdown">
-					<%= link_to "All trips", trips_path %>
-					<%= button_to "Sign out", signout_path, method: :delete %>
+				<div class="hidden absolute top-6 right-1 z-50 flex flex-col justify-center items-center gap-2 w-36 py-2 rounded-lg shadow-xl bg-white text-sm text-gray-500 transition ease-out duration-300" data-navbar-target="dropdown">
+					<%= link_to "Buy a trip", new_trip_path, class: "bg-green-600 rounded-full py-1 px-2 font-sembiold text-white"%>
+					<div>
+						<%= link_to "All trips", trips_path %>
+						<%= button_to "Sign out", signout_path, method: :delete, class: "text-red-600" %>
+					</div>
 				</div>
 			</div>
 		</div>
