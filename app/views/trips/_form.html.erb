@@ -19,7 +19,7 @@
 		    <%= form.date_field :end_date, value: Date.tomorrow, required: true, class: "block min-w-32 border-none outline outline-1 outline-gray-300 rounded", data: { trip_validations_target: "end", action: "input->trip-validations#validateDates"} %>
 			</div>
 	  </div>
-		<p class="mt-1 text-red-500 text-xs font-semibold" data-trip-validations-target="msg">Your trip can't be longer than 3 months</p>
+		<p class="hidden mt-1 text-red-500 text-xs font-semibold" data-trip-validations-target="msg">Your trip can't be longer than 3 months</p>
 		
 		
 	  
