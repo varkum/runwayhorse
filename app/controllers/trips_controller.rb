@@ -9,7 +9,7 @@ class TripsController < ApplicationController
   end
 
   def new
-    @trip = Trip.new
+    @trip = Current.user.trips.last
   end
 
   def edit
