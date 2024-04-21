@@ -4,6 +4,6 @@ class FulfillCheckout
     
     return if object.payment_status != "paid"
     
-    Rails.logger.info object.id
+    Rails.logger.info("HERE: #{object.id}")
   end
 end
