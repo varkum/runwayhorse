@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     get "signup", to: "users#new"
     post "signup", to: "users#create"
     
-    get "checkout", to: "payments#new"
-    
     patch "active_label", to: "active_labels#update"
   
     resources :trips, shallow: true do
