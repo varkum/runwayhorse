@@ -9,11 +9,10 @@ class Checkouts::WebhooksController < ApplicationController
       #sendout confirmation email
       
       session = Stripe::Checkout::Session.retrieve({
-         id: checkout_event["data"]["object"]["id"],
-         email: checkout_event["data"]["object"]["customer_details"]["email"]
+         id: checkout_event["data"]["object"]["id"]
        })
        
-       user = User.find_by(email: session.email)
+       user = User.find_by(email: checkout_event["data"]["object"]["customer_details"]["email"])
        user.trips.create! name: "Untitled trip", stripe_order_id: session.id
     end
     

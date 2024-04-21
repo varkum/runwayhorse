@@ -1,5 +1,5 @@
 <%= form_with(model: trip, url: trips_path(id: trip.id), method: :post, data: { controller: "trip-validations" }) do |form| %>
-  <div class="max-w-sm px-4 mx-auto bg-orange-50 rounded-2xl shadow-lg pt-2 pb-6 mt-4">
+  <div class="max-w-sm px-4 mx-auto bg-orange-50 rounded-2xl pt-2 pb-6 mt-4">
 
 	  <div class="my-5">
 	    <%= form.label :name, class: "font-bold text-slate-700" %>
