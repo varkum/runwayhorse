@@ -1,6 +1,5 @@
-
-<div id="<%= dom_id trip %>" class="w-68 max-w-sm rounded-lg bg-orange-50 text-center py-1 px-4">
-	<%= link_to trip_path(trip), class: "contents" do %>
+<div id="<%= dom_id trip %>" class="min-w-64 max-w-sm rounded-lg bg-orange-50 text-center py-1 px-4">
+	<%= link_to setup_or_show(trip), class: "contents" do %>
 	  <p class="text-slate-600 font-semibold text-lg">
 	    <%= trip.name %>
 	  </p>

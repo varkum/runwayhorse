@@ -19,6 +19,7 @@ class TripsController < ApplicationController
 
     if @trip.update!(trip_params)
       @trip.create_and_setup_days
+      Current.user.active_label.update! trip: @trip
       redirect_to trip_url(@trip), notice: "Welcome to your #{trip_params[:name]} home" 
     else
       render :new, status: :unprocessable_entity 
