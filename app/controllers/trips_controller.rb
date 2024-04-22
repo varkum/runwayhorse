@@ -16,13 +16,12 @@ class TripsController < ApplicationController
   end
 
   def create
-
     if @trip.update!(trip_params)
       @trip.create_and_setup_days
       Current.user.active_label.update! trip: @trip
-      redirect_to trip_url(@trip), notice: "Your trip was created successfully" 
+      redirect_to trip_url(@trip), notice: "Your trip was created successfully"
     else
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 

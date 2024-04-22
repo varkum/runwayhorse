@@ -39,11 +39,11 @@ class SometimesController < ApplicationController
   end
 
   private
-  
+
     def set_sometime
       @sometime = Sometime.find(params[:id])
     end
-    
+
     def set_trip
       @trip = Trip.find(params[:trip_id])
     end
