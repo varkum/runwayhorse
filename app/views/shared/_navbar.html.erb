@@ -6,28 +6,30 @@
 		</div>
 	<% end %>
 	<% if Current.user.present? %>
-		<div name="mobile-trip-buttons" class="sm:hidden flex w-2/3 items-end justify-evenly font-semibold text-slate-600">
-			<%= link_to trip_path(Current.user.active_trip) do %>
-				Home
-			<% end %>
-			<%= link_to trip_transportations_path(Current.user.active_trip) do %>
-				<%= image_tag "truck.svg", class: "w-6 h-auto"%>
-			<% end %>
-			<%= link_to trip_lodgings_path(Current.user.active_trip) do %>
-				<%= image_tag "home.svg", class: "w-6 h-auto"%>
-			<% end %>
-			<%= link_to day_path(Current.user.active_trip.current_day) do %>
-				<%= image_tag "calendar.svg", class: "w-6 h-auto"%>
-			<% end %>
-		</div>
-		<div name="trip-buttons" class="hidden sm:flex w-1/2 justify-evenly font-semibold text-slate-600">
-			<%= link_to trip_path(Current.user.active_trip) do %>
-				Home
-			<% end %>
-			<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
-			<%= link_to "Lodging", trip_lodgings_path(Current.user.active_trip) %>
-			<%= link_to "Days", day_path(Current.user.active_trip.current_day) %>
-		</div>
+		<% if Current.user.active_trip.days.present? %>
+			<div name="mobile-trip-buttons" class="sm:hidden flex w-2/3 items-end justify-evenly font-semibold text-slate-600">
+				<%= link_to trip_path(Current.user.active_trip) do %>
+					Home
+				<% end %>
+				<%= link_to trip_transportations_path(Current.user.active_trip) do %>
+					<%= image_tag "truck.svg", class: "w-6 h-auto"%>
+				<% end %>
+				<%= link_to trip_lodgings_path(Current.user.active_trip) do %>
+					<%= image_tag "home.svg", class: "w-6 h-auto"%>
+				<% end %>
+				<%= link_to day_path(Current.user.active_trip.current_day) do %>
+					<%= image_tag "calendar.svg", class: "w-6 h-auto"%>
+				<% end %>
+			</div>
+			<div name="trip-buttons" class="hidden sm:flex w-1/2 justify-evenly font-semibold text-slate-600">
+				<%= link_to trip_path(Current.user.active_trip) do %>
+					Home
+				<% end %>
+				<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
+				<%= link_to "Lodging", trip_lodgings_path(Current.user.active_trip) %>
+				<%= link_to "Days", day_path(Current.user.active_trip.current_day) %>
+			</div>
+		<% end %>
 		<div class="absolute right-1">
 			<div name="admin-land" class= "relative flex flex-col relative">
 				<button class="self-end flex items-center font-bold rounded-full text-gray-500" data-action="click->navbar#toggleDropdown">

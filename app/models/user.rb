@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
   
+  validates_presence_of :name, :email, :password, :password_confirmation
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates_uniqueness_of :email
+  validates :password, length: { minimum: 8 }
+  
   has_many :trips
   has_one :active_label
   
@@ -17,6 +22,7 @@ class User < ApplicationRecord
   private 
   
   def setup_active_trip
-    #create first trip and set active label
+    first_trip = trips.create! name: "Untitled trip"
+    create_active_label! trip_id: first_trip.id
   end
 end

@@ -4,7 +4,7 @@
 	<%= form_with model: @user, url: signup_path, class: "contents" do |form| %>
 		<div class="w-80 px-4">
 			<% if @user.errors.any? %>
-				<p><%= @user.errors.first.full_message %></p>
+				<p class="text-sm font-semibold text-red-500"><%= @user.errors.first.full_message %></p>
 			<% end %>
 			
 			<div class="my-5">
