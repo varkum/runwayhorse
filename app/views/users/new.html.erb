@@ -1,21 +1,37 @@
-<%= form_with model: @user, url: signup_path do |form| %>
-	<% if @user.errors.any? %>
-		<p><%= @user.errors.first.full_message %></p>
+<div class="flex flex-col items-center justify-center w-full h-[80vh] mt-4">
+	<h1 class="font-bold text-2xl text-center text-orange-600">Welcome to RunwayHorse</h1>
+
+	<%= form_with model: @user, url: signup_path, class: "contents" do |form| %>
+		<div class="w-80 px-4">
+			<% if @user.errors.any? %>
+				<p><%= @user.errors.first.full_message %></p>
+			<% end %>
+			
+			<div class="my-5">
+				<%= form.label :full_name, class: "font-bold text-slate-700" %>
+				<%= form.text_field :name, placeholder: "Enter your full name", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+			</div>
+			
+			<div class="my-5">
+				<%= form.label :email, class: "font-bold text-slate-700" %>
+				<%= form.email_field :email, placeholder: "Enter your email", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+			</div>
+	
+			<div class="my-5">
+				<%= form.label :password, class: "font-bold text-slate-700" %>
+				<p class="text-xs italic text-gray-500 mb-1">8 characters minimum please</p>
+				<%= form.password_field :password, placeholder: "Your password", required: true, minlength: 8, autocomplete: "new-password", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+			</div>
+	
+			<div class="my-5">
+				<%= form.label :password_confirmation, class: "font-bold text-slate-700" %>
+				<%= form.password_field :password_confirmation, placeholder: "And again", required: true, autocomplete: "new-password", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+			</div>
+	
+		  <div class="flex justify-center">
+		    <%= form.submit "Start your free trial", class: "rounded-3xl py-2 px-5 bg-indigo-600 text-white inline-block font-medium cursor-pointer" %>
+		  </div>
+			<p class="text-sm font-semibold text-slate-600 mt-1">You'll get access to one trip itinerary till XXX</p>
+		</div>
 	<% end %>
-	<div>
-		<%= form.label :email %>
-		<%= form.text_field :email %>
-	</div>
-	
-	<div>
-		<%= form.label :password %>
-		<%= form.password_field :password %>
-	</div>
-	
-	<div>
-		<%= form.label :password_confirmation %>
-		<%= form.password_field :password_confirmation %>
-	</div>
-	
-	<%= form.submit "Sign up"%>
-<% end %>
+</div>
