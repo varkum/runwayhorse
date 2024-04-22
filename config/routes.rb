@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
   
     # Defines the root path route ("/")
-    #root "trips#index"
+    get "/", to: "trips#index"
   end
   
   get "/404", to: "errors#not_found"

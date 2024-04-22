@@ -1,5 +1,5 @@
 <nav class="relative flex items-center justify-center p-4 bg-amber-100 min-h-14" data-controller="navbar">
-	<%= link_to root_path, class: "absolute left-5" do %>
+	<%= link_to "/", class: "absolute left-5" do %>
 		<div class="flex items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-7 sm:h-10 w-auto"%>
 			<span class="font-bold text-xl hidden lg:inline">RunwayHorse</span>
@@ -39,7 +39,7 @@
 				<div class="hidden absolute top-6 right-1 z-50 flex flex-col justify-center items-center gap-2 w-36 py-2 rounded-lg shadow-xl bg-white text-sm text-gray-500 transition ease-out duration-300" data-navbar-target="dropdown">
 					<%= link_to "Buy a trip", new_trip_path, class: "bg-green-600 rounded-full py-1 px-2 font-sembiold text-white"%>
 					<div>
-						<%= link_to "All trips", trips_path %>
+						<%= link_to "All trips", "/" %>
 						<%= button_to "Sign out", signout_path, method: :delete, class: "text-red-600" %>
 					</div>
 				</div>
