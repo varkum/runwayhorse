@@ -1,7 +1,4 @@
 <div class="px-2 sm:max-w-screen-lg h-full mx-auto text-center overflow">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
 	<div id="trip-header" class="w-full text-center">
 		<%= turbo_frame_tag "edit_trip_name", class: "contents" do %>
 			<%= link_to @trip.name, edit_trip_path(@trip), class: "font-semibold text-xl sm:text-2xl hover:bg-gray-200 p-2 rounded-lg" %>

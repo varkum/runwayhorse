@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: %i[ create show edit update destroy ]
 
   def index
-    @trips = Trip.all
+    @trips = Current.user.trips
   end
 
   def show
