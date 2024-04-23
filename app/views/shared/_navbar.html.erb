@@ -5,6 +5,7 @@
 			<span class="font-bold text-xl hidden lg:inline">RunwayHorse</span>
 		</div>
 	<% end %>
+	
 	<% if Current.user.present? %>
 		<% if Current.user.active_trip.days.present? %>
 			<div name="mobile-trip-buttons" class="sm:hidden flex w-2/3 items-end justify-evenly font-semibold text-slate-600">
@@ -30,6 +31,7 @@
 				<%= link_to "Days", day_path(Current.user.active_trip.current_day) %>
 			</div>
 		<% end %>
+		
 		<div class="absolute right-1">
 			<div name="admin-land" class= "relative flex flex-col relative">
 				<button class="self-end flex items-center font-bold rounded-full text-gray-500" data-action="click->navbar#toggleDropdown">

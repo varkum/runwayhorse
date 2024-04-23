@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, touch: true
 
   has_many :days, -> { order(date: :asc) }, dependent: :destroy
   has_many :happenings, -> { order(time: :asc) }, dependent: :destroy
@@ -12,8 +12,16 @@ class Trip < ApplicationRecord
     (end_date - start_date).to_i
   end
 
+  def in_progress?
+    (start_date..end_date).include?(Date.today)
+  end
+  
+  def has_happened?
+    Date.today > end_date
+  end
+  
   def current_day
-    active_day = days.find_by(date: Date.today) if (start_date..end_date).include?(Date.today)
+    active_day = days.find_by(date: Date.today) if in_progress?
     active_day || days.first
   end
 

@@ -1,5 +1,5 @@
 class Lodging < ApplicationRecord
-  belongs_to :trip
+  belongs_to :trip, touch: true
   has_many :days, -> { order(date: :asc) }, dependent: :nullify
 
   def assign_days(from:, to:)

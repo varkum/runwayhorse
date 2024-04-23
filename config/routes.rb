@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   constraints(subdomain: [ "", "www" ]) do
     root to: "marketing#index"
     get "/pricing", to: "marketing#pricing"
+    get "/faq", to: "marketing#faq"
   end
 
   constraints subdomain: "app" do

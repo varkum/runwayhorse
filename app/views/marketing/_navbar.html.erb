@@ -1,16 +1,15 @@
-<nav class="relative flex items-center justify-center p-4 bg-amber-50 min-h-24">
-	<%= link_to root_path, class: "absolute left-5" do %>
+<nav class="relative flex flex-col sm:flex-row items-center justify-center p-4 bg-amber-50 min-h-24">
+	<%= link_to root_path, class: "sm:absolute sm:left-5" do %>
 		<div class="flex items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-7 sm:h-12 w-auto"%>
 			<span class="font-bold text-xl sm:text-2xl inline">RunwayHorse</span>
 		</div>
 	<% end %>
 	
-	<div class="absolute right-5">
-		<%= link_to "Pricing", pricing_path, class: "mr-1 sm:mr-4 font-medium text-indigo-600 text-xs sm:text-base" %>
-		<%= link_to "Sign in", signin_url(subdomain: "app"), class: "mr-1 sm:mr-4 font-medium text-indigo-600 text-xs sm:text-base" %>
-		<%= link_to "Try for free", "http://app.localdomain.com:3000/signup", class: "bg-green-600 text-white text-xs sm:text-sm font-semibold p-2 rounded-full"%>
+	<div class="mt-4 sm:mt-0 sm:absolute sm:right-5">
+		<%= link_to "Pricing", pricing_path, class: "mr-4 font-medium text-indigo-600 text-sm sm:text-base" %>
+		<%= link_to "FAQ", faq_path, class: "mr-4 font-medium text-indigo-600 text-sm sm:text-base" %>
+		<%= link_to "Sign in", signin_url(subdomain: "app"), class: "mr-4 font-medium text-indigo-600 text-sm sm:text-base" %>
+		<%= link_to "Try for free", "http://app.localdomain.com:3000/signup", class: "hidden sm:inline bg-green-600 text-white text-xs sm:text-sm font-semibold p-2 rounded-full"%>
 	</div>
-	
-	
 </nav>

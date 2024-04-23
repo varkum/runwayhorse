@@ -1,6 +1,6 @@
 class Happening < ApplicationRecord
-  belongs_to :day
-  belongs_to :trip
+  belongs_to :day, touch: true
+  belongs_to :trip, touch: true
 
   delegated_type :happeningable, types: %w[ Transportation Activity ], dependent: :destroy
 

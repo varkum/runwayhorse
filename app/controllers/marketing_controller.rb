@@ -7,4 +7,7 @@ class MarketingController < ApplicationController
 
   def pricing
   end
+  
+  def faq
+  end
 end
