@@ -5,12 +5,12 @@
 		<div class="w-80 px-4">
 		  <div class="my-5">
 		    <%= form.label :email, class: "font-bold text-slate-700" %>
-		    <%= form.text_field :email, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+		    <%= form.text_field :email, required: "true", autocomplete: "email", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		  </div>
 
 		  <div class="my-5">
 		    <%= form.label :password, class: "font-bold text-slate-700" %>
-		    <%= form.password_field :password, autocomplete: "current-password", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+		    <%= form.password_field :password, required: "true", autocomplete: "current-password", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		  </div>
 
 		  <div class="flex justify-center">
