@@ -1,11 +1,15 @@
 class Trip < ApplicationRecord
+  include Trialable
+  
   belongs_to :user, touch: true
 
   has_many :days, -> { order(date: :asc) }, dependent: :destroy
   has_many :happenings, -> { order(time: :asc) }, dependent: :destroy
   has_many :lodgings
   has_many :sometimes, -> { order(completed: :asc, created_at: :desc) }
-
+  
+  has_one :active_label, dependent: :destroy
+  
   delegate :transportations, :activities, to: :happenings
 
   def length

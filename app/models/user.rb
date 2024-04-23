@@ -6,8 +6,9 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
   validates :password, length: { minimum: 8 }
 
-  has_many :trips
-  has_one :active_label
+  has_one :active_label, dependent: :destroy
+  has_many :trips, dependent: :destroy
+  
 
   after_create :setup_active_trip
 
@@ -24,5 +25,6 @@ class User < ApplicationRecord
   def setup_active_trip
     first_trip = trips.create! name: "Untitled trip"
     create_active_label! trip_id: first_trip.id
+    first_trip.activate_trial
   end
 end
