@@ -6,7 +6,7 @@ module Trip::Trialable
   end
   
   def activate_trial
-    create_trial! start_date: Date.today
+    create_trial! started_on: Date.today
   end
   
   def on_trial?

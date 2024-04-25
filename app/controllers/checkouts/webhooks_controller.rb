@@ -11,9 +11,15 @@ class Checkouts::WebhooksController < ApplicationController
       session = Stripe::Checkout::Session.retrieve({
          id: checkout_event["data"]["object"]["id"]
        })
-
-       user = User.find_by(email: checkout_event["data"]["object"]["customer_details"]["email"])
-       user.trips.create! name: "Untitled trip", stripe_order_id: session.id
+       
+       if session.client_reference_id
+         trial_trip = Trip.find(session.client_reference_id)
+         trial_trip.end_trial
+         trial_trip.update! stripe_order_id: session.id
+       else
+         user = User.find_by(email: session.customer_details.email)
+         user.trips.create! name: "Untitled trip", stripe_order_id: session.id
+       end
     end
 
     head :ok
