@@ -11,6 +11,8 @@ class Trip < ApplicationRecord
   has_one :active_label, dependent: :destroy
   
   delegate :transportations, :activities, to: :happenings
+  
+  broadcasts_refreshes
 
   def length
     (end_date - start_date).to_i

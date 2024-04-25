@@ -1,6 +1,8 @@
+<%= turbo_stream_from @trip %>
+
 <% if Current.user.active_trip.on_trial? %>
 	<div class="mt-[-16px] mb-2 block bg-neutral-100 text-xs sm:text-sm font-light p-1 text-center">
-		Your free trial ends on <%= human_date(Current.user.active_trip.trial.end_date) %>. <%= link_to "Buy your RunwayHorse trip today", checkout_path(trial_trip: Current.user.active_trip), class: "text-blue-500 font-semibold underline" %>. If you have any questions, <%= mail_to "hello@runwayhorse.com", "email us", class:"text-blue-500 font-semibold underline" %>.
+		Your free trial ends on <%= human_date(@trip.trial.end_date) %>. <%= link_to "Buy your RunwayHorse trip today", checkout_path(trial_trip: @trip), class: "text-blue-500 font-semibold underline" %>. If you have any questions, <%= mail_to "hello@runwayhorse.com", "email us", class:"text-blue-500 font-semibold underline" %>.
 	</div>
 <% end %>
 

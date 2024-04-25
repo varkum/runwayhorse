@@ -14,7 +14,7 @@ module Trip::Trialable
   end
   
   def end_trial
-    trial.destroy!
+    trial.destroy! if trial
   end
   
   def expired_trial?
