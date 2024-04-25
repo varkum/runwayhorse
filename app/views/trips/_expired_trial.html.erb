@@ -1,0 +1,5 @@
+<div class="w-full">
+	<p class="mx-auto max-w-sm px-4 font-medium text-gray-500">
+		Your trial has expired. <%= link_to "Buy your RunwayHorse trip now", checkout_path(trial_trip: trip), class: "text-blue-500 font-semibold underline" %>. If you have any questions, <%= mail_to "hello@runwayhorse.com", "email us", class:"text-blue-500 font-semibold underline" %>.
+	</p>
+</div>
