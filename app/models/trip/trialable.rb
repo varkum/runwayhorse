@@ -16,4 +16,8 @@ module Trip::Trialable
   def end_trial
     trial.destroy!
   end
+  
+  def expired_trial?
+    stripe_order_id.blank? && !on_trial?
+  end
 end
