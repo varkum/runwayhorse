@@ -1,7 +1,7 @@
 <p class="flex flex items-center justify-center px-4 py-2 text-gray-500">
 	<%= image_tag "map_pin.svg", class: "h-6 w-auto mr-1" %>
 	<%= turbo_frame_tag "location" do %>
-		<%= link_to edit_day_path, "admin-link": "true" do %>
+		<%= link_to edit_trip_day_path(trip, day), "admin-link": "true" do %>
 			<% if location.present? %>
 				<span>
 					<%= location %>

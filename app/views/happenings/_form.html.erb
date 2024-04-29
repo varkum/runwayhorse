@@ -1,4 +1,4 @@
-<%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym], day: day) do |form| %>
+<%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym], trip: trip, day: day) do |form| %>
 	<div class="max-w-sm mx-auto">
 		<% if happening.happeningable_name == "transportation" %>
 		  <div class="my-5">

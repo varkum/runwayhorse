@@ -1,4 +1,4 @@
-<%= form_with model: happening, url: transportation_path(day: day), data: { controller: "edit-day", turbo: "false" }, class: "contents" do |form| %>
+<%= form_with model: happening, url: trip_transportation_path(trip: trip, day: day), data: { controller: "edit-day", turbo: "false" }, class: "contents" do |form| %>
 	<div class="flex flex-col sm:flex-row py-1">
 		<div class="mr-2">
 			<%= form.select :date, options_for_select(happening.trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, happening.date), {}, class: "ml-1 text-sm block rounded border-none outline outline-1 outline-gray-300" %>

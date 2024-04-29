@@ -2,7 +2,7 @@
 	<%= image_tag "home.svg", class: "h-6 w-auto mr-1" %>
 		
 	<% if lodging.present? %>
-		<%= link_to edit_lodging_path(lodging, day: day) do %>
+		<%= link_to edit_trip_lodging_path(trip, lodging, day: day) do %>
 			<p class="max-w-40">
 				<%= lodging.address %> 
 				(<%=
