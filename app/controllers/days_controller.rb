@@ -1,4 +1,5 @@
 class DaysController < ApplicationController
+  before_action :set_trip
   before_action :set_day, only: %i[ show edit update ]
   before_action :redirect_if_trial_expired
   
@@ -15,9 +16,13 @@ class DaysController < ApplicationController
   end
 
   private
+  
+  def set_trip
+    @trip = Current.user.trips.find(params[:trip_id])
+  end
 
   def set_day
-    @day = Day.find(params[:id])
+    @day = @trip.days.find(params[:id])
   end
 
   def day_params

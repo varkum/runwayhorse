@@ -1,5 +1,5 @@
 class SometimesController < ApplicationController
-  before_action :set_trip, only: %i[ index new create ]
+  before_action :set_trip
   before_action :set_sometime, only: %i[ show edit update destroy ]
 
   def index
@@ -39,13 +39,13 @@ class SometimesController < ApplicationController
   end
 
   private
-
-    def set_sometime
-      @sometime = Sometime.find(params[:id])
+  
+    def set_trip
+      @trip = Current.user.trips.find(params[:trip_id])
     end
 
-    def set_trip
-      @trip = Trip.find(params[:trip_id])
+    def set_sometime
+      @sometime = @trip.sometimes.find(params[:id])
     end
 
     def sometime_params

@@ -57,7 +57,7 @@ class LodgingsController < ApplicationController
     if @day
       redirect_to day_path(@day), notice: notice
     else
-      redirect_to trip_lodgings_path(@trip || @lodging.trip), notice: notice
+      redirect_to trip_lodgings_path(@trip), notice: notice
     end
   end
 end

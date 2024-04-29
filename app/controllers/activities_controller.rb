@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_render_to_happenings
-  before_action :set_trip, only: %i[ index new create ]
+  before_action :set_trip
   before_action :set_day, except: :index
   before_action :set_happening, only: %i[ edit update destroy ]
   before_action :redirect_if_trial_expired
@@ -50,11 +50,11 @@ class ActivitiesController < ApplicationController
   end
 
   def set_day
-    @day = Day.find(params[:day])
+    @day = @trip.days.find(params[:day])
   end
 
   def set_happening
-    @happening = Happening.find(params[:id])
+    @happening = @trip.happenings.find(params[:id])
   end
 
   def activity_params

@@ -1,6 +1,6 @@
 class TransportationsController < ApplicationController
   before_action :set_render_to_happenings
-  before_action :set_trip, only: %i[ index new create ]
+  before_action :set_trip
   before_action :set_day, except: :index
   before_action :set_happening, only: %i[ edit update destroy ]
   before_action :redirect_if_trial_expired
@@ -47,15 +47,15 @@ class TransportationsController < ApplicationController
   end
 
   def set_trip
-    @trip = Trip.find(params[:trip_id])
+    @trip = Current.user.trips.find(params[:trip_id])
   end
 
   def set_day
-    @day = Day.find_by(id: params[:day])
+    @day = @trip.days.find_by(id: params[:day])
   end
 
   def set_happening
-    @happening = Happening.find(params[:id])
+    @happening = @trip.happenings.find(params[:id])
   end
 
   def transportation_params
@@ -66,7 +66,7 @@ class TransportationsController < ApplicationController
     if @day
       redirect_to day_path(@day), notice: notice
     else
-      redirect_to trip_transportations_path(@trip || @happening.trip), notice: notice
+      redirect_to trip_transportations_path(@trip), notice: notice
     end
   end
 end
