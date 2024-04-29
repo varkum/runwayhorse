@@ -13,7 +13,7 @@
 			</p>
 		<% end %>
 	<% else %>
-		<%= link_to new_trip_lodging_path(day.trip, day: day), "admin-link": "true" do %>
+		<%= link_to new_trip_lodging_path(trip, day: day), "admin-link": "true" do %>
 			<span class="font-light">Add lodging</span>
 		<% end %>
 	<% end %>

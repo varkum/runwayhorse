@@ -18,7 +18,7 @@
 				<%= link_to trip_lodgings_path(Current.user.active_trip) do %>
 					<%= image_tag "home.svg", class: "w-6 h-auto"%>
 				<% end %>
-				<%= link_to day_path(Current.user.active_trip.current_day) do %>
+				<%= link_to trip_day_path(Current.user.active_trip, Current.user.active_trip.current_day) do %>
 					<%= image_tag "calendar.svg", class: "w-6 h-auto"%>
 				<% end %>
 			</div>
@@ -28,7 +28,7 @@
 				<% end %>
 				<%= link_to "Transportation", trip_transportations_path(Current.user.active_trip) %>
 				<%= link_to "Lodging", trip_lodgings_path(Current.user.active_trip) %>
-				<%= link_to "Days", day_path(Current.user.active_trip.current_day) %>
+				<%= link_to "Days", trip_day_path(Current.user.active_trip, Current.user.active_trip.current_day) %>
 			</div>
 		<% end %>
 		

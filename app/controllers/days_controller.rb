@@ -12,7 +12,7 @@ class DaysController < ApplicationController
   def update
     @day.update!(day_params)
 
-    redirect_to day_path(@day)
+    redirect_to trip_day_path(@trip, @day)
   end
 
   private

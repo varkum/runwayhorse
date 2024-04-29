@@ -1,6 +1,6 @@
 class SometimesController < ApplicationController
   before_action :set_trip
-  before_action :set_sometime, only: %i[ show edit update destroy ]
+  before_action :set_sometime, only: :update
 
   def index
     @sometimes = @trip.sometimes.all
@@ -8,9 +8,6 @@ class SometimesController < ApplicationController
 
   def new
     @sometime = Sometime.new
-  end
-
-  def edit
   end
 
   def create
@@ -30,12 +27,6 @@ class SometimesController < ApplicationController
     end
 
     redirect_to trip_sometimes_path(@sometime.trip)
-  end
-
-  def destroy
-    @sometime.destroy!
-
-    redirect_to sometimes_url, notice: "Sometime was successfully destroyed."
   end
 
   private

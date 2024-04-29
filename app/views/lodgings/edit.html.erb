@@ -1,5 +1,12 @@
 <div class="mx-auto md:w-2/3 w-full mt-4">
   <h1 class="font-semibold text-3xl text-center">Update trip lodging</h1>
 	
-  <%= render "form", trip: @trip, lodging: @lodging, day: @day, url: lodging_path(@lodging, day: @day) %>
+  <%= render "form", trip: @trip, lodging: @lodging, day: @day, url: trip_lodging_path(@trip, @lodging, day: @day) %>
+	
+	<div class="relative max-w-sm px-4 mx-auto">
+		<%= button_to trip_lodging_path(@trip, @lodging, day: @day), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this lodging?" } }, class: "absolute bottom-1 right-4" do %>
+			<%= image_tag "trash.svg", class: "h-6 w-auto" %>
+		<% end %>
+	</div>
+	
 </div>

@@ -64,7 +64,7 @@ class TransportationsController < ApplicationController
 
   def redirect_to_origin(notice: nil)
     if @day
-      redirect_to day_path(@day), notice: notice
+      redirect_to trip_day_path(@trip, @day), notice: notice
     else
       redirect_to trip_transportations_path(@trip), notice: notice
     end

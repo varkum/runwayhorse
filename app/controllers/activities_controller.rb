@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
       notes: activity_params[:notes]
       )
 
-    redirect_to day_path(@day), notice: "Activity added successfully"
+    redirect_to trip_day_path(@trip, @day), notice: "Activity added successfully"
   end
 
   def edit
@@ -30,13 +30,13 @@ class ActivitiesController < ApplicationController
   def update
     @happening.update_meta_attributes!(activity_params.slice(:date, :time, :notes)) && @happening.activity.update!(activity_params.slice(:name, :location))
 
-    redirect_to day_path(@day)
+    redirect_to trip_day_path(@trip, @day)
   end
 
   def destroy
     @happening.destroy!
 
-    redirect_to day_path(@day), notice: "Activity was deleted successfully"
+    redirect_to trip_day_path(@trip, @day), notice: "Activity was deleted successfully"
   end
 
   private

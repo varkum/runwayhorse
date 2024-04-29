@@ -8,7 +8,7 @@
 			<%= turbo_frame_tag "new_sometimes"  %>
 			<div id="sometimes_list">
 				<% if @sometimes.any? %>
-					<%= render @sometimes %>
+					<%= render partial: "sometime", collection: @sometimes, as: :sometime, locals: { trip: @trip } %>
 				<% else %>
 					<p class="font-light text-gray-500 mt-4">
 						Your trip todos and notes go here. Add things you want to do sometime, items to remember, food to try, etc.
