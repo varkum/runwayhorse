@@ -15,7 +15,8 @@ class Trip < ApplicationRecord
   broadcasts_refreshes
 
   def length
-    (end_date - start_date).to_i
+    number_of_days = (end_date - start_date).to_i
+    number_of_days.zero? 1 : number_of_days
   end
 
   def in_progress?
