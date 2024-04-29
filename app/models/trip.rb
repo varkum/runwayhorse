@@ -16,7 +16,7 @@ class Trip < ApplicationRecord
 
   def length
     number_of_days = (end_date - start_date).to_i
-    number_of_days.zero? 1 : number_of_days
+    number_of_days.zero? ? 1 : number_of_days
   end
 
   def in_progress?
