@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
     patch "active_label", to: "active_labels#update"
 
-    resources :trips, shallow: true do
+    resources :trips do
       resources :days
       resources :transportations
       resources :activities

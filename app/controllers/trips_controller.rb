@@ -43,7 +43,7 @@ class TripsController < ApplicationController
   private
 
     def set_trip
-      @trip = Trip.find(params[:id])
+      @trip = Current.user.trips.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

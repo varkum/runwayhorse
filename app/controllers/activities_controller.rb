@@ -46,7 +46,7 @@ class ActivitiesController < ApplicationController
   end
 
   def set_trip
-    @trip = Trip.find(params[:trip_id])
+    @trip = Current.user.trips.find(params[:trip_id])
   end
 
   def set_day

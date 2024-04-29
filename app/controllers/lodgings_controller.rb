@@ -1,5 +1,5 @@
 class LodgingsController < ApplicationController
-  before_action :set_trip, only: %i[ index new create ]
+  before_action :set_trip
   before_action :set_day, except: :index
   before_action :set_lodging, only: %i[ edit update destroy ]
   before_action :redirect_if_trial_expired
@@ -38,15 +38,15 @@ class LodgingsController < ApplicationController
   private
 
   def set_trip
-    @trip = Trip.find(params[:trip_id])
+    @trip = Current.user.trips.find(params[:trip_id])
   end
 
   def set_lodging
-    @lodging = Lodging.find(params[:id])
+    @lodging = @trip.lodgings.find(params[:id])
   end
 
   def set_day
-    @day = Day.find_by(id: params[:day])
+    @day = @trip.days.find_by(id: params[:day])
   end
 
   def lodging_params
