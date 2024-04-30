@@ -182,6 +182,11 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.6)
+    postmark (1.25.0)
+      json
+    postmark-rails (0.22.1)
+      actionmailer (>= 3.0.0)
+      postmark (>= 1.21.3, < 2.0)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -317,6 +322,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   pg (~> 1.1)
+  postmark-rails
   puma (>= 5.0)
   rails!
   rails_autolink (~> 1.1)

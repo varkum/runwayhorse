@@ -75,3 +75,5 @@ gem "rails_autolink", "~> 1.1"
 gem "stripe"
 
 gem "solid_queue"
+
+gem "postmark-rails"
