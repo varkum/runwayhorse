@@ -1,4 +1,4 @@
-class CheckoutsController < ApplicationController
+class CheckoutsController < ApplicationController 
   def new
     session = Stripe::Checkout::Session.create({
       customer_email: Current.user.email,
