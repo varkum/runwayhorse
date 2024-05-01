@@ -8,7 +8,12 @@ class TransactionsMailer < ApplicationMailer
   
   def trial_almost_done
     @user = params[:user]
-    mail(to: @user.email, subject: "Your RunwayHorse Trial is Almost Over")
+    mail(to: @user.email, subject: "Your RunwayHorse Trial Expires Soon")
+  end
+  
+  def trial_done
+    @user = params[:user]
+    mail(to: @user.email, subject: "Your RunwayHorse Trial has Expired")
   end
   
   def receipt
