@@ -32,7 +32,7 @@ module RunwayHorse
       api_token: Rails.application.credentials.postmark_api_token
     }
     
-    config.action_mailer.default_url_options = { host: 'http://app.localdomain.com' }
+    config.action_mailer.default_url_options = { host: 'http://app.localdomain.com:3000' }
     
   end
 end
