@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RunwayHorse</title>
+    <title>RunwayHorse - Put together your travels effortlessly</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="handheldfriendly" content="true">
 		<meta name="description" content="RunwayHorse is the easy and beautiful way to organize your trip plans">
@@ -9,20 +9,20 @@
 		<meta property="og:site_name" content="RunwayHorse">
 		<meta property="og:title" content="Put together your travels effortlessly">
 		<meta property="og:description" content="RunwayHorse is the easy and beautiful way to organize your trip plans">
-		<meta property="og:image" content=<%= asset_path("opengraph.png") %>>
+		<meta property="og:image" content="<%= asset_path('opengraph.png') %>">
 		<meta property="og:url" content="https://www.runwayhorse.com/">
 		<meta property="og:type" content="website">
 		
 		<meta name="twitter:title" content="Put together your travels effortlessly">
 		<meta name="twitter:description" content="RunwayHorse is the easy and beautiful way to organize your trip plans">
-		<meta name="twitter:image" content=<%= asset_path("opengraph.png") %>>
+		<meta name="twitter:image" content="<%= asset_path('opengraph.png') %>">
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:creator" content="@varunkumariam">
 		<meta name="twitter:image:alt" content="RunwayHorse">
 		
 		<link rel="canonical" href="https://www.runwayhorse.com/">
-		<link rel="apple-touch-icon" href="/assets/images/general/apple-touch-icon.png">
-		<link rel="mask-icon" href="/assets/images/general/mask-icon.svg" color="#5522FA">
+		<link rel="apple-touch-icon" href="<%= asset_path('logo.png') %>">
+		<link rel="mask-icon" href="<%= asset_path('logo.png') %>">
 		
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -30,9 +30,6 @@
 
     <%= favicon_link_tag "favicon.png" %>
    
-	 	
-		
-		
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 		
