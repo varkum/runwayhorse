@@ -15,6 +15,10 @@ class User < ApplicationRecord
   def initials
     name.split(" ").map { |part| part[0].upcase }.join
   end
+  
+  def first_name
+    name.split(" ").first
+  end
 
   def active_trip
     active_label.trip
