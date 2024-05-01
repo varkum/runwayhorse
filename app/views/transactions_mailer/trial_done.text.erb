@@ -2,7 +2,7 @@ Your RunwayHorse trial has ended
 
 Thanks for trying RunwayHorse, <%= @user.first_name %>. Your free trial has ended. Buy a trip to continue planning:
 
-<%= "Buy a RunwayHorse Trip", checkout_url(trial_trip: @trip) %>
+<%= link_to "Buy a RunwayHorse Trip", checkout_url(trial_trip: @trip) %>
                 
 
 Thanks for giving RunwayHorse a try. You can reply to this email or message me anytime at hello@runwayhorse.com with any comments, questions, or feedback.

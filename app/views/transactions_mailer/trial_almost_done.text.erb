@@ -2,7 +2,7 @@ Your RunwayHorse trial ends in 2 days
 
 Thanks for trying RunwayHorse, <%= @user.first_name %>. Buy the trip you're working on before your trial ends:
 
-<%= "Buy a RunwayHorse Trip", checkout_url(trial_trip: @trip) %>
+<%= link_to "Buy a RunwayHorse Trip", checkout_url(trial_trip: @trip) %>
                 
 If you didn't get a chance to fully try out the product or need a little more time to evaluate, let me know. Reply to this email and I'll extend your trial period.
 
