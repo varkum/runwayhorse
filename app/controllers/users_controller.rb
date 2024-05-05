@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      TransactionMailer.with(user: @user).welcome.deliver_later
+      TransactionsMailer.with(user: @user).welcome.deliver_later
       redirect_to new_trip_path
     else
       render :new, status: :unprocessable_entity
