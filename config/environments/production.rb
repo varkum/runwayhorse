@@ -89,6 +89,7 @@ Rails.application.configure do
 
   config.hosts << "app.runwayhorse.com"
   config.hosts << "runwayhorse.com"
+  config.hosts << "y9n9e.hatchboxapp.com"
   
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
