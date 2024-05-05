@@ -91,6 +91,9 @@ Rails.application.configure do
   config.hosts << "runwayhorse.com"
   config.hosts << "y9n9e.hatchboxapp.com"
   
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
