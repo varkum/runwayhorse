@@ -27,17 +27,17 @@
 		<%= render "shared/navbar" %>
 		<div id="flash" class="relative">
 			<% if flash[:alert].present? %>
-				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-red-100 text-center text-red-500 font-medium rounded-full z-50" id="alert" data-controller="flash"><%= flash[:alert] %></p>
+				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-red-100 text-center text-red-500 font-medium rounded-full z-50 fade-out" id="alert" data-controller="flash"><%= flash[:alert] %></p>
 			<% end %>
 			<% if flash[:notice].present? %>
-				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-green-100 text-center text-green-500 font-medium rounded-full z-50" id="notice" data-controller="flash"><%= flash[:notice] %></p>
+				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-green-100 text-center text-green-500 font-medium rounded-full z-50 fade-out" id="notice" data-controller="flash"><%= flash[:notice] %></p>
 			<% end %>
 		</div>
 		
-    <main class="container mx-auto h-[90vh] py-4 bg-white rounded shadow-lg overflow-auto">
+    <main class="relative container mx-auto min-h-[90vh] pt-4 pb-16 bg-white rounded shadow-lg overflow-auto">
       <%= yield %>
-			<p class="text-xs text-slate-500 text-right mt-4 mr-2 py-1 mb-[-16px]"><%= mail_to "hello@runwayhorse.com", "Email us", class: "text-indigo-500 font-semibold" %> for support</p>
+			<p class="absolute bottom-1 right-1 text-xs text-slate-500 text-right mr-2"><%= mail_to "hello@runwayhorse.com", "Email us", class: "text-indigo-500 font-semibold" %> for support</p>
     </main>
-
+		
   </body>
 </html>
