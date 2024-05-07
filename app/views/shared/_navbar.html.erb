@@ -38,11 +38,11 @@
 					<%= Current.user.initials %>
 					<%= image_tag "vertical_ellipses.svg", class: "h-5 w-auto" %>
 				</button>
-				<div class="hidden absolute top-6 right-1 z-50 flex flex-col justify-center items-center gap-2 w-36 py-2 rounded-lg shadow-xl bg-white text-sm text-gray-500 fade-in" data-navbar-target="dropdown">
+				<div class="hidden absolute top-6 right-1 z-50 flex flex-col justify-center items-center gap-2 w-44 py-2 rounded-lg shadow-xl bg-white text-sm text-gray-500 fade-in" data-navbar-target="dropdown">
 					<%= link_to "Buy a trip", new_trip_path, class: "bg-green-600 rounded-full py-1 px-2 font-sembiold text-white"%>
-					<div>
-						<%= link_to "All trips", "/" %>
-						<%= button_to "Sign out", signout_path, method: :delete, class: "text-red-600" %>
+					<div class="w-full text-center">
+						<%= link_to "All trips", root_path %>
+						<%= button_to "Sign out", signout_path, method: :delete, class: "pt-2 mt-2 text-red-600 border-t border-grey-500 font-semibold w-full" %>
 					</div>
 				</div>
 			</div>
