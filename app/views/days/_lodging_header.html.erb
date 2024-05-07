@@ -1,15 +1,15 @@
-<div class="flex text-wrap justify-center px-4 py-2 text-gray-500">
+<div class="flex text-wrap justify-center items-start px-4 py-2 text-gray-500">
 	<%= image_tag "home.svg", class: "h-6 w-auto mr-1" %>
 		
 	<% if lodging.present? %>
 		<%= link_to edit_trip_lodging_path(trip, lodging, day: day) do %>
 			<p class="max-w-40">
 				<%= lodging.address %> 
-				(<%=
+				<%=
 					auto_link(lodging.link, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
-						truncate(text, length: 0, omission: 'link')
+						truncate(text, length: 0, omission: '(link)')
 					end
-					%>)
+					%>
 			</p>
 		<% end %>
 	<% else %>
