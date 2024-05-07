@@ -34,8 +34,10 @@
 			<% end %>
 		</div>
 		
-    <main class="container mx-auto h-[90vh] py-4 bg-white rounded shadow-lg overflow-scroll">
+    <main class="container mx-auto h-[90vh] py-4 bg-white rounded shadow-lg overflow-auto">
       <%= yield %>
+			<p class="text-xs text-slate-500 text-right mt-4 mr-2 py-1 mb-[-16px]"><%= mail_to "hello@runwayhorse.com", "Email us", class: "text-indigo-500 font-semibold" %> for support</p>
     </main>
+
   </body>
 </html>
