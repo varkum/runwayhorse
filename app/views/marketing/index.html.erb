@@ -2,7 +2,7 @@
 	<div class="relative flex flex-col items-center justify-center h-[500px] sm:w-2/3 mx-auto">
 		<h1 class="font-black text-4xl lg:text-5xl text-center bg-gradient-to-r from-amber-700 to-orange-400 text-transparent bg-clip-text min-h-fit py-1">Put together your travels effortlessly</h1>
 		<h2 class="font-base text-xl lg:text-2xl text-center mt-8">RunwayHorse is the <strong>easy</strong> and <strong>beautiful</strong> way to <strong>organize your trip plans</strong> so that the Docs, Sheets, and Notes mess can finally be left behind</h2>
-		<button class="p-4 text-xl lg:text-2xl rounded-full text-white font-bold mt-12 bg-green-600 ">Try RunwayHorse for free</button>
+		<%= button_to "Try RunwayHorse for free", signup_path, class: "p-4 text-xl lg:text-2xl rounded-full text-white font-bold mt-12 bg-green-600" %>
 		<%= image_tag "down_arrow.svg", class: "absolute bottom-0 h-8 w-auto opacity-30"%>
 	</div>
 	
@@ -83,7 +83,7 @@
 		
 				<div class="flex justify-evenly items-center p-4 text-base">
 					<%= link_to "Learn more", pricing_path, class: "font-semibold text-slate-600"%>
-					<button class="px-4 py-1 rounded-full bg-green-600 text-white font-semibold">Try for free</button>
+					<%= button_to "Try RunwayHorse for free", signup_path, class: "p-4 text-xl lg:text-2xl rounded-full text-white font-bold mt-12 bg-green-600" %>
 				</div>
 			</div>
 		</section>
