@@ -32,6 +32,22 @@
 .fade-out {
 	animation: fadeOut 0.75s ease-out 2s;
 }
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0; /* Start faded out */
+  }
+  100% {
+    transform: translateX(0); /* End at the original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.3s ease-out forwards;
+}
+
 /*
 
 @layer components {
