@@ -4,7 +4,7 @@ class Trial < ApplicationRecord
   broadcasts_refreshes
   
   def end_date
-    started_on + 5.days
+    started_on + 7.days
   end
     
   def ends_tomorrow?
