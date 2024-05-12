@@ -1,9 +1,10 @@
 <%= form_with model: [ trip, lodging ], url: url do |form| %>
-	<div class="max-w-sm px-4 mx-auto">
-		<div class="my-6 flex items-center justify-center">
-			<%= form.select :start, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "text-xs sm:text-base min-w-32 block shadow rounded-md border border-gray-200 outline-none" %>
+	<div class="max-w-sm px-4 mx-auto pt-5">
+		<%= form.label :dates, class: "font-bold text-slate-700" %>
+		<div class="mb-5 flex items-center">
+			<%= form.select :start, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "text-xs sm:text-base min-w-32 block rounded-md border border-gray-200 outline-none" %>
 			<span class="mx-2">—</span>
-			<%= form.select :end, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "text-xs sm:text-base min-w-32 block shadow rounded-md border border-gray-200 outline-none" %>
+			<%= form.select :end, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }), {}, class: "text-xs sm:text-base min-w-32 block rounded-md border border-gray-200 outline-none" %>
 		</div>
 	
 		<div class="my-5">
