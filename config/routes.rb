@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     post "signup", to: "users#create"
 
     get "checkout", to: "checkouts#new"
+    
+    resources :password_resets, only: %i[ new create edit update ]
 
     namespace :checkouts do
       post "webhooks", to: "webhooks#create"

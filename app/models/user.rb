@@ -12,7 +12,7 @@ class User < ApplicationRecord
   after_create :setup_active_trip
   
   generates_token_for :password_reset, expires_in: 15.minutes do
-    password_salt&.last(10)
+    password_digest&.last(10)
   end
 
   def initials
