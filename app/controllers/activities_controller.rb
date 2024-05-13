@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
   def destroy
     @happening.destroy!
 
-    redirect_to trip_day_path(@trip, @day), notice: "Activity was deleted successfully"
+    redirect_to trip_day_path(@trip, @day), notice: "Activity deleted successfully"
   end
 
   private
