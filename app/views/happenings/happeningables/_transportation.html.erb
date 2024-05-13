@@ -35,7 +35,7 @@
 
 			  <div class="flex items-center gap-2 my-2">
 					<%= image_tag "date.svg", class: "h-4 w-auto inline"%>
-			    <%= human_date(happening.date, no_year: true) %>
+			    <%= happening&.date&.strftime("%a, %b. %d") %>
 				</div>
 		  </div>
 

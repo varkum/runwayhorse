@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def human_date(date, no_year: false)
+  def human_date(date, no_year: false, show_day: false)
     return "No date" if date.nil?
-    no_year ? date.strftime("%B %e") : date.strftime("%B %e, %Y")
+    no_year ? date.strftime("%A, %B %e") : date.strftime("%B %e, %Y")
   end
 
   def human_time(time)
