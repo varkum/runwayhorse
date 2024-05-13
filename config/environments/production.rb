@@ -90,6 +90,8 @@ Rails.application.configure do
   config.hosts << "app.runwayhorse.com"
   config.hosts << "runwayhorse.com"
   config.hosts << "y9n9e.hatchboxapp.com"
+  config.hosts << "5.161.86.234"
+  config.hosts << "5.161.86.234:80"
   
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true

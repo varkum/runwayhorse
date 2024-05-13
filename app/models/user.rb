@@ -9,8 +9,11 @@ class User < ApplicationRecord
   has_one :active_label, dependent: :destroy
   has_many :trips, dependent: :destroy
   
-
   after_create :setup_active_trip
+  
+  generates_token_for :password_reset, expires_in: 15.minutes do
+    password_salt&.last(10)
+  end
 
   def initials
     name.split(" ").map { |part| part[0].upcase }.join
