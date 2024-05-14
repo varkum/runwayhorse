@@ -5,7 +5,7 @@
 	<%= form_with(url: password_resets_path, class: "contents") do |form| %>
 		<div class="w-80 px-4">
 		  <div class="my-5">
-		    <%= form.email_field :email, required: "true", autofocus: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+		    <%= form.email_field :email, required: "true", autofocus: true, autocapitalize: "off", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
 		  </div>
 
 		  <div class="flex flex-col items-center justify-center">

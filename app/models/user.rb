@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
   validates :password, length: { minimum: 8 }
 
+  normalizes :email, with: -> email { email.strip.downcase }
+  
   has_one :active_label, dependent: :destroy
   has_many :trips, dependent: :destroy
   
