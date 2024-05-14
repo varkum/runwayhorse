@@ -23,6 +23,7 @@ class PasswordResetsController < ApplicationController
     if @user.update password: params[:password], password_confirmation: params[:password_confirmation]
       redirect_to signin_path, notice: "Your password was successfully reset"
     else
+      flash[:alert] = "Password doesn't match confirmation"
       render :edit, status: :unprocessable_entity
     end
   end
