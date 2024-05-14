@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     get "checkout", to: "checkouts#new"
     
-    resources :password_resets, only: %i[ new create edit update ]
+    resource :password_resets, only: %i[ new create edit update ]
 
     namespace :checkouts do
       post "webhooks", to: "webhooks#create"

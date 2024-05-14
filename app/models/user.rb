@@ -11,9 +11,7 @@ class User < ApplicationRecord
   
   after_create :setup_active_trip
   
-  generates_token_for :password_reset, expires_in: 15.minutes do
-    password_digest&.last(10)
-  end
+  generates_token_for :password_reset, expires_in: 15.minutes
 
   def initials
     name.split(" ").map { |part| part[0].upcase }.join
