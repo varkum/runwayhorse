@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resources :lodgings
       resources :sometimes, except: %i[ show edit destroy ]
       resources :summaries, module: "trips", only: [ :index ]
+      resources :shares, module: "trips"
     end
 
     # Defines the root path route ("/")
