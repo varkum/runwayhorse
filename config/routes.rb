@@ -36,8 +36,9 @@ Rails.application.routes.draw do
     end
     
     namespace "share" do
-      resources :trips, only: %i[ show ]
-      resources :days, :transportations, :activities, :lodgings, :sometimes, :summaries, only: %i[ index show ]    
+      resources :trips, only: %i[ show ] do
+        resources :days, :transportations, :activities, :lodgings, :sometimes, :summaries, only: %i[ index show ]
+      end
     end
     
     # Defines the root path route ("/")
