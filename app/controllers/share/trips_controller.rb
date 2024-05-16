@@ -9,6 +9,6 @@ class Share::TripsController < ApplicationController
   private
   
   def set_trip
-    @trip = Trip.find_by_token_for(:sharing, params[:trip])
+    @trip = Trip.find_by_token_for(:sharing, params[:id])
   end
 end

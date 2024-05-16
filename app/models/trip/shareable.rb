@@ -1,4 +1,6 @@
-module Shareable < ActiveSupport::Concern
+module Trip::Shareable
+  extend ActiveSupport::Concern
+  
   included do
     generates_token_for :sharing do
       name&.last(5)
