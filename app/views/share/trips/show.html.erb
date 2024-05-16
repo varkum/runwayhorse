@@ -36,8 +36,8 @@
 			<% end %>
 	  </div>
 
-		<%# turbo_frame_tag "summary", class: "contents", src: share_trip_summaries_path(trip_id: @trip_token) do %>
+		<%= turbo_frame_tag "summary", class: "contents", src: share_trip_summaries_path(trip_id: @trip_token) do %>
 			<%= image_tag "spinner.gif", class: "h-6 w-auto mx-auto mt-8" %>
-		<% #end %>
+		<% end %>
 	</div>
 </div>
