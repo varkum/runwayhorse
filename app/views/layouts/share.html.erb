@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-full">
   <head>
-    <title>RunwayHorse</title>
+    <title>RunwayHorse Trip</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="handheldfriendly" content="true">
 		<meta name="description" content="RunwayHorse is the easy and beautiful way to organize your trip plans">
@@ -24,16 +24,7 @@
   </head>
 
   <body class="h-full text-sm sm:text-base bg-amber-50 text-slate-800">
-		<%= render "shared/navbar" %>
-		<div id="flash" class="relative">
-			<% if flash[:alert].present? %>
-				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-red-100 text-center text-red-500 font-medium rounded-full z-50 fade-out" id="alert" data-controller="flash"><%= flash[:alert] %></p>
-			<% end %>
-			<% if flash[:notice].present? %>
-				<p class="absolute right-0 left-0 top-5 w-fit mx-auto py-2 px-3 bg-green-100 text-center text-green-500 font-medium rounded-full z-50 fade-out" id="notice" data-controller="flash"><%= flash[:notice] %></p>
-			<% end %>
-		</div>
-		
+		<%= render "share/navbar" %>
     <main class="relative container mx-auto min-h-[90vh] pt-4 pb-16 bg-white rounded shadow-lg overflow-auto">
       <%= yield %>
 			<p class="absolute bottom-1 right-1 text-xs text-slate-500 text-right mr-2"><%= mail_to "hello@runwayhorse.com", "Email us", class: "text-indigo-500 font-semibold" %> for support</p>

@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
     
     namespace "share" do
-      get "trip/:trip_id", to: "trips#show"
+      resource :trips, only: %i[ show ]
       resources :days, :transportations, :activities, :lodgings, :sometimes, :summaries, only: %i[ index show ]    
     end
     

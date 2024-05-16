@@ -3,7 +3,7 @@
 		<div class="flex rounded-md border border-grey-500">
 			<p>testing</p>
 		
-			<%= link_to share_url(trip: @trip_token), class: "p-2 text-xs text-slate-400" %>
+			<%= link_to trip_share_url(trip: @trip_token), class: "p-2 text-xs text-slate-400" %>
 			<button class="text-xs font-semibold text-center bg-gray-200 p-2">Copy</button>
 		</div>
 		<%= link_to :back, class: "ml-2 font-semibold text-sm text-green-600" do %>
