@@ -32,9 +32,14 @@ Rails.application.routes.draw do
       resources :lodgings
       resources :sometimes, except: %i[ show edit destroy ]
       resources :summaries, module: "trips", only: [ :index ]
-      resources :shares, module: "trips"
+      resources :shares, module: "trips", only: [ :new ]
     end
-
+    
+    namespace "share" do
+      get "trip/:trip_id", to: "trips#show"
+      resources :days, :transportations, :activities, :lodgings, :sometimes, :summaries, only: %i[ index show ]    
+    end
+    
     # Defines the root path route ("/")
     get "/", to: "trips#index"
   end

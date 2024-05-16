@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  include Trialable
+  include Trialable, Shareable
   
   belongs_to :user, touch: true
 
