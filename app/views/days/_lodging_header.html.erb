@@ -4,7 +4,7 @@
 	<% if lodging.present? %>
 		<%= link_to edit_trip_lodging_path(trip, lodging, day: day) do %>
 			<p class="max-w-40">
-				<%= lodging.address %> 
+				<%= lodging.name %> 
 				<%=
 					auto_link(lodging.link, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
 						truncate(text, length: 0, omission: '(link)')
