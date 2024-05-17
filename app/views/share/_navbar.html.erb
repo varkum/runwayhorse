@@ -1,5 +1,5 @@
 <nav class="relative flex items-center justify-center p-4 bg-amber-100 min-h-14" data-controller="navbar">
-	<%= link_to root_url, class: "absolute left-5" do %>
+	<%= link_to root_url(subdomain: ""), class: "absolute left-5" do %>
 		<div class="flex items-center gap-2">
 			<%= image_tag "logo.svg", class: "h-7 sm:h-10 w-auto"%>
 			<span class="font-bold text-xl hidden lg:inline">RunwayHorse</span>
@@ -28,9 +28,5 @@
 		<%= link_to "Transportation", share_trip_transportations_path(trip_id: @trip_token) %>
 		<%= link_to "Lodging", share_trip_lodgings_path(trip_id: @trip_token) %>
 		<%= link_to "Days", share_trip_day_path(trip_id: @trip_token, id: @trip.current_day) %>
-	</div>
-	
-	<div>
-		Create a RunwayHorse account to plan your own trips
 	</div>
 </nav>
