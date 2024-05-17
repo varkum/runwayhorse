@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "share" do %>
 	<div class="w-fit mx-auto">
 		<div class="flex rounded-md border border-grey-500" data-controller="share">
-			<p class="max-w-48 p-2 text-xs text-slate-400 overflow-auto select-text text-nowrap" data-share-target="link"><%= share_trip_url(id: @trip_token) %></p>
+			<p class="max-w-48 p-2 text-xs text-slate-400 overflow-auto select-text text-nowrap whitespace-nowrap" data-share-target="link"><%= share_trip_url(id: @trip_token) %></p>
 			<button class="text-xs font-semibold text-center bg-gray-200 p-2 select-none" data-share-target="copyBtn" data-action="click->share#copy">Copy</button>
 		</div>
 		<%= link_to "Done", :back, class: "ml-2 font-medium text-xs text-blue-500" %>
