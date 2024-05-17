@@ -1,0 +1,47 @@
+<% if day_by_day %>
+	<div class="flex py-1">
+		<p class="text-xs sm:text-sm italic w-1/4 sm:w-1/6"><%= human_time(happening.time) %></p>
+		<div class="w-full">
+			<div class="inline-flex items-center">
+				<%= icon_for(happening.transportation.mode, size: "10") %>
+				<p class="ml-3 sm:text-lg font-medium align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+			</div>
+			<div class="mt-4 text-xs sm:text-sm text-slate-600">
+		    <%= 
+				auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+					truncate(text, length: 35, omission: '...')
+				end 
+				%>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div class="flex bg-slate-100 rounded px-4 py-1 mt-4">
+		<div class="grow sm:contents">
+			<div class="mr-2 sm:mr-8">
+				<div class="inline-flex items-center">
+					<%= icon_for(happening.transportation.mode, size: "12") %>
+					<p class="ml-3 text-base sm:text-lg font-medium align-middle"><%= happening.transportation.origin%> to <%= happening.transportation.destination%></p>
+				</div>
+
+			  <div class="flex items-center gap-2 my-2">
+					<%= image_tag "time.svg", class: "h-4 w-auto inline"%>
+			    <%= human_time(happening.time) %>
+				</div>
+
+			  <div class="flex items-center gap-2 my-2">
+					<%= image_tag "date.svg", class: "h-4 w-auto inline"%>
+			    <%= happening&.date&.strftime("%a, %b. %d") %>
+				</div>
+		  </div>
+
+		  <div class="mt-4 text-xs sm:text-sm text-slate-600 grow">
+		    <%= 
+				auto_link(happening.notes, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+					truncate(text, length: 35, omission: '...')
+				end 
+				%>
+			</div>
+		</div>
+	</div>
+<% end %>
