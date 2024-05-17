@@ -2,14 +2,14 @@
 	<div id="day-header" class="mb-5">
 		<div class="w-full inline-flex justify-center items-center gap-x-1 border-solid border-b-2 border-gray-300">
 			<% if day.previous %>
-				<%= link_to share_trip_day_path(day.previous) do %>
+				<%= link_to share_trip_day_path(trip_id: @trip_token, id: day.previous) do %>
 					<%= image_tag "left_arrow.svg", class: "h-5 w-auto" %>
 				<% end %>
 			<% end %>
 			
 			<h3 class="font-medium text-lg sm:text-xl"><%= human_date(day.date, no_year: true)%></h3>
 			<% if day.next %>
-				<%= link_to share_trip_day_path(day.next) do %>
+				<%= link_to share_trip_day_path(trip_id: @trip_token, id: day.next) do %>
 					<%= image_tag "right_arrow.svg", class: "h-5 w-auto" %>
 				<% end %>
 			<% end %>
