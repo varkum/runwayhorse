@@ -1,2 +1,2 @@
-class Share::ActivitiesController < ApplicationController
+class Share::ActivitiesController < Share::TripsController
 end

@@ -1,0 +1,38 @@
+<div class="w-full justify-center relative" id="<%= dom_id day %>">
+	<div id="day-header" class="mb-5">
+		<div class="w-full inline-flex justify-center items-center gap-x-1 border-solid border-b-2 border-gray-300">
+			<% if day.previous %>
+				<%= link_to share_trip_day_path(day.previous) do %>
+					<%= image_tag "left_arrow.svg", class: "h-5 w-auto" %>
+				<% end %>
+			<% end %>
+			
+			<h3 class="font-medium text-lg sm:text-xl"><%= human_date(day.date, no_year: true)%></h3>
+			<% if day.next %>
+				<%= link_to share_trip_day_path(day.next) do %>
+					<%= image_tag "right_arrow.svg", class: "h-5 w-auto" %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="flex justify-evenly mt-3 gap-x-4">
+			<%= render "lodging_header", trip: day.trip, lodging: day&.lodging, day: day %>
+			<%= render "location_header", trip: day.trip, location: day.location, day: day %>
+		</div>
+	</div>
+  
+	<% if day.happenings.any? %>
+		<div class="divide-y">
+			<% day.happenings.each do |happening| %>
+				<%= render happening, day_by_day: true %>
+			<% end %>
+		</div>
+	<% else %>
+		<p class="text-center text-sm text-gray-500 italic">
+			Nothing planned for today
+		</p>
+	<% end %>
+	
+	<%= turbo_frame_tag "sometimes", src: share_trip_sometimes_path do %>
+		<%= image_tag "spinner.gif", class: "h-6 w-auto mx-auto mt-8" %>
+	<% end %>
+</div>

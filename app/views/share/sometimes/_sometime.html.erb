@@ -1,0 +1,6 @@
+<div id="<%= dom_id sometime %>">
+  <%= form_with model: [ trip, sometime ], class: "flex items-center" do |form| %>
+		<%= form.check_box :completed, disabled: true, class: "focus:ring-0" %>
+		<%= form.text_field :name, disabled: true, class: "text-sm sm:text-base flex-grow border-none focus:ring-0" %>
+	<% end %>
+</div>
