@@ -33,15 +33,7 @@
 		}
 		
 		.logo {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: .5rem;
-			
-		}		
-		.logo-image {
-			height: 4px;
-			width: auto;
+			text-align: center;			
 		}
     
     a {
@@ -316,7 +308,7 @@
       -premailer-width: 100%;
       -premailer-cellpadding: 0;
       -premailer-cellspacing: 0;
-      background-color: #F2F4F6;
+      background-color: white;
     }
     
     .email-content {
@@ -332,6 +324,7 @@
     .email-masthead {
       padding: 25px 0;
       text-align: center;
+			background-color: white;
     }
     
     .email-masthead_logo {
@@ -416,7 +409,7 @@
       .email-wrapper,
       .email-masthead,
       .email-footer {
-        background-color: #333333 !important;
+        background-color: #FFF !important;
         color: #FFF !important;
       }
       p,
@@ -455,7 +448,7 @@
               <td class="email-masthead">
 								<div class="logo">
 		              <a href="https://runwayhorse.com">
-		                <%= email_image_tag "logo.png", width: "36px", height: "auto" %>
+		                <%= email_image_tag "logo.png" %>
 		            	</a>
 								</div>
                 
