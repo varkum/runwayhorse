@@ -1,7 +1,26 @@
-<footer class="flex flex-col min-h-28 bg-neutral-50 p-4 justify-between text-center mt-20">
-	<p class="font-bold">
+<footer class="flex flex-col min-h-28 bg-white p-4 justify-between text-center mt-20">
+	<p class="font-bold mb-4">
 		<%= mail_to "hello@runwayhorse.com", "Email us", class: "text-indigo-500" %>
 		to get help on anything.
 	</p>
-	<p class="text-slate-600 text-xs italic">RunwayHorse is built by <%= link_to "Varun Kumar", "https://varunkumar.com", target: "_blank", class: "text-xs text-indigo-500" %>. Copyright @Varun Kumar. All rights reserved.</p>
+	<p>See updates on <%= link_to "the blog", "https://world.hey.com/varun.kumar", class: "underline font-bold text-blue-500" %></p>
+
+	<form
+		novalidate
+	  action="https://buttondown.email/api/emails/embed-subscribe/varunkumar"
+	  method="post"
+		target="_blank"
+		onsubmit="this.submit(); window.location.reload()"
+	>
+	  <label for="bd-email" class="block italic text-gray-500 mt-8">Subscribe to the blog and hear about other things I'm making:</label>
+		
+		<div class="w-[348px] mx-auto flex justify-between rounded-full border border-gray-500 py-1 pl-4 pr-1">
+	  	<input type="email" name="email" id="bd-email" class="grow text-slate-600 text-sm border-none focus:ring-0 focus:border-none" placeholder="Enter your email" />
+  
+	  	<button type="submit" value="Subscribe" class="bg-indigo-500 font-bold text-white text-sm py-1 px-3 rounded-full">
+				Subscribe
+			</button>
+		</div>
+	</form>
+	<p class="text-slate-600 text-xs italic">RunwayHorse is built by <%= link_to "Varun Kumar", "https://varunkumar.com", target: "_blank", class: "text-xs underline text-blue-500" %>. Copyright @Varun Kumar. All rights reserved.</p>
 </footer>
