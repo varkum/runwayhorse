@@ -13,6 +13,6 @@ class Lodging < ApplicationRecord
   
   def assign_days(from:, to:)
     lodging_days = trip.days.where(date: from..to)
-    lodging_days.update!(lodging_id: id)
+    self.days = lodging_days
   end
 end

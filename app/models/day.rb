@@ -11,4 +11,8 @@ class Day < ApplicationRecord
   def next
     trip.days.find_by(date: date + 1)
   end
+  
+  def night_lodging
+    lodgings.count == 1 ? lodgings.first : lodgings.select { |lodging| lodging.start_date == date }.pop
+  end
 end

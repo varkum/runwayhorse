@@ -1,13 +1,12 @@
 <div class="flex text-wrap justify-center items-start px-4 py-2 text-gray-500">
 	<%= image_tag "home.svg", class: "h-6 w-auto mr-1" %>
 		
-	<% if lodgings.present? %>
-		<% lodging_of_the_day = lodgings.last %>
-		<%= link_to edit_trip_lodging_path(trip, lodging_of_the_day, day: day) do %>
+	<% if lodging.present? %>
+		<%= link_to edit_trip_lodging_path(trip, lodging, day: day) do %>
 			<p class="max-w-40">
-				<%= lodging_of_the_day.name %> 
+				<%= lodging.name %> 
 				<%=
-					auto_link(lodging_of_the_day.link, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
+					auto_link(lodging.link, html: { class: "text-blue-500 underline", target: '_blank' }) do |text|
 						truncate(text, length: 0, omission: '(link)')
 					end
 					%>
