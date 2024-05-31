@@ -5,7 +5,7 @@ class LodgingsController < ApplicationController
   before_action :redirect_if_trial_expired
   
   def index
-    @lodgings = @trip.lodgings
+    @lodgings = @trip.lodgings.sort { |lodging| lodging.start_date }
   end
 
   def new
