@@ -8,7 +8,6 @@ class CheckoutsController < ApplicationController
         quantity: 1
       } ],
       mode: "payment",
-      allow_promotion_codes: "true",
       success_url: params[:trial_trip] ? trip_url(params[:trial_trip]) : new_trip_url,
       cancel_url: trips_url
     })
