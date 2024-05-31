@@ -11,9 +11,7 @@
 					—
 					<%= lodging.days.last.date.strftime("%a, %b. %d") %>
 				<% elsif lodging.days.any? %>
-					<p class="font-medium">
-						<%= lodging.days.first.date.strftime("%a, %b. %d") %>
-					</p>
+					<%= lodging.days.first.date.strftime("%a, %b. %d") %>
 				<% end %>
 			</div>
 		

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_04_23_140319) do
+ActiveRecord::Schema[7.2].define(version: 2024_05_31_152902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,9 +37,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_04_23_140319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date"
-    t.bigint "lodging_id"
-    t.index ["lodging_id"], name: "index_days_on_lodging_id"
     t.index ["trip_id"], name: "index_days_on_trip_id"
+  end
+
+  create_table "days_lodgings", id: false, force: :cascade do |t|
+    t.bigint "day_id", null: false
+    t.bigint "lodging_id", null: false
+    t.index ["day_id", "lodging_id"], name: "index_days_lodgings_on_day_id_and_lodging_id"
+    t.index ["lodging_id", "day_id"], name: "index_days_lodgings_on_lodging_id_and_day_id"
   end
 
   create_table "happenings", force: :cascade do |t|
@@ -217,7 +222,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_04_23_140319) do
 
   add_foreign_key "active_labels", "trips"
   add_foreign_key "active_labels", "users"
-  add_foreign_key "days", "lodgings"
   add_foreign_key "days", "trips"
   add_foreign_key "happenings", "days"
   add_foreign_key "lodgings", "trips"
