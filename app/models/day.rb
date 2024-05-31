@@ -13,6 +13,11 @@ class Day < ApplicationRecord
   end
   
   def night_lodging
-    lodgings.count == 1 ? lodgings.first : lodgings.select { |lodging| lodging.start_date == date }.pop
+    if lodgings.count == 1
+      lodging = lodgings.first
+      lodging unless lodging.end_date == date
+    else
+      lodgings.select { |lodging| lodging.start_date == date }.pop
+    end
   end
 end
