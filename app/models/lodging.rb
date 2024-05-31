@@ -1,6 +1,7 @@
 class Lodging < ApplicationRecord
   belongs_to :trip, touch: true
-  has_many :days, -> { order(date: :asc) }, dependent: :nullify
+  has_and_belongs_to_many :days, -> { order(date: :asc) }
+  #has_many :days, -> { order(date: :asc) }, dependent: :nullify
 
   def start_date
     days.first&.date

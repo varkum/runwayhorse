@@ -1,6 +1,7 @@
 class Day < ApplicationRecord
   belongs_to :trip
-  belongs_to :lodging, optional: true
+  #belongs_to :lodging, optional: true
+  has_and_belongs_to_many :lodgings
   has_many :happenings, -> { order(time: :asc) }, dependent: :destroy
 
   def previous
