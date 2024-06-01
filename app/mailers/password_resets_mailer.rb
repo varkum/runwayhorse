@@ -4,6 +4,6 @@ class PasswordResetsMailer < ApplicationMailer
   def reset
     @user = params[:user]
     @token = params[:token]
-    mail(to: @user.email, subject: "RunwayHorse Password Reset")
+    mail(to: @user.email.downcase, subject: "RunwayHorse Password Reset")
   end
 end
