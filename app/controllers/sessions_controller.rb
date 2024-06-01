@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.authenticate_by(email: params[:email], password: params[:password])
+    if user = User.authenticate_by(email: params[:email].strip.downcase, password: params[:password])
       session[:user_id] = user.id
       redirect_to trips_path
     else
