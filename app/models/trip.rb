@@ -28,7 +28,7 @@ class Trip < ApplicationRecord
   end
   
   def current_day
-    active_day = days.find_by(date: Date.today) if in_progress?
+    active_day = days.find_by(date: Date.today)
     active_day || days.first
   end
 
