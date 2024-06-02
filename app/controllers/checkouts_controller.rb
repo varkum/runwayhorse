@@ -4,7 +4,7 @@ class CheckoutsController < ApplicationController
       customer_email: Current.user.email,
       client_reference_id: params[:trial_trip],
       line_items: [ {
-        price: "price_1PMbRsRxS8JaBOK04ozwTVzx",
+        price: "price_1PNKMcRxS8JaBOK0p4oS1G5C",
         quantity: 1
       } ],
       mode: "payment",
