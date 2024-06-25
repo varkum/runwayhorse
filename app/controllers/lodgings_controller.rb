@@ -2,7 +2,6 @@ class LodgingsController < ApplicationController
   before_action :set_trip
   before_action :set_day, except: :index
   before_action :set_lodging, only: %i[ edit update destroy ]
-  before_action :redirect_if_trial_expired
   
   def index
     @lodgings = @trip.lodgings.sort { |lodging| lodging.start_date }

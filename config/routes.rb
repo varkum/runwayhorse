@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :sometimes, except: %i[ show edit destroy ]
       resources :summaries, module: "trips", only: [ :index ]
       resources :shares, module: "trips", only: [ :new ]
+      resource :notes, module: "trips", only: [ :show ]
     end
     
     namespace "share" do
