@@ -32,6 +32,6 @@ class User < ApplicationRecord
   def setup_active_trip
     first_trip = trips.create! name: "Untitled trip"
     create_active_label! trip_id: first_trip.id
-    first_trip.activate_trial
+    #first_trip.activate_trial
   end
 end
