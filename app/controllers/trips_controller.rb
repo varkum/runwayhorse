@@ -26,8 +26,7 @@ class TripsController < ApplicationController
   end
 
   def update
-    if @trip.update(trip_params)
-      @trip.update_days!
+    if @trip.update!(trip_params)
       redirect_to trip_url(@trip), turbo: false
     else
       redirect_to trip_url(@trip), alert: "Your changes weren't saved. Please try again"
@@ -48,6 +47,6 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:name, :start_date, :end_date)
+      params.require(:trip).permit(:name, :start_date, :end_date, :notes)
     end
 end

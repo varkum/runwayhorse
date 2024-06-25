@@ -46,4 +46,10 @@ class Trip < ApplicationRecord
       self.days.find_or_create_by!(date: date)
     end
   end
+  
+  def update!(params)
+    super
+    
+    update_days! if params.has_key?(:start_date) || params.has_key?(:end_date)
+  end
 end
