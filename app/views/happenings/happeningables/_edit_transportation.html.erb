@@ -5,6 +5,8 @@
 			
 			<p class="text-xs sm:text-sm italic w-1/4 sm:w-1/6 mt-2 sm:mt-0">
 				<%= form.time_field :time, value: happening.read_attribute(:time), class: "w-28 border-none rounded text-sm", required: true %>
+				<p class="font-light ml-10">to</p>
+				<%= form.time_field :arrival, value: happening.transportation.arrival, class: "w-28 border-none rounded text-sm", required: true %>
 			</p>
 		    
 		</div>

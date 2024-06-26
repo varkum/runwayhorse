@@ -1,7 +1,7 @@
 <% if day_by_day %>
 	<div class="flex py-1">
 		<div class="w-1/4 sm:w-1/6 text-xs sm:text-sm">
-			<p class="font-medium"><%= human_time(happening.time) %></p> to 
+			<p class="font-medium"><%= human_time(happening.time) %></p> <p class="font-light">to</p>
 			<p class="font-medium"><%= human_time(happening.transportation.arrival) %></p>
 		</div>
 		<div class="w-full">

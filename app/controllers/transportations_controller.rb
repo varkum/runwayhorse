@@ -33,7 +33,7 @@ class TransportationsController < ApplicationController
   end
 
   def update
-    @happening.update_meta_attributes!(transportation_params.slice(:date, :time, :notes)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode))
+    @happening.update_meta_attributes!(transportation_params.slice(:date, :time, :notes)) && @happening.transportation.update!(transportation_params.slice(:origin, :destination, :mode, :arrival))
 
     redirect_to_origin
   end
