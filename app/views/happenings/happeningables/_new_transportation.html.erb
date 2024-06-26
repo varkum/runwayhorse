@@ -10,11 +10,13 @@
 	    	<%= form.label "Departure", class: "font-bold text-slate-700" %>
 	    	<%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36", required: true %>
 			</div>
+			
 			<div>
 				<%= form.label "Arrival", class: "font-bold text-slate-700"%>
 				<%= form.time_field :arrival, class: "block rounded border-none outline outline-1 outline-gray-300 w-36", required: true %>
 			</div>
 		</div>
+		
 	  <div class="my-5">
 	    <%= form.label "From", class: "font-bold text-slate-700" %>
 	    <%= form.text_field :origin, placeholder: "Enter a starting point", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
