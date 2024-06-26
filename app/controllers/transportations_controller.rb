@@ -18,6 +18,7 @@ class TransportationsController < ApplicationController
       trip: @trip,
       date: transportation_params[:date],
       time: transportation_params[:time],
+      arrival: transportation_params[:arrival],
       notes: transportation_params[:notes]
       )
 
@@ -58,7 +59,7 @@ class TransportationsController < ApplicationController
   end
 
   def transportation_params
-    params.require(:happening).permit(:origin, :destination, :date, :mode, :notes, :time)
+    params.require(:happening).permit(:origin, :destination, :date, :mode, :notes, :time, :arrival)
   end
 
   def redirect_to_origin(notice: nil)

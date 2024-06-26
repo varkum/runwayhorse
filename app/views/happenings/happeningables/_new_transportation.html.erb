@@ -1,0 +1,43 @@
+<%= form_with model: [trip, happening], url: trip_transportations_path(trip: trip, day: day) do |form| %>
+	<div class="max-w-sm mx-auto">
+	  <div class="my-5">
+	    <%= form.label :date, class: "font-bold text-slate-700" %>
+	    <%= form.select :date, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, day&.date), {}, class: "block rounded border-none outline outline-1 outline-gray-300" %>
+	  </div>
+
+	  <div class="my-5 flex justify-between">
+			<div>
+	    	<%= form.label "Departure", class: "font-bold text-slate-700" %>
+	    	<%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36", required: true %>
+			</div>
+			<div>
+				<%= form.label "Arrival", class: "font-bold text-slate-700"%>
+				<%= form.time_field :arrival, class: "block rounded border-none outline outline-1 outline-gray-300 w-36", required: true %>
+			</div>
+		</div>
+	  <div class="my-5">
+	    <%= form.label "From", class: "font-bold text-slate-700" %>
+	    <%= form.text_field :origin, placeholder: "Enter a starting point", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+	  </div>
+	
+	  <div class="my-5">
+	    <%= form.label "To", class: "font-bold text-slate-700" %>
+	    <%= form.text_field :destination, placeholder: "Enter a destination", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+	  </div>
+	
+		<div class="my-5">
+	    <%= form.label "Travel mode", class: "font-bold text-slate-700" %>
+	    <%= form.select :mode, ["plane", "train", "car"], {}, class: "w-36 block rounded outline outline-1 outline-gray-300 border-none" %>
+		</div>
+	
+
+	  <div class="my-5">
+	    <%= form.label :notes, class: "font-bold text-slate-700" %>
+	    <%= form.text_area :notes, rows: 5, placeholder: "e.g. duration, reservation details, things to bring, how early to leave", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+	  </div>
+
+	  <div class="text-center">
+	  	<%= form.submit "Save this transportation", class: "text-center rounded-xl py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
+		</div>
+	<div>
+<% end %>

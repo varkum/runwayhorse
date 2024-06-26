@@ -1,6 +1,18 @@
 <%= form_with model: [trip, happening], url: polymorphic_path([:trip, happening.happeningable_name.pluralize.to_sym], trip: trip, day: day) do |form| %>
 	<div class="max-w-sm mx-auto">
+	  <div class="my-5">
+	    <%= form.label :date, class: "font-bold text-slate-700" %>
+	    <%= form.select :date, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, day&.date), {}, class: "block rounded border-none outline outline-1 outline-gray-300" %>
+	  </div>
+
+	  <div class="my-5">
+	    <%= form.label "Time", class: "font-bold text-slate-700" %>
+	    <%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36", required: true %>
+	  </div>
+		
 		<% if happening.happeningable_name == "transportation" %>
+			<div class="my-5">
+					<%= form.label %>
 		  <div class="my-5">
 		    <%= form.label "From", class: "font-bold text-slate-700" %>
 		    <%= form.text_field :origin, placeholder: "Enter a starting point", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
@@ -27,16 +39,6 @@
 			</div>
 		<% end %>
 
-	  <div class="my-5">
-	    <%= form.label :date, class: "font-bold text-slate-700" %>
-	    <%= form.select :date, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, day&.date), {}, class: "block rounded border-none outline outline-1 outline-gray-300" %>
-	  </div>
-
-	  <div class="my-5">
-	    <%= form.label "Time", class: "font-bold text-slate-700" %>
-	    <%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36", required: true %>
-	  </div>
-	
 	  <div class="my-5">
 	    <%= form.label :notes, class: "font-bold text-slate-700" %>
 	    <%= form.text_area :notes, rows: 5, placeholder: "e.g. duration, reservation details, things to bring, how early to leave", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
