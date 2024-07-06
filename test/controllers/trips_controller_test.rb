@@ -32,4 +32,11 @@ class TripsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to trip_url(Trip.last)
   end
+  
+  test "update a trips days" do
+    patch trip_url(trips(:one)), params: { trip: { start_date: "2024-06-06", end_date: "2024-06-14" } }
+    
+    trip = trips(:one)
+    assert_equal 9, trip.days.count
+  end
 end
