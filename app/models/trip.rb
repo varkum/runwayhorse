@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  include Shareable
+  include Shareable, Activeable, Progressable
   
   belongs_to :user, touch: true
 
@@ -8,8 +8,6 @@ class Trip < ApplicationRecord
   has_many :lodgings
   has_many :sometimes, -> { order(completed: :asc, created_at: :desc) }
   
-  has_one :active_label, dependent: :destroy
-  
   delegate :transportations, :activities, to: :happenings
   
   broadcasts_refreshes
@@ -17,19 +15,6 @@ class Trip < ApplicationRecord
   def length
     number_of_days = (end_date - start_date).to_i
     number_of_days.zero? ? 1 : number_of_days
-  end
-
-  def in_progress?
-    (start_date..end_date).include?(Date.today)
-  end
-  
-  def has_happened?
-    Date.today > end_date
-  end
-  
-  def current_day
-    active_day = days.find_by(date: Date.today)
-    active_day || days.first
   end
 
   def update_days!
