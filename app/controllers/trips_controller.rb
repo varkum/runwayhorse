@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[ create show edit update destroy ]
+  before_action :set_trip, only: %i[ show edit update destroy ]
 
   def index
     @trips = Current.user.trips
@@ -16,8 +16,8 @@ class TripsController < ApplicationController
   end
 
   def create
+    @trip = Current.user.trips.last
     if @trip.update!(trip_params)
-      @trip.create_and_setup_days
       Current.user.active_label.update! trip: @trip
       redirect_to trip_url(@trip), notice: "Your trip was created successfully"
     else
