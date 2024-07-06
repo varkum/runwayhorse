@@ -32,12 +32,6 @@ class Trip < ApplicationRecord
     active_day || days.first
   end
 
-  def create_and_setup_days
-    (0..length).each do |day_number|
-      self.days.create(date: start_date + day_number)
-    end
-  end
-
   def update_days!
     unused_days = days.where.not(date: start_date..end_date)
     unused_days.destroy_all
