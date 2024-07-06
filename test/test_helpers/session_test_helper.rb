@@ -1,7 +1,7 @@
 module SessionTestHelper
   def sign_in(user)
     user = users(user)
-    post signin_url, params: { email_address: user.email_address, password: "password123" }
+    post signin_url, params: { email: user.email, password: "password123" }
     assert session[:user_id].present?
   end
   
