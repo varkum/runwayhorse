@@ -23,7 +23,7 @@
 	<% if day.happenings.any? %>
 		<div class="divide-y">
 			<% day.happenings.each do |happening| %>
-				<%= render happening, day_by_day: true %>
+				<%= render happening.happeningable, happening: happening, day_by_day: true %>
 			<% end %>
 		</div>
 	<% else %>

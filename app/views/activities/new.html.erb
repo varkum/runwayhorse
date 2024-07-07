@@ -1,0 +1,36 @@
+<div class="mx-auto md:w-2/3 w-full mt-4 px-4">
+  <h1 class="font-semibold text-3xl text-center">Add Activity</h1>
+
+  <%= form_with model: @happening, url: trip_activities_path(trip: @trip, day: @day) do |form| %>
+  	<div class="max-w-sm mx-auto">
+  	  <div class="my-5">
+  	    <%= form.label :date, class: "font-bold text-slate-700" %>
+  	    <%= form.select :date, options_for_select(@trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, @day&.date), {}, class: "block rounded border-none outline outline-1 outline-gray-300" %>
+  	  </div>
+
+  	  <div class="my-5">
+  	    <%= form.label "Time", class: "font-bold text-slate-700" %>
+  	    <%= form.time_field :time, class: "block rounded border-none outline outline-1 outline-gray-300 w-36", required: true %>
+  	  </div>
+		
+  		<div class="my-5">
+  			<%= form.label "Activity name", class: "font-bold text-slate-700" %>
+  			<%= form.text_field :name, placeholder: "e.g. walking tour, tapas dinner", required: true, class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+  		<div>
+	
+  		<div class="my-5">
+  			<%= form.label :location, class: "font-bold text-slate-700" %>
+  			<%= form.text_field :location, placeholder: "As specific as you want it to be", class: "w-full block border-none outline outline-1 outline-gray-300 rounded" %>
+  		</div>
+
+  	  <div class="my-5">
+  	    <%= form.label :notes, class: "font-bold text-slate-700" %>
+  	    <%= form.text_area :notes, rows: 5, placeholder: "e.g. duration, reservation details, things to bring, how early to leave", class: "block w-full border-none outline outline-1 outline-gray-300 rounded" %>
+  	  </div>
+
+  	  <div class="text-center">
+  	  	<%= form.submit "Save this activity", class: "text-center rounded-xl py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
+  		</div>
+  	<div>
+  <% end %>
+</div>
