@@ -10,6 +10,6 @@ class TransportationsController < HappeningablesController
   end
   
   def happeningable_params
-    params.fetch(:happening, {}).permit(:mode, :origin, :destination, :arrival)
+    form_params.extract! *Transportation::FORM_PARAMS
   end
 end

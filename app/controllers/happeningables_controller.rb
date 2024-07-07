@@ -32,8 +32,12 @@ class HappeningablesController < ApplicationController
   
   private
   
+  def form_params
+    params.fetch(:happening, {}).permit(Happening::FORM_PARAMS.concat(Transportation::FORM_PARAMS, Activity::FORM_PARAMS))
+  end
+  
   def happening_params
-    params.fetch(:happening, {}).permit(:notes, :time, :date)
+    form_params.extract! *Happening::FORM_PARAMS
   end
   
   def redirect_to_origin(notice: nil)

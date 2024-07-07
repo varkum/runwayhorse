@@ -10,6 +10,6 @@ class ActivitiesController < HappeningablesController
   end
   
   def happeningable_params
-    params.fetch(:activity, {}).permit(:name, :location)
+    form_params.extract! *Activity::FORM_PARAMS
   end
 end

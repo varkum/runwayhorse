@@ -1,4 +1,6 @@
 class Happening < ApplicationRecord
+  FORM_PARAMS = [ :date, :time, :notes ]
+  
   belongs_to :day, touch: true
   belongs_to :trip, touch: true
 

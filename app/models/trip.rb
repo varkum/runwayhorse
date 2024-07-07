@@ -9,8 +9,6 @@ class Trip < ApplicationRecord
   has_many :sometimes, -> { order(completed: :asc, created_at: :desc) }
   
   delegate :transportations, :activities, to: :happenings
-  
-  broadcasts_refreshes
 
   def length
     number_of_days = (end_date - start_date).to_i
