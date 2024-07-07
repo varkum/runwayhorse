@@ -5,7 +5,7 @@ class Trip < ApplicationRecord
 
   has_many :days, -> { order(date: :asc) }, dependent: :destroy
   has_many :happenings, -> { order(time: :asc) }, dependent: :destroy
-  has_many :lodgings
+  has_many :lodgings, -> { order(start_date: :asc) }
   has_many :sometimes, -> { order(completed: :asc, created_at: :desc) }
   
   delegate :transportations, :activities, to: :happenings
