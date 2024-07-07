@@ -1,5 +1,3 @@
 <%= turbo_frame_tag "edit_#{dom_id happening}", class: "block" do %>
 	<%= render "happenings/happeningables/#{happening.happeningable_name}", happening: happening, day_by_day: day_by_day %>
 <% end %>
-
-
