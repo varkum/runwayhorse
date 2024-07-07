@@ -1,0 +1,27 @@
+one:
+  trip: one
+  date: 2024-06-24
+
+two:
+  trip: two
+  date: 2024-03-20
+  
+three:
+  trip: two
+  date: 2024-03-21
+  
+four:
+  trip: two
+  date: 2024-03-22
+  
+five:
+  trip: three
+  date: 2024-03-20
+
+six:
+  trip: three
+  date: 2024-03-21
+  
+seven:
+  trip: three
+  date: 2024-03-22

@@ -12,7 +12,7 @@ class LodgingsController < ApplicationController
   end
 
   def create
-    @lodging = Lodging.create! lodging_params.merge(trip:@trip)
+    @lodging = Lodging.create! lodging_params.merge(trip: @trip)
     
     redirect_to_origin notice: "Lodging added successfully"
   end

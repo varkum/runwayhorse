@@ -1,3 +1,19 @@
 one:
+  name: Hotel One
+  address: 123 Main st
+  start_date: 2024-05-20
+  end_date: 2024-05-21
+  trip: three
 
 two:
+  name: Hotel Two
+  start_date: 2024-03-20
+  end_date: 2024-03-21
+  trip: two
+
+three:
+  name: Hotel Three
+  address: 123 Wall st
+  start_date: 2024-05-21
+  end_date: 2024-05-22
+  trip: three
