@@ -10,6 +10,6 @@ class TransportationsController < HappeningablesController
   end
   
   def happeningable_params
-    params.fetch(:transportation, {}).permit(:mode, :origin, :destination, :arrival)
+    params.fetch(:happening, {}).permit(:mode, :origin, :destination, :arrival)
   end
 end

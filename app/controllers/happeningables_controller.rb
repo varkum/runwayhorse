@@ -10,16 +10,16 @@ class HappeningablesController < ApplicationController
   end
   
   def create
-    @happening = Happening.record new_happeningable, happening_params.merge(trip: @trip)
+    @happening = Happening.record new_happeningable, happening_params, @trip
     
-    redirect_to_origin notice: "#{@happening.happeningable.class_name.humanize} added successfully"
+    redirect_to_origin notice: "#{@happening.happeningable.class.name} added successfully"
   end
   
   def edit
   end
   
   def update
-    @happening.edit happeningable_params, happening_params
+    @happening.edit happeningable_params, happening_params, @trip
     
     redirect_to_origin
   end
@@ -27,7 +27,7 @@ class HappeningablesController < ApplicationController
   def destroy
     @happening.destroy!
 
-    redirect_to_origin notice: "#{@happening.happeningable.class_name.humanize} deleted successfully"
+    redirect_to_origin notice: "#{@happening.happeningable.class.name} deleted successfully"
   end
   
   private
