@@ -33,7 +33,7 @@
 			</div>
 		<% end %>
 		
-    <% if Current.user.present? %>
+    <% if signed_in? %>
   		<div class="absolute right-1">
   			<div name="admin-land" class= "relative flex flex-col relative">
   				<button class="self-end flex items-center font-bold rounded-full text-gray-500" data-action="click->navbar#toggleDropdown">

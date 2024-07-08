@@ -44,7 +44,7 @@ class TripsController < ApplicationController
   private
 
   def set_trip
-    if Current.user.present?
+    if signed_in?
       @trip = Current.user.trips.find(params[:id])
     else
       validate_shared_trip_token
