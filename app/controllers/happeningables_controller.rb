@@ -1,6 +1,9 @@
 class HappeningablesController < ApplicationController
   include SetTripDayHappening
   
+  allow_unauthenticated_access, only: :index
+  before_action :set_happening, only: %i[ edit update destroy ]
+  
   def index
     @happenings = index_happeningables
   end
@@ -31,6 +34,10 @@ class HappeningablesController < ApplicationController
   end
   
   private
+  
+  def set_happening
+    @happening = @trip.happenings.find(params[:id])
+  end
   
   def form_params
     params.fetch(:happening, {}).permit(Happening::FORM_PARAMS.concat(Transportation::FORM_PARAMS, Activity::FORM_PARAMS))

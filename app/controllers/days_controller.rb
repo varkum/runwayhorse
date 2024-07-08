@@ -1,4 +1,5 @@
 class DaysController < ApplicationController
+  allow_unauthenticated_access, only: :show
   before_action :set_trip
   before_action :set_day, only: %i[ show edit update ]
   

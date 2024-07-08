@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  allow_unauthenticated_access only: :show
+  
   before_action :set_trip, only: %i[ show edit update destroy ]
 
   def index
@@ -42,7 +44,6 @@ class TripsController < ApplicationController
   private
 
     def set_trip
-      @test = "hello"
       @trip = Current.user.trips.find(params[:id])
     end
 

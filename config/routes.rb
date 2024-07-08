@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
     
     namespace "share" do
-      resources :trips, only: :show do
+      resources :trips, only: :show, param: :token do
         resources :days, :transportations, :lodgings, :sometimes, :summaries, only: %i[ index show ]
       end
     end

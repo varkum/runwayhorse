@@ -1,4 +1,6 @@
 class LodgingsController < ApplicationController
+  allow_unauthenticated_access, only: :index
+  
   before_action :set_trip
   before_action :set_day, except: :index
   before_action :set_lodging, only: %i[ edit update destroy ]
