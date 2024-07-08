@@ -43,12 +43,15 @@ class TripsController < ApplicationController
 
   private
 
-    def set_trip
+  def set_trip
+    if Current.user.present?
       @trip = Current.user.trips.find(params[:id])
+    else
+      validate_shared_trip_token
     end
+  end
 
-    # Only allow a list of trusted parameters through.
-    def trip_params
-      params.require(:trip).permit(:name, :start_date, :end_date, :notes)
-    end
+  def trip_params
+    params.require(:trip).permit(:name, :start_date, :end_date, :notes)
+  end
 end

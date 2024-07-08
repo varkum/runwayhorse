@@ -33,15 +33,19 @@ class SometimesController < ApplicationController
 
   private
   
-    def set_trip
+  def set_trip
+    if Current.user.present?
       @trip = Current.user.trips.find(params[:trip_id])
+    else
+      validate_shared_trip_token
     end
+  end
 
-    def set_sometime
-      @sometime = @trip.sometimes.find(params[:id])
-    end
+  def set_sometime
+    @sometime = @trip.sometimes.find(params[:id])
+  end
 
-    def sometime_params
-      params.require(:sometime).permit(:trip_id, :name, :completed)
-    end
+  def sometime_params
+    params.require(:sometime).permit(:trip_id, :name, :completed)
+  end
 end

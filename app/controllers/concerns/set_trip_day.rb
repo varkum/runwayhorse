@@ -9,11 +9,10 @@ module SetTripDay
   private
   
   def set_trip
-    @trip = Current.user.trips.find(params[:trip_id])
-    
-    unless @trip
-      @trip_token = params[:id] || params[:trip_id]
-      @trip = Trip.find_by_token_for(:sharing, @trip_token)
+    if Current.user.present?
+      @trip = Current.user.trips.find(params[:trip_id])
+    else
+      validate_shared_trip_token
     end
   end
   
