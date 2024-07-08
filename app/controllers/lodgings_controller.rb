@@ -1,8 +1,7 @@
 class LodgingsController < ApplicationController
-  allow_unauthenticated_access, only: :index
-  
-  before_action :set_trip
-  before_action :set_day, except: :index
+  include SetTripDay
+
+  allow_unauthenticated_access only: :index  
   before_action :set_lodging, only: %i[ edit update destroy ]
   
   def index
@@ -36,16 +35,8 @@ class LodgingsController < ApplicationController
 
   private
 
-  def set_trip
-    @trip = Current.user.trips.find(params[:trip_id])
-  end
-
   def set_lodging
     @lodging = @trip.lodgings.find(params[:id])
-  end
-
-  def set_day
-    @day = @trip.days.find_by(id: params[:day])
   end
 
   def lodging_params

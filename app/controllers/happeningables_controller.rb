@@ -1,7 +1,7 @@
 class HappeningablesController < ApplicationController
-  include SetTripDayHappening
+  include SetTripDay
   
-  allow_unauthenticated_access, only: :index
+  allow_unauthenticated_access only: :index
   before_action :set_happening, only: %i[ edit update destroy ]
   
   def index
