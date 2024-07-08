@@ -42,6 +42,7 @@ class TripsController < ApplicationController
   private
 
     def set_trip
+      @test = "hello"
       @trip = Current.user.trips.find(params[:id])
     end
 

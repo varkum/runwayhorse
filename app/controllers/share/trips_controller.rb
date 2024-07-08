@@ -1,5 +1,6 @@
 class Share::TripsController < ApplicationController
-  layout "share"
+  include SharedViews
+  
   skip_before_action :validate_access
   before_action :set_trip_and_token
   
@@ -9,7 +10,7 @@ class Share::TripsController < ApplicationController
   private
   
   def set_trip_and_token
-    @trip_token = params[:trip_id] || params[:id]
+    @trip_token = params[:id] || params[:trip_id]
     @trip = Trip.find_by_token_for(:sharing, @trip_token)
   end
 end

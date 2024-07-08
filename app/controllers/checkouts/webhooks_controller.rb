@@ -6,8 +6,6 @@ class Checkouts::WebhooksController < ApplicationController
 
     if checkout_event["type"] == "checkout.session.completed"
 
-      # sendout confirmation email
-
       session = Stripe::Checkout::Session.retrieve({
          id: checkout_event["data"]["object"]["id"]
        })
