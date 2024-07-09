@@ -1,5 +1,7 @@
 class DaysController < ApplicationController
-  include SetTripDay
+  before_action :set_trip
+  before_action :set_day
+  
   allow_unauthenticated_access only: :show
   
   def show
@@ -15,6 +17,14 @@ class DaysController < ApplicationController
   end
 
   private
+  
+  def set_trip
+    @trip = Trip.find(params[:trip_id])
+  end
+  
+  def set_day
+    @day = Day.find(params[:id])
+  end
 
   def day_params
     params.require(:day).permit(:homebase, :location, :notes)

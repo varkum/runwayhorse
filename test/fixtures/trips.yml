@@ -17,3 +17,9 @@ three:
   start_date: 2024-05-20
   end_date: 2024-05-22
   user: one
+  
+four:
+  name: Never Happening
+  start_date: 2099-05-20
+  end_date: 2099-05-22
+  user: two

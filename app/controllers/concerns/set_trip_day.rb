@@ -17,6 +17,6 @@ module SetTripDay
   end
   
   def set_day
-    @day = @trip.days.find(params[:day] || params[:id])
+    @day = @trip.days.find_by(id: params[:day])
   end
 end
