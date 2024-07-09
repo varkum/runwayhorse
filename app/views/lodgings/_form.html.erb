@@ -7,9 +7,9 @@
 		
 		<%= form.label :dates, class: "font-bold text-slate-700" %>
 		<div class="mb-5 flex items-center">
-			<%= form.select :start, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, lodging.start_date || day&.date), {}, class: "text-xs sm:text-base min-w-32 block rounded-md border border-gray-200 outline-none" %>
+			<%= form.select :start_date, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, lodging.start_date || day&.date), {}, class: "text-xs sm:text-base min-w-32 block rounded-md border border-gray-200 outline-none" %>
 			<span class="mx-2">—</span>
-			<%= form.select :end, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, lodging.end_date || day&.date), {}, class: "text-xs sm:text-base min-w-32 block rounded-md border border-gray-200 outline-none" %>
+			<%= form.select :end_date, options_for_select(trip.days.map { |day| [day.date.strftime("%a, %b. %d"), day.date] }, lodging.end_date || day&.date), {}, class: "text-xs sm:text-base min-w-32 block rounded-md border border-gray-200 outline-none" %>
 		</div>
 	
 		<div class="my-5">

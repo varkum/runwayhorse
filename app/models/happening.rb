@@ -1,20 +1,33 @@
 class Happening < ApplicationRecord
+  FORM_PARAMS = [ :date, :time, :notes ]
+  
   belongs_to :day, touch: true
   belongs_to :trip, touch: true
 
   delegated_type :happeningable, types: %w[ Transportation Activity ], dependent: :destroy
 
-  def self.record!(happeningable, trip:, date:, time:, notes:)
-    day = trip.days.find_by(date: date)
-    create! happeningable: happeningable, trip: trip, day: day, time: "#{date} #{time}", notes: notes
-  end
-
   def date
     time&.to_date
   end
+  
+  def self.record(happeningable, happening_params, trip)
+    day = trip.days.find_by(date: happening_params[:date])
+    create!(
+      happeningable: happeningable,
+      trip: trip,
+      day: day,
+      time: "#{happening_params[:date]} #{happening_params[:time]}",
+      notes: happening_params[:notes]
+      )
+  end
 
-  def update_meta_attributes!(params)
-    day = trip.days.find_by(date: params[:date])
-    update!(day: day, time: "#{params[:date]} #{params[:time]}", notes: params[:notes])
+  def edit(happeningable_params, happening_params, trip)
+    day = trip.days.find_by(date: happening_params[:date])
+    update!(day: day,
+    time: "#{happening_params[:date]} #{happening_params[:time]}",
+    notes: happening_params[:notes]
+    )
+    
+    happeningable.update! happeningable_params
   end
 end
