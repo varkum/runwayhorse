@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       resource :notes, module: "trips", only: [ :show ]
     end
     
-    scope "/share" do
+    scope "/share", as: :share do
       resources :trips, only: :show, param: :token do
         resources :days, :transportations, :lodgings, :sometimes, :summaries, only: %i[ index show ]
       end

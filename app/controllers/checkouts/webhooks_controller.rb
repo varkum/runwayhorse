@@ -10,14 +10,9 @@ class Checkouts::WebhooksController < ApplicationController
          id: checkout_event["data"]["object"]["id"]
        })
        
-       if session.client_reference_id
-         trial_trip = Trip.find(session.client_reference_id)
-         trial_trip.end_trial
-         trial_trip.update! stripe_order_id: session.id
-       else
-         user = User.find_by(email: session.customer_details.email)
-         user.trips.create! name: "Untitled trip", stripe_order_id: session.id
-       end
+      user = User.find_by(email: session.customer_details.email)
+      user.trips.create! name: "Untitled trip", stripe_order_id: session.id
+       
     end
 
     head :ok
